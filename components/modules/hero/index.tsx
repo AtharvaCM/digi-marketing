@@ -3,9 +3,8 @@ import { stegaClean } from '@sanity/client/stega';
 import { TypedObject } from 'sanity';
 
 import CTAList from '@/components/common/cta-list';
-import Img, { Source } from '@/components/common/img';
+import Img, { Source } from '@/components/common/Img';
 import Pretitle from '@/components/common/pretitle';
-import Reputation from '@/components/common/reputation';
 import { cn } from '@/lib/utils';
 
 import styles from './hero.module.scss';
@@ -15,7 +14,6 @@ interface HeroProps {
   pretitle?: string;
   content?: TypedObject[];
   ctas?: Sanity.CTA[];
-  reputation: Sanity.Reputation;
   bgType?: 'image' | 'video';
   bgImage?: Sanity.Image;
   bgVideo?: Sanity.Video;
@@ -29,7 +27,6 @@ export default async function Hero({
   pretitle,
   content,
   ctas,
-  reputation,
   bgType = 'image',
   bgImage,
   bgVideo,
@@ -77,15 +74,6 @@ export default async function Hero({
             <Pretitle className={cn((hasImage || bgType === 'video') && 'text-background/70')}>{pretitle}</Pretitle>
 
             <PortableText value={content} />
-
-            <Reputation
-              className={cn('!mt-4', (hasImage || bgType === 'video') && '[&_strong]:text-amber-400', {
-                'justify-start': stegaClean(textAlign) === 'left',
-                'justify-center': stegaClean(textAlign) === 'center',
-                'justify-end': stegaClean(textAlign) === 'right',
-              })}
-              reputation={reputation}
-            />
 
             <CTAList
               ctas={ctas}

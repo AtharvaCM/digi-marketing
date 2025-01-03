@@ -108,6 +108,14 @@ declare global {
         overlay: boolean;
       }>;
 
+    type Video = {
+      asset: {
+        _ref: string;
+      };
+      alt: string;
+      overlay: boolean;
+    };
+
     type Link = {
       readonly _type: 'link';
       readonly _key: string;

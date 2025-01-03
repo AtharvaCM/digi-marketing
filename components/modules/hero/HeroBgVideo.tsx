@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 
-import Img from '@/components/common/img';
+import Img from '@/components/common/Img';
 import { cn } from '@/lib/utils';
 import { client } from '@/sanity/lib/client';
 
