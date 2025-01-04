@@ -1,18 +1,21 @@
-import { TfiLayoutGrid2Thumb } from 'react-icons/tfi';
+import { TfiLayoutMediaLeftAlt } from 'react-icons/tfi';
 import { defineArrayMember, defineField, defineType } from 'sanity';
 
 import { count, getBlockText } from '@/sanity/utils';
 
 export default defineType({
-  name: 'flag-list',
-  title: 'Flag list',
-  icon: TfiLayoutGrid2Thumb,
+  name: 'card-list',
+  title: 'Card list',
+  icon: TfiLayoutMediaLeftAlt,
   type: 'object',
-  groups: [
-    { name: 'content', title: 'Content', default: true },
-    { name: 'options', title: 'Options' },
-  ],
+  groups: [{ name: 'content', default: true }, { name: 'options' }],
   fields: [
+    defineField({
+      name: 'uid',
+      title: 'Unique Identifier',
+      type: 'uid',
+      group: 'options',
+    }),
     defineField({
       name: 'pretitle',
       type: 'string',
@@ -25,62 +28,60 @@ export default defineType({
       group: 'content',
     }),
     defineField({
-      name: 'items',
+      name: 'cards',
       type: 'array',
       of: [
         defineArrayMember({
           type: 'object',
           fields: [
             defineField({
-              name: 'icon',
+              name: 'image',
               type: 'image',
+              options: {
+                hotspot: true,
+              },
             }),
             defineField({
               name: 'content',
               type: 'array',
               of: [{ type: 'block' }],
             }),
-          ],
-          preview: {
-            select: {
-              content: 'content',
-              media: 'icon',
-            },
-            prepare: ({ content, media }) => ({
-              title: getBlockText(content),
-              media,
+            defineField({
+              name: 'ctas',
+              title: 'Call-to-actions',
+              type: 'array',
+              of: [{ type: 'cta' }],
             }),
-          },
+          ],
         }),
       ],
       group: 'content',
     }),
     defineField({
-      name: 'iconSize',
-      type: 'number',
-      validation: (Rule) => Rule.min(0).max(100),
-      initialValue: 40,
-      group: 'options',
-    }),
-    defineField({
-      name: 'iconPosition',
+      name: 'layout',
       type: 'string',
       options: {
-        list: ['top', 'left'],
+        list: ['grid', 'carousel'],
         layout: 'radio',
       },
-      initialValue: 'left',
+      group: 'options',
+      initialValue: 'carousel',
+    }),
+    defineField({
+      name: 'visualSeparation',
+      type: 'boolean',
+      initialValue: true,
       group: 'options',
     }),
   ],
   preview: {
     select: {
       intro: 'intro',
-      items: 'items',
+      cards: 'cards',
     },
-    prepare: ({ intro, items }) => ({
-      title: getBlockText(intro) || count(items),
-      subtitle: 'Flag list',
+    prepare: ({ intro, cards }) => ({
+      title: getBlockText(intro) || count(cards, 'card'),
+      subtitle: 'Cards list',
     }),
   },
 });

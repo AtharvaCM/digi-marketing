@@ -7,15 +7,16 @@ import StringInput from '../fragments/input/StringInput';
 export default defineType({
   name: 'metadata',
   title: 'Metadata',
+  description: 'For search engines',
   type: 'object',
   fields: [
     defineField({
       name: 'slug',
       type: 'slug',
-      description: 'URL-friendly identifier generated from the title or name.',
+      description: 'URL path / permalink. Use "index" for the homepage.',
       options: {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        source: (doc: any) => doc.metadata.title || doc.name || doc.title,
+        source: (doc: any) => doc.title || doc.metadata.title,
         isUnique: isUniqueOtherThanLanguage,
       },
       validation: (Rule) => Rule.required().error('The slug is requried.'),
@@ -39,11 +40,14 @@ export default defineType({
       title: 'Image',
       description: 'Used for social sharing previews',
       type: 'image',
+      options: {
+        hotspot: true,
+      },
     }),
     defineField({
       name: 'noIndex',
       title: 'No Index',
-      description: 'Prevent search engines from indexing this page.',
+      description: 'Prevent search engines from indexing this page',
       type: 'boolean',
       initialValue: false,
     }),

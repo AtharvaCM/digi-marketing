@@ -11,7 +11,7 @@ import { group, singleton } from '../utils';
 
 export const deskStructure = (S: StructureBuilder, context: StructureResolverContext) =>
   S.list()
-    .title('Nishad Pune Content')
+    .title('Growth Stats Content')
     .items([
       singleton(S, 'site').icon(VscServerProcess),
       orderableDocumentListDeskItem({

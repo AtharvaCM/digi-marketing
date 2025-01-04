@@ -21,6 +21,7 @@ const BlockquoteComponent = ({ children }: { children?: React.ReactNode }) => (
   </blockquote>
 );
 
+// TODO: Add support for youtube video embedds
 const components = {
   block: {
     h2: HeadingComponent('h2'),

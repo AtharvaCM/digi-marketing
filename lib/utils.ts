@@ -20,3 +20,20 @@ export function slug(str: string) {
     .replace(/\s+/g, '-') // replace spaces with hyphens
     .replace(/-+/g, '-'); // remove consecutive hyphens
 }
+
+export function debounce<T extends (...args: unknown[]) => void>(
+  func: T,
+  delay: number = 1000, // 1 sec
+): (...args: Parameters<T>) => void {
+  let timeoutId: NodeJS.Timeout | null = null;
+
+  return function (this: unknown, ...args: Parameters<T>) {
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+
+    timeoutId = setTimeout(() => {
+      func.apply(this, args);
+    }, delay);
+  };
+}

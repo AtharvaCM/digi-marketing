@@ -10,19 +10,7 @@ export default defineType({
   title: 'Blog post',
   icon: VscEdit,
   type: 'document',
-  groups: [
-    {
-      title: 'Main Content',
-      name: 'mainContent',
-      icon: RiPagesFill,
-      default: true,
-    },
-    {
-      title: 'SEO / Metadata',
-      name: 'seo',
-      icon: SearchIcon,
-    },
-  ],
+  groups: [{ name: 'content', icon: RiPagesFill, default: true }, { name: 'options' }, { name: 'seo', title: 'SEO', icon: SearchIcon }],
   fields: [
     defineField({
       name: 'language',
@@ -33,14 +21,14 @@ export default defineType({
     defineField({
       name: 'title',
       type: 'string',
-      group: 'mainContent',
+      group: 'content',
       validation: (Rule) => Rule.required().error('A title is required.'),
     }),
     defineField({
       name: 'heroImage',
       type: 'image',
       title: 'Hero Image',
-      group: 'mainContent',
+      group: 'content',
       options: { hotspot: true },
       fields: [
         defineField({
@@ -54,25 +42,35 @@ export default defineType({
     defineField({
       name: 'publishDate',
       type: 'date',
-      group: 'mainContent',
+      group: 'content',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'author',
-      type: 'string',
-      group: 'mainContent',
+      name: 'authors',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: 'person' }],
+        },
+      ],
+      group: 'content',
     }),
     defineField({
       name: 'categories',
       type: 'array',
-      title: 'Categories',
-      group: 'mainContent',
-      of: [{ type: 'reference', to: { type: 'blog.category' } }],
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: 'blog.category' }],
+        },
+      ],
+      group: 'content',
     }),
     defineField({
       name: 'body',
       type: 'array',
-      group: 'mainContent',
+      group: 'content',
       of: [
         { type: 'block' },
         imageBlock,
@@ -88,9 +86,15 @@ export default defineType({
       ],
     }),
     defineField({
+      name: 'hideTableOfContents',
+      type: 'boolean',
+      group: 'options',
+      initialValue: false,
+    }),
+    defineField({
       name: 'relatedPosts',
       type: 'array',
-      group: 'mainContent',
+      group: 'content',
       of: [{ type: 'reference', to: [{ type: 'blog.post' }] }],
     }),
     defineField({

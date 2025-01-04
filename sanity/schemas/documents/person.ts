@@ -1,24 +1,24 @@
-import { VscTag } from 'react-icons/vsc';
+import { GoPerson } from 'react-icons/go';
 import { defineField, defineType } from 'sanity';
 
 export default defineType({
-  name: 'blog.category',
-  title: 'Blog category',
+  name: 'person',
+  title: 'Person',
   type: 'document',
-  icon: VscTag,
+  icon: GoPerson,
   fields: [
     defineField({
-      name: 'title',
+      name: 'name',
+      title: 'Name',
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'slug',
-      type: 'slug',
+      name: 'image',
+      type: 'image',
       options: {
-        source: 'title',
+        hotspot: true,
       },
-      validation: (Rule) => Rule.required(),
     }),
   ],
 });

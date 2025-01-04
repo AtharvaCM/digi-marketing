@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-import { BASE_URL } from '@/sanity/env';
+import { BASE_URL, vercelPreview } from '@/sanity/env';
 import { processUrl } from '@/sanity/lib/url';
 import { getSiteData } from '@/sanity/utils/get-site-data';
 
@@ -19,10 +19,10 @@ export default async function processMetadata(page: Sanity.Page | Sanity.BlogPos
       url,
       title,
       description,
-      images: ogimage || site.ogimage,
+      images: ogimage ?? site.ogimage,
     },
     robots: {
-      index: !noIndex,
+      index: noIndex || vercelPreview ? false : undefined,
     },
     alternates: {
       canonical: url,
