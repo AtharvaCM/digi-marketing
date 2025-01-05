@@ -19,7 +19,7 @@ export default defineType({
         source: (doc: any) => doc.title || doc.metadata.title,
         isUnique: isUniqueOtherThanLanguage,
       },
-      validation: (Rule) => Rule.required().error('The slug is requried.'),
+      validation: (Rule) => Rule.required().error('The slug is required.'),
     }),
     defineField({
       name: 'title',
@@ -32,8 +32,16 @@ export default defineType({
       name: 'description',
       type: 'text',
       rows: 3,
+      description: 'The SEO Meta Description, ideally between 50 and 160 characters.',
       validation: (Rule) => Rule.max(160).warning('The SEO Meta Description should be between 50 and 160 characters.'),
       components: { input: StringInput },
+    }),
+    defineField({
+      name: 'keywords',
+      type: 'array',
+      title: 'Keywords',
+      of: [{ type: 'string' }],
+      description: 'Keywords for SEO, separated as individual entries.',
     }),
     defineField({
       name: 'image',
@@ -50,6 +58,76 @@ export default defineType({
       description: 'Prevent search engines from indexing this page',
       type: 'boolean',
       initialValue: false,
+    }),
+    defineField({
+      name: 'canonical',
+      type: 'url',
+      title: 'Canonical URL',
+      description: 'The canonical URL for this page.',
+    }),
+    defineField({
+      name: 'referrer',
+      type: 'string',
+      title: 'Referrer Policy',
+      description: 'Controls the referrer information included with requests.',
+      initialValue: 'origin-when-cross-origin',
+      options: {
+        list: [
+          { title: 'origin-when-cross-origin', value: 'origin-when-cross-origin' },
+          { title: 'no-referrer', value: 'no-referrer' },
+          { title: 'no-referrer-when-downgrade', value: 'no-referrer-when-downgrade' },
+          { title: 'origin', value: 'origin' },
+          { title: 'strict-origin', value: 'strict-origin' },
+          { title: 'strict-origin-when-cross-origin', value: 'strict-origin-when-cross-origin' },
+          { title: 'same-origin', value: 'same-origin' },
+          { title: 'unsafe-url', value: 'unsafe-url' },
+        ],
+      },
+    }),
+    defineField({
+      name: 'authors',
+      type: 'array',
+      title: 'Authors',
+      of: [
+        defineField({
+          name: 'author',
+          type: 'object',
+          fields: [
+            { name: 'name', type: 'string', title: 'Name' },
+            { name: 'authorUrl', type: 'url', title: 'URL' },
+          ],
+        }),
+      ],
+    }),
+    defineField({
+      name: 'openGraph',
+      title: 'Open Graph',
+      description: 'Open Graph metadata for social sharing.',
+      type: 'object',
+      fields: [
+        { name: 'title', type: 'string', title: 'OG Title' },
+        { name: 'description', type: 'string', title: 'OG Description' },
+        { name: 'type', type: 'string', title: 'OG Type', initialValue: 'website' },
+        { name: 'siteName', type: 'string', title: 'OG Site Name' },
+        { name: 'canonical', type: 'url', title: 'OG URL' },
+        defineField({
+          name: 'images',
+          type: 'array',
+          title: 'OG Images',
+          of: [
+            defineField({
+              name: 'OgImage',
+              type: 'object',
+              fields: [
+                { name: 'image', type: 'image', title: 'Image' },
+                { name: 'width', type: 'number', title: 'Width' },
+                { name: 'height', type: 'number', title: 'Height' },
+                { name: 'alt', type: 'string', title: 'Alt Text' },
+              ],
+            }),
+          ],
+        }),
+      ],
     }),
   ],
 });
