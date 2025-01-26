@@ -1,7 +1,7 @@
 import { stegaClean } from '@sanity/client/stega';
 import type { ComponentProps } from 'react';
 
-import Img from '@/components/common/img';
+import Img from '@/components/common/Img';
 
 export type ImageSubModuleType = Sanity.Module<'image'> &
   Sanity.Image &

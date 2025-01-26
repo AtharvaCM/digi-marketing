@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 import { cn } from '@/lib/utils';
 
-import Img from '../img';
+import Img from '../Img';
 import getStargazers from './get-stargazers';
 
 export default async function Reputation({

@@ -83,6 +83,14 @@ declare global {
       content?: any;
     }>;
 
+    type Reputation = SanityDocument<{
+      title?: string;
+      subtitle?: string;
+      repo?: string;
+      limit?: number;
+      avatars?: Image[];
+    }>;
+
     type Testimonial = SanityDocument<{
       readonly _key: string;
       content: any;
