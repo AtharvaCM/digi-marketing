@@ -10,19 +10,7 @@ export default defineType({
   title: 'Blog post',
   icon: VscEdit,
   type: 'document',
-  groups: [
-    {
-      title: 'Main Content',
-      name: 'mainContent',
-      icon: RiPagesFill,
-      default: true,
-    },
-    {
-      title: 'SEO',
-      name: 'seo',
-      icon: SearchIcon,
-    },
-  ],
+  groups: [{ name: 'content', icon: RiPagesFill, default: true }, { name: 'options' }, { name: 'seo', title: 'SEO', icon: SearchIcon }],
   fields: [
     defineField({
       name: 'language',
@@ -31,12 +19,64 @@ export default defineType({
       hidden: true,
     }),
     defineField({
+      name: 'title',
+      type: 'string',
+      group: 'content',
+      validation: (Rule) => Rule.required().error('A title is required.'),
+    }),
+    defineField({
+      name: 'heroImage',
+      type: 'image',
+      title: 'Hero Image',
+      group: 'content',
+      options: { hotspot: true },
+      fields: [
+        defineField({
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative Text',
+        }),
+      ],
+      validation: (Rule) => Rule.required().error('A hero image is required.'),
+    }),
+    defineField({
+      name: 'publishDate',
+      type: 'date',
+      group: 'content',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'authors',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: 'person' }],
+        },
+      ],
+      group: 'content',
+    }),
+    defineField({
+      name: 'categories',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: 'blog.category' }],
+        },
+      ],
+      group: 'content',
+    }),
+    defineField({
       name: 'body',
       type: 'array',
-      group: 'mainContent',
+      group: 'content',
       of: [
         { type: 'block' },
         imageBlock,
+        defineArrayMember({
+          type: 'youtube',
+        }),
         defineArrayMember({
           type: 'code',
           options: {
@@ -46,21 +86,16 @@ export default defineType({
       ],
     }),
     defineField({
-      name: 'categories',
-      type: 'array',
-      group: 'mainContent',
-      of: [
-        {
-          type: 'reference',
-          to: [{ type: 'blog.category' }],
-        },
-      ],
+      name: 'hideTableOfContents',
+      type: 'boolean',
+      group: 'options',
+      initialValue: false,
     }),
     defineField({
-      name: 'publishDate',
-      type: 'date',
-      group: 'mainContent',
-      validation: (Rule) => Rule.required(),
+      name: 'relatedPosts',
+      type: 'array',
+      group: 'content',
+      of: [{ type: 'reference', to: [{ type: 'blog.post' }] }],
     }),
     defineField({
       name: 'metadata',
@@ -70,9 +105,9 @@ export default defineType({
   ],
   preview: {
     select: {
-      title: 'metadata.title',
+      title: 'title',
       subtitle: 'publishDate',
-      media: 'metadata.image',
+      media: 'heroImage',
     },
   },
   orderings: [
@@ -83,7 +118,7 @@ export default defineType({
     },
     {
       title: 'Title',
-      name: 'metadata.title',
+      name: 'title',
       by: [{ field: 'title', direction: 'asc' }],
     },
   ],

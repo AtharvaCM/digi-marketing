@@ -8,12 +8,12 @@ import cx from 'classnames';
 import { Inter } from 'next/font/google';
 import NextTopLoader from 'nextjs-toploader';
 
-import orgSchemaJsonLd from '@/assets/org-schema.json';
 import { LenisScroller } from '@/components/common/lennis-scroller';
 import Footer from '@/components/footer';
 import Header from '@/components/header';
 import { Toaster } from '@/components/ui/toaster';
 import VisualEditingControls from '@/components/VisualEditingControls';
+import orgSchemaJsonLd from '@/public/assets/org-schema.json';
 
 const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter' });
 
