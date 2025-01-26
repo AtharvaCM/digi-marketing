@@ -54,7 +54,6 @@ const ServiceCard: FC<IServiceCardProps> = (props) => {
     >
       <Box className={cx(styles['d-container__image-col'])}>
         <AspectRatio ratio={4 / 3}>
-          {/* <Image alt={name} src={imgSrc} layout="fill" className={cx(styles['d-container__image'])} /> */}
           <Img image={img} className={cx(styles['d-container__image'])} />
         </AspectRatio>
       </Box>
