@@ -6,8 +6,8 @@ import Lottie from 'lottie-react';
 import Link from 'next/link';
 import { FC } from 'react';
 
-import socialMediaServicesHeroAnimation from '@/assets/animations/social-media-services-hero-lottie.json';
-import socialMediaServices from '@/assets/social-media-services.json';
+import socialMediaServicesHeroAnimation from '@/public/assets/animations/social-media-services-hero-lottie.json';
+import socialMediaServices from '@/public/assets/social-media-services.json';
 
 import ServiceCard from '../common/service-card';
 import { buttonVariants } from '../ui/button';

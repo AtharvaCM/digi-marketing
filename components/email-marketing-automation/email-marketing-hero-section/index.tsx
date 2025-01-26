@@ -5,8 +5,8 @@ import Lottie from 'lottie-react';
 import Link from 'next/link';
 import { FC } from 'react';
 
-import emailMarketingHeroAnimation from '@/assets/animations/email-marketing-hero-lottie.json';
 import { buttonVariants } from '@/components/ui/button';
+import emailMarketingHeroAnimation from '@/public/assets/animations/email-marketing-hero-lottie.json';
 
 import styles from './email-marketing-hero-section.module.scss';
 

@@ -4,7 +4,7 @@ import { stegaClean } from '@sanity/client/stega';
 
 import { cn } from '@/lib/utils';
 
-import Img from '../common/img';
+import Img from '../common/Img';
 
 export default function FlagList({
   intro,

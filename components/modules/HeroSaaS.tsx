@@ -4,7 +4,7 @@ import { PortableText } from '@portabletext/react';
 import { cn } from '@/lib/utils';
 
 import CTAList from '../common/cta-list';
-import Img from '../common/img';
+import Img from '../common/Img';
 import Pretitle from '../common/pretitle';
 import Reputation from '../common/reputation';
 

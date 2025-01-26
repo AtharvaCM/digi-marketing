@@ -6,10 +6,10 @@ import Lottie from 'lottie-react';
 import Link from 'next/link';
 import { FC } from 'react';
 
-import semPaidAdvertisingHeroAnimation from '@/assets/animations/sem-paid-advertising-hero-lottie.json';
-import semServices from '@/assets/sem-services.json';
 import ServiceCard from '@/components/common/service-card';
 import { buttonVariants } from '@/components/ui/button';
+import semPaidAdvertisingHeroAnimation from '@/public/assets/animations/sem-paid-advertising-hero-lottie.json';
+import semServices from '@/public/assets/sem-services.json';
 
 import styles from './sem-hero-section.module.scss';
 

@@ -5,10 +5,10 @@ import Lottie from 'lottie-react';
 import Link from 'next/link';
 import { FC } from 'react';
 
-import seoServiceHeroAnimation from '@/assets/animations/seo-hero-lottie.json.json';
-import seoServices from '@/assets/seo-services.json';
 import ServiceCard from '@/components/common/service-card';
 import { buttonVariants } from '@/components/ui/button';
+import seoServiceHeroAnimation from '@/public/assets/animations/seo-hero-lottie.json.json';
+import seoServices from '@/public/assets/seo-services.json';
 
 import styles from './seo-section.module.scss';
 

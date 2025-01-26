@@ -1,6 +1,7 @@
 import { stegaClean } from '@sanity/client/stega';
 import Image from 'next/image';
 import { useNextSanityImage, type UseNextSanityImageOptions } from 'next-sanity-image';
+import { preload } from 'react-dom';
 
 import { client } from '@/sanity/lib/client';
 import { urlFor } from '@/sanity/lib/image';
@@ -28,6 +29,10 @@ export default function Img({
 
   if (!image?.asset) return null;
 
+  if (stegaClean(image.loading) === 'eager') {
+    preload(src, { as: 'image' });
+  }
+
   return (
     <Image
       src={src}
@@ -40,6 +45,7 @@ export default function Img({
       loading={stegaClean(image.loading) ?? 'lazy'}
       decoding="async"
       blurDataURL={urlFor(image).width(24).height(24).blur(10).url()}
+      unoptimized
       {...props}
     />
   );
@@ -66,9 +72,11 @@ export function Source({
 
   if (!image) return null;
 
-  return (
-    <source srcSet={generateSrcset(image, { width: imageWidth, sizes: imageSizes }) ?? src} width={width} height={height} media={media} />
-  );
+  if (stegaClean(image.loading) === 'eager') {
+    preload(src, { as: 'image' });
+  }
+
+  return <source {...generateSrcset(image, { width: imageWidth, sizes: imageSizes })} width={width} height={height} media={media} />;
 }
 
 function generateSrcset(
@@ -81,10 +89,10 @@ function generateSrcset(
     sizes: number[];
   },
 ) {
-  return (
-    sizes
-      .filter((size) => !width || size <= width)
-      .map((size) => `${urlFor(image).width(size).auto('format').url()} ${size}w`)
-      .join(', ') || undefined
-  );
+  const filtered = sizes.filter((size) => !width || size <= width);
+
+  return {
+    srcSet: filtered.map((size) => `${urlFor(image).width(size).auto('format').url()} ${size}w`).join(', ') || undefined,
+    sizes: filtered.map((size, i) => `${i < filtered.length - 1 ? `(max-width: ${size + 1}px) ` : ''}${size}px`).join(', ') || undefined,
+  };
 }

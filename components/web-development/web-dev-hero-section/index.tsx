@@ -6,10 +6,10 @@ import Lottie from 'lottie-react';
 import Link from 'next/link';
 import { FC } from 'react';
 
-import webDevelopmentHeroLottieAnimation from '@/assets/animations/web-dev-hero-lottie.json';
-import webDevelopmentServices from '@/assets/web-development-services.json';
 import ServiceCard from '@/components/common/service-card';
 import { buttonVariants } from '@/components/ui/button';
+import webDevelopmentHeroLottieAnimation from '@/public/assets/animations/web-dev-hero-lottie.json';
+import webDevelopmentServices from '@/public/assets/web-development-services.json';
 
 import styles from './web-dev-hero-section.module.scss';
 

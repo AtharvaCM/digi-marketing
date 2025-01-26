@@ -10,8 +10,10 @@ import Hero from './hero';
 import HeroSaaS from './HeroSaaS';
 import HeroSplit from './HeroSplit';
 import LogoList from './logo-list';
+import PlaceholderBlocks from './placeholder-blocks';
 import PricingList from './PricingList';
 import RichtextModule from './RichtextModule';
+import ServiceDetailsModule from './service-details';
 import StatList from './StatList';
 import StepList from './StepList';
 import TestimonialFeatured from './TestimonialFeatured';
@@ -50,10 +52,14 @@ export default function Modules({
             return <HeroSaaS {...module} key={module._key} />;
           case 'logo-list':
             return <LogoList {...module} key={module._key} />;
+          case 'placeholder-block':
+            return <PlaceholderBlocks {...module} key={module._key} />;
           case 'pricing-list':
             return <PricingList {...module} key={module._key} />;
           case 'richtext-module':
             return <RichtextModule {...module} key={module._key} />;
+          case 'service-details':
+            return <ServiceDetailsModule {...module} key={module._key} />;
           case 'stat-list':
             return <StatList {...module} key={module._key} />;
           case 'step-list':

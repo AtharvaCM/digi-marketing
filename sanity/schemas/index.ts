@@ -26,10 +26,12 @@ import hero from './modules/hero';
 import heroSaas from './modules/hero.sass';
 import HeroSplit from './modules/hero.split';
 import logoList from './modules/logo-list';
+import placeholderBlock from './modules/placeholder-block';
 import pricingList from './modules/pricing-list';
 import richtextModule from './modules/richtext-module';
 import scheduleModule from './modules/schedule-module';
 import searchModule from './modules/search-module';
+import serviceDetails from './modules/service-details';
 import statList from './modules/stat-list';
 import stepList from './modules/step-list';
 import tabbedContent from './modules/tabbed-content';
@@ -83,10 +85,12 @@ export const schemaTypes = [
   heroSaas,
   HeroSplit,
   logoList,
+  placeholderBlock,
   pricingList,
   richtextModule,
   scheduleModule,
   searchModule,
+  serviceDetails,
   statList,
   stepList,
   tabbedContent,
