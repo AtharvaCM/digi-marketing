@@ -31,6 +31,7 @@ export default defineType({
           { title: 'Home About Section', value: 'home-about-section' },
           { title: 'Services Section', value: 'services-section' },
           { title: 'Benefits Section', value: 'benefits-section' },
+          { title: 'Brand Hero Section', value: 'brand-hero-section' },
           { title: 'Brand About Section', value: 'brand-about-section' },
           { title: 'Brand Vision Section', value: 'brand-vision-section' },
           { title: 'Brand Team Section', value: 'brand-team-section' },

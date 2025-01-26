@@ -1,6 +1,7 @@
 import { FC } from 'react';
 
 import AboutSection from '@/components/about/about-section';
+import BrandHeroSection from '@/components/about/hero-section';
 import TeamSection from '@/components/about/team-section';
 import VisionSection from '@/components/about/vision-section';
 import ContactSection from '@/components/common/contact-section';
@@ -24,6 +25,8 @@ const PlaceholderBlocks: FC<Props> = ({ type }) => {
       return <ServicesSection />;
     case 'benefits-section':
       return <BenefitsSection />;
+    case 'brand-hero-section':
+      return <BrandHeroSection />;
     case 'brand-about-section':
       return <AboutSection />;
     case 'brand-vision-section':
