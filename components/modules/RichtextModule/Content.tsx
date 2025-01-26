@@ -43,7 +43,7 @@ export default function Content({
   heroImage,
   className,
   children,
-}: { value: any; heroImage: Sanity.Image } & React.ComponentProps<'div'>) {
+}: { value: any; heroImage?: Sanity.Image } & React.ComponentProps<'div'>) {
   return (
     <div className={cn('richtext mx-auto w-full space-y-[1em] [&>:first-child]:!mt-0', className)}>
       <CustomImage value={heroImage} />

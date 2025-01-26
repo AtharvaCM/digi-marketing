@@ -5,12 +5,13 @@ import Img from '@/components/common/Img';
 export default function Image({
   value,
 }: Readonly<{
-  value: Sanity.Image & {
+  value?: Sanity.Image & {
     caption?: string;
     source?: string;
     float?: 'left' | 'right';
   };
 }>) {
+  if (!value) return null;
   return (
     <figure
       className="max-lg:full-bleed !mb-4 !mt-8 space-y-2 text-center md:![grid-column:bleed]"
