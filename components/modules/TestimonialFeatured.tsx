@@ -1,7 +1,7 @@
 import { PortableText } from 'next-sanity';
 import { ImQuotesLeft } from 'react-icons/im';
 
-import Img from '@/components/common/img';
+import Img from '@/components/common/Img';
 
 export default function TestimonialFeatured({
   testimonial,

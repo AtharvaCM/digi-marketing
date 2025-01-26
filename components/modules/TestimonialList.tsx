@@ -2,7 +2,7 @@
 import { PortableText } from '@portabletext/react';
 import { stegaClean } from '@sanity/client/stega';
 
-import Img from '@/components/common/img';
+import Img from '@/components/common/Img';
 import { cn } from '@/lib/utils';
 
 export default function TestimonialList({
