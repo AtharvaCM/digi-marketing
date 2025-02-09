@@ -31,13 +31,20 @@ async function getPost(params: Props['params']) {
   return await sanityFetch<Sanity.BlogPost>({
     query: groq`*[_type == 'blog.post' && metadata.slug.current == $slug][0]{
 			...,
-			'body': select(_type == 'image' => asset->, body),
-			'readTime': length(pt::text(body)) / 200,
+      body[]{
+				...,
+				_type == 'image' => { asset-> }
+			},
+			'readTime': length(string::split(pt::text(body), ' ')) / 200,
 			'headings': body[style in ['h2', 'h3']]{
 				style,
 				'text': pt::text(@)
 			},
-			categories[]->,
+			categories[]-> {
+        title,
+        slug
+      },
+      authors[]->,
 			metadata {
 				...,
 				'ogimage': image.asset->url + '?w=1200'

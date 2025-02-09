@@ -55,9 +55,10 @@ declare global {
       heroImage: Sanity.Image;
     };
 
-    type BlogCategory = SanityDocument<{
+    interface BlogCategory extends SanityDocument {
       title: string;
-    }>;
+      slug: { current: string };
+    }
 
     // miscellaneous
 
@@ -71,6 +72,11 @@ declare global {
       }>;
     }>;
 
+    interface Person extends SanityDocument {
+      name: string;
+      image?: Image;
+    }
+
     type Pricing = SanityDocument<{
       title: string;
       highlight?: string;
@@ -83,13 +89,14 @@ declare global {
       content?: any;
     }>;
 
-    type Reputation = SanityDocument<{
+    interface Reputation extends SanityDocument {
       title?: string;
       subtitle?: string;
       repo?: string;
+      showForks?: boolean;
       limit?: number;
       avatars?: Image[];
-    }>;
+    }
 
     type Testimonial = SanityDocument<{
       readonly _key: string;
