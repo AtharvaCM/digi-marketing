@@ -12,12 +12,13 @@ export default function PostContent({ post, ...props }: Readonly<{ post?: Sanity
   if (!post) return null;
 
   const showTOC = !post.hideTableOfContents || !!post.headings?.length;
+  console.log('post: ', post);
 
   return (
-    <article id={uid(props)}>
-      <header className="section space-y-6 text-center">
-        <h1 className="h1 text-balance">{post.metadata.title}</h1>
-        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+    <article id={uid(props)} className="max-w-screen-xl mx-auto">
+      <header className="section space-y-6 mt-[var(--header-height)] border border-red-500">
+        <h1 className="h1">{post.metadata.title}</h1>
+        <div className="flex flex-wrap items-center justify-start gap-x-6 gap-y-2">
           <DateComp value={post.publishDate} />
           <Categories className="flex flex-wrap gap-x-2" categories={post.categories} />
           <ReadTime value={post.readTime} />
@@ -31,7 +32,7 @@ export default function PostContent({ post, ...props }: Readonly<{ post?: Sanity
           </aside>
         )}
 
-        <Content value={post.body} heroImage={post.heroImage} className={cn(css.body, 'grid max-w-screen-md')}>
+        <Content value={post.body} heroImage={post.heroImage} className={cn(css.body, 'grid max-w-[800px]')}>
           <hr />
         </Content>
       </div>
