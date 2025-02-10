@@ -4,7 +4,7 @@ import HomePageTemplate from '@/components/templates/home';
 import { BASE_URL } from '@/utils/constants';
 
 export const metadata: Metadata = {
-  title: 'Growth Stats - Complete Digital Marketing Solutions',
+  title: 'Digital Marketing Agency | Website Design & SEO',
   description:
     'Growth Stats provides comprehensive digital marketing solutions including SEO, content development, social media campaigns, and 3D animation. We ensure business growth through our strategic mix of online mediums.',
   generator: 'Next.js',
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
   authors: [{ name: 'Growth Stats', url: `${BASE_URL}/` }],
   openGraph: {
-    title: 'Growth Stats - Complete Digital Marketing Solutions',
+    title: 'Digital Marketing Agency | Website Design & SEO',
     description:
       'Growth Stats provides comprehensive digital marketing solutions including SEO, content development, social media campaigns, and 3D animation. We ensure business growth through our strategic mix of online mediums.',
     siteName: 'Growth Stats',

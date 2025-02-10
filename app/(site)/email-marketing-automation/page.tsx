@@ -6,7 +6,7 @@ import { BASE_URL } from '@/utils/constants';
 export interface IEmailMarketingAutomationProps {}
 
 export const metadata: Metadata = {
-  title: 'Email Marketing Automation - Growth Stats | Boost Your Engagement',
+  title: 'Digital Marketing Services | Email Marketing & Automation',
   description:
     'Maximize your customer engagement with Growth Stats email marketing automation services. Our tailored strategies and advanced tools ensure effective communication and higher conversion rates for your business.',
   generator: 'Next.js',
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
   authors: [{ name: 'Growth Stats', url: BASE_URL }],
   openGraph: {
-    title: 'Email Marketing Automation - Growth Stats | Boost Your Engagement',
+    title: 'Digital Marketing Services | Email Marketing & Automation',
     description:
       'Maximize your customer engagement with Growth Stats email marketing automation services. Our tailored strategies and advanced tools ensure effective communication and higher conversion rates for your business.',
     siteName: 'Growth Stats',

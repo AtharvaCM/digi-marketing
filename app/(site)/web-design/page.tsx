@@ -4,7 +4,7 @@ import WebDesignPageTemplate from '@/components/templates/web-design';
 import { BASE_URL } from '@/utils/constants';
 
 export const metadata: Metadata = {
-  title: 'Web Design Services - Growth Stats | Create Stunning Websites',
+  title: 'Web Design Agency | Website Design | Website Design Services',
   description:
     'Transform your online presence with Growth Stats professional web design services. Our creative team designs stunning and functional websites that engage your audience and drive business growth.',
   generator: 'Next.js',
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     canonical: 'https://growthstats.io/web-design',
   },
   openGraph: {
-    title: 'Web Design Services - Growth Stats | Create Stunning Websites',
+    title: 'Web Design Agency | Website Design | Website Design Services',
     description:
       'Transform your online presence with Growth Stats professional web design services. Our creative team designs stunning and functional websites that engage your audience and drive business growth.',
     siteName: 'Growth Stats',

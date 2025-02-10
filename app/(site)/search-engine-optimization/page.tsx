@@ -6,7 +6,7 @@ import { BASE_URL } from '@/utils/constants';
 export interface IServicesProps {}
 
 export const metadata: Metadata = {
-  title: 'Search Engine Optimization (SEO) - Growth Stats | Improve Your Online Visibility',
+  title: 'Digital Marketing Services | Search Engine Optimization SEO',
   description:
     'Enhance your online visibility with Growth Stats comprehensive SEO services. Our expert team utilizes cutting-edge techniques to boost your search engine rankings and drive organic traffic to your website.',
   generator: 'Next.js',
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     canonical: 'https://growthstats.io/search-engine-optimization',
   },
   openGraph: {
-    title: 'Search Engine Optimization (SEO) - Growth Stats | Improve Your Online Visibility',
+    title: 'Digital Marketing Services | Search Engine Optimization SEO',
     description:
       'Enhance your online visibility with Growth Stats comprehensive SEO services. Our expert team utilizes cutting-edge techniques to boost your search engine rankings and drive organic traffic to your website.',
     siteName: 'Growth Stats',

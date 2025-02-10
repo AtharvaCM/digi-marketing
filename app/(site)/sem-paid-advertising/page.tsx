@@ -4,7 +4,7 @@ import SEMPaidAdvertisingPageTemplate from '@/components/templates/sem-paid-adve
 import { BASE_URL } from '@/utils/constants';
 
 export const metadata: Metadata = {
-  title: 'SEM & Paid Advertising - Growth Stats | Drive Targeted Traffic',
+  title: 'Digital Marketing Services | Search Engine Marketing SEM Services',
   description:
     'Boost your online presence and drive targeted traffic with Growth Stats SEM and paid advertising services. Our expert team creates and manages effective ad campaigns to maximize your ROI.',
   generator: 'Next.js',
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     canonical: 'https://growthstats.io/sem-paid-advertising',
   },
   openGraph: {
-    title: 'SEM & Paid Advertising - Growth Stats | Drive Targeted Traffic',
+    title: 'Digital Marketing Services | Search Engine Marketing SEM Services',
     description:
       'Boost your online presence and drive targeted traffic with Growth Stats SEM and paid advertising services. Our expert team creates and manages effective ad campaigns to maximize your ROI.',
     siteName: 'Growth Stats',
