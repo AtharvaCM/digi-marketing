@@ -9,7 +9,11 @@ const DateComp: FC<{ value: string }> = ({ value }) => {
     day: 'numeric',
   });
 
-  return <time dateTime={value}>Published {formatted}</time>;
+  return (
+    <time className="font-semibold text-slate-600" dateTime={value}>
+      Published {formatted}
+    </time>
+  );
 };
 
 export default DateComp;

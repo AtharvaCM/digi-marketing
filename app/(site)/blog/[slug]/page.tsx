@@ -44,7 +44,7 @@ async function getPost(params: Props['params']) {
         title,
         slug
       },
-      authors[]-> {
+      author-> {
         ...,
         name,
         image
