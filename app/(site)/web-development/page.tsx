@@ -4,7 +4,7 @@ import WebDevelopmentPageTemplate from '@/components/templates/web-development';
 import { BASE_URL } from '@/utils/constants';
 
 export const metadata: Metadata = {
-  title: 'Web Development Services - Growth Stats | Build Robust Websites',
+  title: 'Web Design Agency | Web Design & Web Development Services',
   description:
     'Elevate your online presence with Growth Stats web development services. Our expert developers create robust, scalable, and high-performance websites tailored to meet your business needs.',
   generator: 'Next.js',
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     canonical: 'https://growthstats.io/web-development',
   },
   openGraph: {
-    title: 'Web Development Services - Growth Stats | Build Robust Websites',
+    title: 'Web Design Agency | Web Design & Web Development Services',
     description:
       'Elevate your online presence with Growth Stats web development services. Our expert developers create robust, scalable, and high-performance websites tailored to meet your business needs.',
     siteName: 'Growth Stats',

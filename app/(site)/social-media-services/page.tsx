@@ -4,7 +4,7 @@ import SocialMediaServicesPageTemplate from '@/components/templates/social-media
 import { BASE_URL } from '@/utils/constants';
 
 export const metadata: Metadata = {
-  title: 'Social Media Services - Growth Stats | Enhance Your Social Presence',
+  title: 'Digital Marketing Services | Social Media Marketing Services',
   description:
     'Elevate your social media presence with Growth Stats comprehensive social media services. Our expert team crafts engaging content and manages your social profiles to build your brand and drive engagement.',
   generator: 'Next.js',
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     canonical: 'https://growthstats.io/social-media-services',
   },
   openGraph: {
-    title: 'Social Media Services - Growth Stats | Enhance Your Social Presence',
+    title: 'Digital Marketing Services | Social Media Marketing Services',
     description:
       'Elevate your social media presence with Growth Stats comprehensive social media services. Our expert team crafts engaging content and manages your social profiles to build your brand and drive engagement.',
     siteName: 'Growth Stats',
