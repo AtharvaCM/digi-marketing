@@ -4,7 +4,7 @@ import { groq } from 'next-sanity';
 import Modules from '@/components/modules';
 import { client } from '@/sanity/lib/client';
 import { fetchSanity } from '@/sanity/lib/fetch';
-import { modulesQuery } from '@/sanity/lib/queries';
+import { MODULES_QUERY } from '@/sanity/lib/queries';
 import processMetadata from '@/utils/functions/process-metadata';
 
 export default async function Page({ params }: Readonly<Props>) {
@@ -62,13 +62,13 @@ async function getPost(params: Props['params']) {
 			},
       'modules': (
 			// global modules (before)
-			*[_type == 'global-module' && path == '*'].before[]{ ${modulesQuery} }
+			*[_type == 'global-module' && path == '*'].before[]{ ${MODULES_QUERY} }
 			// path modules (before)
-			+ *[_type == 'global-module' && path == 'blog/*'].before[]{ ${modulesQuery} }
+			+ *[_type == 'global-module' && path == 'blog/*'].before[]{ ${MODULES_QUERY} }
 			// path modules (after)
-			+ *[_type == 'global-module' && path == 'blog/*'].after[]{ ${modulesQuery} }
+			+ *[_type == 'global-module' && path == 'blog/*'].after[]{ ${MODULES_QUERY} }
 			// global modules (after)
-			+ *[_type == 'global-module' && path == '*'].after[]{ ${modulesQuery} }
+			+ *[_type == 'global-module' && path == '*'].after[]{ ${MODULES_QUERY} }
 			)
 		}`,
     params,

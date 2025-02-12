@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { PortableText } from '@portabletext/react';
 import { stegaClean } from '@sanity/client/stega';
@@ -35,7 +36,7 @@ export default async function BlogList({
     query: groq`
       *[
 				_type == 'blog.post'
-				${filteredCategory ? '&& $filteredCategory in categories[]->._id' : ''}
+				${filteredCategory ? `&& $filteredCategory in categories[]->._id` : ''}
 			]|order(
 				${showFeaturedPostsFirst ? 'featured desc, ' : ''}
 				publishDate desc
@@ -47,7 +48,10 @@ export default async function BlogList({
 				authors[]->
 			}
 		`,
-    params: { limit },
+    params: {
+      filteredCategory: filteredCategory?._id ?? '',
+      limit: limit ?? 0,
+    },
     tags: ['posts'],
   });
 

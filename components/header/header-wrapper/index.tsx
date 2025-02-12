@@ -45,6 +45,7 @@ export default function HeaderWrapper({ className, children }: Readonly<React.HT
 
   // track mobile menu toggle state
   useEffect(() => {
+    if (typeof document === 'undefined') return;
     const toggle = document.querySelector('#header-open') as HTMLInputElement;
     if (toggle) {
       const handleToggle = () => setIsMenuOpen(toggle.checked);

@@ -1,29 +1,21 @@
-import { EditIcon, FolderIcon, RocketIcon } from '@sanity/icons';
-import { orderableDocumentListDeskItem } from '@sanity/orderable-document-list';
+import { EditIcon, RocketIcon } from '@sanity/icons';
 import { BsDatabaseAdd } from 'react-icons/bs';
 import { LuFileJson } from 'react-icons/lu';
-import { VscServerProcess } from 'react-icons/vsc';
-import { StructureBuilder, StructureResolverContext } from 'sanity/structure';
+import { VscFiles, VscServerProcess } from 'react-icons/vsc';
+import { StructureBuilder } from 'sanity/structure';
 
 import JsonPreview from '../plugins/sanity-plugin-json-preview/src/JsonPreview';
 import { DeadLinks, Preflight } from '../plugins/sanity-plugin-preflight/src';
 import { group, singleton } from '../utils';
 
-export const deskStructure = (S: StructureBuilder, context: StructureResolverContext) =>
+export const deskStructure = (S: StructureBuilder) =>
   S.list()
     .title('Growth Stats Content')
     .items([
       singleton(S, 'site').icon(VscServerProcess),
       S.divider(),
 
-      orderableDocumentListDeskItem({
-        type: 'page',
-        title: 'Pages',
-        icon: FolderIcon,
-        id: 'orderable-pages',
-        S,
-        context,
-      }),
+      S.documentTypeListItem('page').title('Pages').icon(VscFiles),
       S.documentTypeListItem('global-module').title('Global modules'),
       S.divider(),
 
