@@ -1,8 +1,7 @@
 import { defineField, defineType } from 'sanity';
 
+import { DescriptionInputComponent, TitleInputComponent } from '@/sanity/ui/CharacterCount';
 import { isUniqueOtherThanLanguage } from '@/sanity/utils/is-unique-other-than-language';
-
-import StringInput from '../fragments/input/StringInput';
 
 export default defineType({
   name: 'metadata',
@@ -26,7 +25,9 @@ export default defineType({
       type: 'string',
       description: 'The SEO Meta Title, ideally between 50 and 60 characters.',
       validation: (Rule) => Rule.max(60).warning('The SEO Meta Title should be between 50 and 60 characters.'),
-      components: { input: StringInput },
+      components: {
+        input: TitleInputComponent,
+      },
     }),
     defineField({
       name: 'description',
@@ -34,7 +35,7 @@ export default defineType({
       rows: 3,
       description: 'The SEO Meta Description, ideally between 50 and 160 characters.',
       validation: (Rule) => Rule.max(160).warning('The SEO Meta Description should be between 50 and 160 characters.'),
-      components: { input: StringInput },
+      components: { input: DescriptionInputComponent },
     }),
     defineField({
       name: 'keywords',

@@ -34,6 +34,9 @@ export default defineType({
             defineField({
               name: 'icon',
               type: 'image',
+              options: {
+                hotspot: true,
+              },
             }),
             defineField({
               name: 'content',

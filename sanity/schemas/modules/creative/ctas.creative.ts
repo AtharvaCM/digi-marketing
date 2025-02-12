@@ -1,7 +1,7 @@
 import { VscInspect } from 'react-icons/vsc';
 import { defineArrayMember, defineField } from 'sanity';
 
-import { count } from '../../../utils';
+import { count } from '@/sanity/utils';
 
 export default defineArrayMember({
   name: 'ctas',

@@ -6,7 +6,7 @@ import { groq } from 'next-sanity';
 
 import Img from '@/components/common/Img';
 import { cn } from '@/lib/utils';
-import { sanityFetch } from '@/sanity/lib/fetch';
+import { fetchSanity } from '@/sanity/lib/fetch';
 
 import css from './logo-list.module.scss';
 
@@ -25,7 +25,7 @@ export default async function LogoList({
     autoScroll?: boolean;
   }>
 >) {
-  const allLogos = logos ?? (await sanityFetch<Sanity.Logo[]>({ query: groq`*[_type == 'logo']` }));
+  const allLogos = logos ?? (await fetchSanity<Sanity.Logo[]>({ query: groq`*[_type == 'logo']` }));
 
   return (
     <section className="section space-y-8">

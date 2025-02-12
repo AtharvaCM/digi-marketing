@@ -14,6 +14,8 @@ export const deskStructure = (S: StructureBuilder, context: StructureResolverCon
     .title('Growth Stats Content')
     .items([
       singleton(S, 'site').icon(VscServerProcess),
+      S.divider(),
+
       orderableDocumentListDeskItem({
         type: 'page',
         title: 'Pages',
@@ -22,19 +24,21 @@ export const deskStructure = (S: StructureBuilder, context: StructureResolverCon
         S,
         context,
       }),
-      S.divider(),
-
-      S.documentTypeListItem('navigation'),
-      S.documentTypeListItem('announcement').title('Announcements'),
-      S.documentTypeListItem('redirect').title('Redirects'),
+      S.documentTypeListItem('global-module').title('Global modules'),
       S.divider(),
 
       S.documentTypeListItem('blog.post').title('Blog posts'),
       S.documentTypeListItem('blog.category').title('Blog categories'),
       S.divider(),
 
+      S.documentTypeListItem('navigation'),
+      S.documentTypeListItem('redirect').title('Redirects'),
+      S.divider(),
+
       group(S, 'Miscellaneous', [
+        S.documentTypeListItem('announcement').title('Announcements'),
         S.documentTypeListItem('logo').title('Logos'),
+        S.documentTypeListItem('person').title('People'),
         S.documentTypeListItem('pricing').title('Pricing tiers'),
         S.documentTypeListItem('testimonial').title('Testimonials'),
       ]).icon(BsDatabaseAdd),

@@ -11,8 +11,8 @@ export default defineType({
   orderings: [orderRankOrdering],
   groups: [
     {
-      title: 'Main Content',
-      name: 'mainContent',
+      title: 'Content',
+      name: 'content',
       icon: RiPagesFill,
       default: true,
     },
@@ -33,13 +33,13 @@ export default defineType({
     defineField({
       name: 'title',
       type: 'string',
-      group: 'mainContent',
+      group: 'content',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'modules',
       type: 'modules',
-      group: 'mainContent',
+      group: 'content',
     }),
     defineField({
       name: 'metadata',
@@ -62,7 +62,7 @@ export default defineType({
         (slug === 'index' && VscHome) ||
         (slug === '404' && VscQuestion) ||
         (slug === 'search' && VscSearch) ||
-        (['blog', 'blog/*'].includes(slug) && VscEdit) ||
+        (slug === 'blog' && VscEdit) ||
         (noindex && VscEyeClosed),
     }),
   },

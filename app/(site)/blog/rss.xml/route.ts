@@ -3,12 +3,12 @@ import { Feed } from 'feed';
 import { groq } from 'next-sanity';
 
 import { BASE_URL } from '@/sanity/env';
-import { sanityFetch } from '@/sanity/lib/fetch';
+import { fetchSanity } from '@/sanity/lib/fetch';
 import { urlFor } from '@/sanity/lib/image';
 import { processUrl } from '@/sanity/lib/url';
 
 export async function GET() {
-  const { blog, posts, copyright } = await sanityFetch<{
+  const { blog, posts, copyright } = await fetchSanity<{
     blog: Sanity.Page;
     posts: Array<Sanity.BlogPost & { image?: string }>;
     copyright: string;

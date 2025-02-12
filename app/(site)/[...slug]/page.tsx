@@ -3,7 +3,7 @@ import { groq } from 'next-sanity';
 
 import Modules from '@/components/modules';
 import { client } from '@/sanity/lib/client';
-import { sanityFetch } from '@/sanity/lib/fetch';
+import { fetchSanity } from '@/sanity/lib/fetch';
 import { modulesQuery } from '@/sanity/lib/queries';
 import processMetadata from '@/utils/functions/process-metadata';
 
@@ -32,7 +32,7 @@ export async function generateStaticParams() {
 }
 
 async function getPage(params: Props['params']) {
-  return await sanityFetch<Sanity.Page>({
+  return await fetchSanity<Sanity.Page>({
     query: groq`*[
 			_type == 'page' &&
 			metadata.slug.current == $slug &&
