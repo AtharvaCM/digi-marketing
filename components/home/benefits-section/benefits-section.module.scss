@@ -1,29 +1,30 @@
 @use '/styles/mixin/layout.module.scss' as *;
 
 .d-section {
-  @apply bg-slate-800;
+  background-color: #1e293b;
   &__container {
     @include d-container;
     @apply mx-auto;
-    @apply px-6;
+    padding-left: 1.5rem; /* 24px */
+    padding-right: 1.5rem; /* 24px */
   }
   &__heading {
-    @apply text-white;
+    color: rgb(255 255 255 / var(--tw-text-opacity, 1));
     @screen lg {
       @apply max-w-[60%];
     }
   }
   &__card {
-    @apply bg-white;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
     @apply p-[var(--space-4)];
   }
   &__icon-wrapper {
-    @apply w-16;
-    @apply h-16;
+    width: 4rem; /* 64px */
+    height: 4rem; /* 64px */
   }
   &__icon {
-    @apply w-16;
-    @apply h-16;
+    width: 4rem; /* 64px */
+    height: 4rem; /* 64px */
     @apply text-[var(--gs-color-primary)];
   }
 }

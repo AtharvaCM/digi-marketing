@@ -31,7 +31,7 @@ export default function SearchModule({
         </header>
       )}
 
-      <div className="mx-auto max-w-screen-sm">
+      <div className="mx-auto max-w-(--breakpoint-sm)">
         <Suspense fallback={<div className="skeleton-[calc(1lh+.5rem+2px)]" />}>
           <SearchForm scope={stegaClean(scope)} path={stegaClean(path)} />
         </Suspense>

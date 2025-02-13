@@ -14,7 +14,7 @@ export default function Callout({
 >) {
   return (
     <section className="section">
-      <div className="section bg-accent/5 grid max-w-screen-lg items-center gap-12 gap-y-6 rounded md:grid-cols-[2fr,1fr]">
+      <div className="section bg-accent/5 grid max-w-(--breakpoint-lg) items-center gap-12 gap-y-6 rounded md:grid-cols-[2fr_1fr]">
         <div className="richtext">
           <PortableText value={content} />
         </div>

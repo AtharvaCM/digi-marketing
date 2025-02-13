@@ -28,11 +28,11 @@ export default function SearchForm({
 
   return (
     <search className={cn(css.root, 'relative', className)} {...props}>
-      <label className="input focus-within:border-ink/50 relative z-[2] flex items-center gap-2 rounded">
+      <label className="input focus-within:border-ink/50 relative z-2 flex items-center gap-2 rounded">
         <VscSearch />
 
         <input
-          className="grow outline-none"
+          className="grow outline-hidden"
           name="query"
           type="search"
           placeholder={scope !== 'all' ? `Search ${scope === 'path' ? 'pages' : scope}` : 'Search'}
@@ -51,7 +51,7 @@ export default function SearchForm({
       </label>
 
       {query && (
-        <div className={cn(css.results, 'anim-fade-to-b absolute inset-x-0 top-full z-[1]')}>
+        <div className={cn(css.results, 'anim-fade-to-b absolute inset-x-0 top-full z-1')}>
           <div className="frosted-glass bg-canvas border-ink/10 mt-1 max-h-[20em] space-y-2 overflow-y-auto rounded border py-2 shadow-md *:px-3">
             <p className="text-ink/50 text-center text-sm">
               <span className="line-clamp-1">

@@ -1,18 +1,16 @@
-import { Box, Section, Text } from '@radix-ui/themes';
 import cx from 'classnames';
 import Image from 'next/image';
 import { FC } from 'react';
 
 import { AspectRatio } from '@/components/ui/aspect-ratio';
-
-import styles from './about-section.module.scss';
+import { Box, Section, Text } from '@radix-ui/themes';
 
 interface IAboutSectionProps {}
 
 export const AboutSection: FC<IAboutSectionProps> = (_props) => (
   <Section>
-    <Box className={cx(styles['d-section__container'])}>
-      <Box className={cx(styles['d-section__content'])}>
+    <Box className="flex flex-col-reverse gap-10 max-w-screen-l mx-auto px-4 md:px-8 lg:flex-row">
+      <Box className="w-full text-center md:text-left">
         <Text size={'5'} as="div" mb={'4'}>
           <Text weight={'bold'}>Digital Marketing</Text> and <Text weight={'bold'}>3D Animation</Text> companies are popping up like wild
           mushrooms growing in the monsoon. However, when it comes to delivering results, only a handful of companies are capable enough.
@@ -58,14 +56,14 @@ export const AboutSection: FC<IAboutSectionProps> = (_props) => (
           sole purpose of our existence.
         </Text>
       </Box>
-      <Box className={cx(styles['d-section__image-wrapper'])}>
+      <Box className="w-full max-w-[375px] shrink-0 mx-auto">
         <AspectRatio ratio={0.71 / 1}>
           <Image
             alt="About Us Section Image"
             src={'/about/about-company.png'}
             width={330}
             height={220}
-            className={cx(styles['d-section__img'])}
+            className="w-auto rounded-2xl object-cover mx-auto"
           />
         </AspectRatio>
       </Box>

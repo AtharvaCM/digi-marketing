@@ -31,7 +31,7 @@ export default function AccordionList({
         <PortableText value={intro} />
       </header>
 
-      <div className="mx-auto w-full max-w-screen-md">
+      <div className="mx-auto w-full max-w-(--breakpoint-md)">
         {items?.map(({ summary, content, open, _key }) => (
           <details
             className="accordion border-b border-ink/10"

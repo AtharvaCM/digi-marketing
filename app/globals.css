@@ -1,7 +1,407 @@
-@import 'tailwindcss/base';
-@import '@radix-ui/themes/styles.css';
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@import '@radix-ui/themes/styles.css' layer(base);
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --background-image-gradient-radial: radial-gradient(var(--tw-gradient-stops));
+  --background-image-gradient-conic: conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops));
+
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --color-blue-1: var(--blue-1);
+  --color-blue-2: var(--blue-2);
+  --color-blue-3: var(--blue-3);
+  --color-blue-4: var(--blue-4);
+  --color-blue-5: var(--blue-5);
+  --color-blue-6: var(--blue-6);
+  --color-blue-7: var(--blue-7);
+  --color-blue-8: var(--blue-8);
+  --color-blue-9: var(--blue-9);
+  --color-blue-10: var(--blue-10);
+  --color-blue-11: var(--blue-11);
+  --color-blue-12: var(--blue-12);
+
+  --color-gray-1: var(--gray-1);
+  --color-gray-2: var(--gray-2);
+  --color-gray-3: var(--gray-3);
+  --color-gray-4: var(--gray-4);
+  --color-gray-5: var(--gray-5);
+  --color-gray-6: var(--gray-6);
+  --color-gray-7: var(--gray-7);
+  --color-gray-8: var(--gray-8);
+  --color-gray-9: var(--gray-9);
+  --color-gray-10: var(--gray-10);
+  --color-gray-11: var(--gray-11);
+  --color-gray-12: var(--gray-12);
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  --max-height-fold: calc(100svh - var(--header-height));
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+  @media (width >= --theme(--breakpoint-sm)) {
+    max-width: none;
+  }
+  @media (width >= 1400px) {
+    max-width: 1400px;
+  }
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+@utility h {
+  /* typography */
+  font-weight: bold;
+}
+
+@utility h1 {
+  @apply scroll-m-20;
+  font-size: 2.25rem; /* 36px */
+  line-height: 2.5rem; /* 40px */
+  @apply font-extrabold;
+  @apply tracking-tight;
+  @apply lg:text-5xl;
+}
+
+@utility h2 {
+  @apply scroll-m-20;
+  @apply border-b;
+  @apply pb-2;
+  font-size: 1.875rem; /* 30px */
+  line-height: 2.25rem; /* 36px */
+  @apply font-semibold;
+  @apply tracking-tight;
+  @apply first:mt-0;
+}
+
+@utility h3 {
+  @apply scroll-m-20;
+  @apply text-2xl;
+  @apply font-semibold;
+  @apply tracking-tight;
+}
+
+@utility h4 {
+  @apply scroll-m-20;
+  font-size: 1.25rem; /* 20px */
+  line-height: 1.75rem; /* 28px */
+  @apply font-semibold;
+  @apply tracking-tight;
+}
+
+@utility h5 {
+  @apply h;
+}
+
+@utility h6 {
+  @apply h;
+}
+
+@utility p {
+  @apply leading-7;
+  @apply not-first:mt-6;
+}
+
+@utility blockquote {
+  @apply mt-6;
+  @apply border-l-2;
+  @apply pl-6;
+  @apply italic;
+}
+
+@utility ul {
+  @apply my-6;
+  @apply ml-6;
+  @apply list-disc;
+  @apply [&>li]:mt-2;
+}
+
+@utility code {
+  @apply relative;
+  @apply rounded;
+  @apply bg-muted;
+  @apply px-[0.3rem];
+  @apply py-[0.2rem];
+  @apply font-mono;
+  @apply text-sm;
+  @apply font-semibold;
+}
+
+@utility technical {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+@utility text-shadow {
+  text-shadow: 0 0 0.2em rgb(0 0 0 / 0.25);
+}
+
+@utility text-gradient {
+  @apply bg-linear-to-br from-accent/5 to-accent bg-clip-text text-transparent;
+}
+
+@utility btn {
+  /* ctas, links */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5em 1em;
+  text-align: center;
+  text-shadow: none;
+}
+
+@utility action {
+  @apply btn frosted-glass text-balance rounded border border-transparent bg-linear-to-br from-accent/70 to-accent text-white shadow-sm;
+}
+
+@utility link {
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration-thickness: 2px;
+  }
+}
+
+@utility is-external {
+  &::after {
+    content: ' ↗';
+    font-size: 0.7em;
+    vertical-align: top;
+  }
+}
+
+@utility section {
+  /* layout */
+  @apply mx-auto py-16 max-md:px-4;
+}
+
+@utility richtext {
+  /* richtext */
+  @apply space-y-2 leading-relaxed;
+
+  & :is(h1, h2, h3, h4, h5, h6) strong {
+    @apply text-gradient;
+  }
+
+  & h1 {
+    @apply h1;
+  }
+
+  & h2 {
+    @apply h2;
+  }
+
+  & h3 {
+    @apply h3;
+  }
+
+  & h4 {
+    @apply h4;
+  }
+
+  & h5 {
+    @apply h5;
+  }
+
+  & h6 {
+    @apply h6;
+  }
+
+  & :is(ul, ol) {
+    list-style: revert;
+    padding-left: 1.5em;
+  }
+
+  & a:not(:is(.action)) {
+    @apply link;
+
+    &[href^='http'] {
+      @apply is-external;
+    }
+  }
+
+  & :not(pre) > code {
+    @apply rounded bg-primary/5 px-1;
+  }
+
+  & pre {
+    tab-size: 2;
+    @apply overflow-x-auto rounded bg-transparent p-3 text-xs/relaxed;
+  }
+}
+
+@utility accordion {
+  /* components */
+  & summary {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 1em;
+
+    &::after {
+      content: '+';
+      display: inline-block;
+      font-family: monospace;
+      font-size: 1.5em;
+      transition: rotate 0.2s;
+    }
+  }
+
+  & ::-webkit-details-marker {
+    display: none;
+  }
+
+  &[open] summary::after {
+    rotate: 135deg;
+  }
+}
+
+@utility carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+
+  & > * {
+    flex: 0 0 min(var(--size, 300px), 80vw);
+    scroll-snap-align: center;
+  }
+}
+
+@utility frosted-glass {
+  @apply backdrop-blur-xs backdrop-saturate-150;
+}
+
+@utility full-bleed {
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+}
+
+@utility no-scrollbar {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility overflow-fade {
+  --offset: 4rem;
+  mask: linear-gradient(to right, transparent, black var(--offset), black calc(100% - var(--offset)), transparent);
+}
+
+@utility overflow-fade-r {
+  --offset: 4rem;
+  mask: linear-gradient(to right, black 50%, black calc(100% - var(--offset)), transparent);
+}
+
+@utility sticky-below-header {
+  position: sticky;
+  top: calc(var(--header-height) + var(--offset, 0px));
+}
+
+@utility anim-fade {
+  /* animations */
+  --x: 0;
+  --y: 0;
+  animation: anim-fade-to 0.2s ease-in-out forwards;
+}
+
+@utility anim-fade-to-l {
+  --x: 0;
+  --y: 0;
+  animation: anim-fade-to 0.2s ease-in-out forwards;
+  --x: 1rem;
+}
+
+@utility anim-fade-to-r {
+  --x: 0;
+  --y: 0;
+  animation: anim-fade-to 0.2s ease-in-out forwards;
+  --x: -1rem;
+}
+
+@utility anim-fade-to-t {
+  --x: 0;
+  --y: 0;
+  animation: anim-fade-to 0.2s ease-in-out forwards;
+  --y: 1rem;
+}
+
+@utility anim-fade-to-b {
+  --x: 0;
+  --y: 0;
+  animation: anim-fade-to 0.2s ease-in-out forwards;
+  --y: -1rem;
+}
 
 @layer base {
   :root {
@@ -74,7 +474,7 @@
   @keyframes target {
     0%,
     50% {
-      @apply bg-amber-400/50;
+      background-color: rgba(251, 191, 36, 0.5);
     }
   }
 
@@ -91,294 +491,12 @@
   }
 }
 
-@layer components {
-  /* typography */
-
-  ._h {
-    font-weight: bold;
-  }
-
-  .h1 {
-    @apply scroll-m-20;
-    @apply text-4xl;
-    @apply font-extrabold;
-    @apply tracking-tight;
-    @apply lg:text-5xl;
-  }
-
-  .h2 {
-    @apply scroll-m-20;
-    @apply border-b;
-    @apply pb-2;
-    @apply text-3xl;
-    @apply font-semibold;
-    @apply tracking-tight;
-    @apply first:mt-0;
-  }
-
-  .h3 {
-    @apply scroll-m-20;
-    @apply text-2xl;
-    @apply font-semibold;
-    @apply tracking-tight;
-  }
-
-  .h4 {
-    @apply scroll-m-20;
-    @apply text-xl;
-    @apply font-semibold;
-    @apply tracking-tight;
-  }
-
-  .h5 {
-    @apply _h;
-  }
-
-  .h6 {
-    @apply _h;
-  }
-
-  .p {
-    @apply leading-7;
-    @apply [&:not(:first-child)]:mt-6;
-  }
-
-  .blockquote {
-    @apply mt-6;
-    @apply border-l-2;
-    @apply pl-6;
-    @apply italic;
-  }
-
-  .ul {
-    @apply my-6;
-    @apply ml-6;
-    @apply list-disc;
-    @apply [&>li]:mt-2;
-  }
-
-  .code {
-    @apply relative;
-    @apply rounded;
-    @apply bg-muted;
-    @apply px-[0.3rem];
-    @apply py-[0.2rem];
-    @apply font-mono;
-    @apply text-sm;
-    @apply font-semibold;
-  }
-
-  .technical {
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: bold;
-  }
-
-  .text-shadow {
-    text-shadow: 0 0 0.2em rgb(0 0 0 / 0.25);
-  }
-
-  .text-gradient {
-    @apply bg-gradient-to-br from-accent/5 to-accent bg-clip-text text-transparent;
-  }
-
-  /* ctas, links */
-
-  ._btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5em 1em;
-    text-align: center;
-    text-shadow: none;
-  }
-
-  .action {
-    @apply _btn frosted-glass text-balance rounded border border-transparent bg-gradient-to-br from-accent/70 to-accent text-white shadow;
-  }
-
-  .link {
-    text-decoration: underline;
-
-    &:hover {
-      text-decoration-thickness: 2px;
-    }
-  }
-
-  .is-external::after {
-    content: ' ↗';
-    font-size: 0.7em;
-    vertical-align: top;
-  }
-
-  /* layout */
-
-  .section {
-    @apply mx-auto py-16 max-md:px-4;
-  }
-
-  /* richtext */
-
-  .richtext {
-    @apply space-y-2 leading-relaxed;
-
-    & :is(h1, h2, h3, h4, h5, h6) strong {
-      @apply text-gradient;
-    }
-
-    & h1 {
-      @apply h1;
-    }
-
-    & h2 {
-      @apply h2;
-    }
-
-    & h3 {
-      @apply h3;
-    }
-
-    & h4 {
-      @apply h4;
-    }
-
-    & h5 {
-      @apply h5;
-    }
-
-    & h6 {
-      @apply h6;
-    }
-
-    & :is(ul, ol) {
-      list-style: revert;
-      padding-left: 1.5em;
-    }
-
-    & a:not(:is(.action)) {
-      @apply link;
-
-      &[href^='http'] {
-        @apply is-external;
-      }
-    }
-
-    & :not(pre) > code {
-      @apply rounded bg-primary/5 px-1;
-    }
-
-    & pre {
-      tab-size: 2;
-      @apply overflow-x-auto rounded bg-transparent p-3 text-xs/relaxed;
-    }
-  }
-
-  /* components */
-
-  .accordion {
-    & summary {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      gap: 1em;
-
-      &::after {
-        content: '+';
-        display: inline-block;
-        font-family: monospace;
-        font-size: 1.5em;
-        transition: rotate 0.2s;
-      }
-    }
-
-    & ::-webkit-details-marker {
-      display: none;
-    }
-
-    &[open] summary::after {
-      rotate: 135deg;
-    }
-  }
-
-  .carousel {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-
-    & > * {
-      flex: 0 0 min(var(--size, 300px), 80vw);
-      scroll-snap-align: center;
-    }
-  }
-}
-
 @layer utilities {
-  .frosted-glass {
-    @apply bg-opacity-75 backdrop-blur-sm backdrop-saturate-150;
-  }
-
-  .full-bleed {
-    width: 100vw;
-    margin-inline: calc(50% - 50vw);
-  }
-
-  .no-scrollbar {
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
-
-  .overflow-fade {
-    --offset: 4rem;
-    mask: linear-gradient(to right, transparent, black var(--offset), black calc(100% - var(--offset)), transparent);
-  }
-
-  .overflow-fade-r {
-    --offset: 4rem;
-    mask: linear-gradient(to right, black 50%, black calc(100% - var(--offset)), transparent);
-  }
-
-  .sticky-below-header {
-    position: sticky;
-    top: calc(var(--header-height) + var(--offset, 0px));
-  }
-
-  /* animations */
-
   @keyframes anim-fade-to {
     from {
       opacity: 0;
       translate: var(--x, 0) var(--y, 0);
     }
-  }
-
-  .anim-fade,
-  .anim-fade-to-l,
-  .anim-fade-to-r,
-  .anim-fade-to-t,
-  .anim-fade-to-b {
-    --x: 0;
-    --y: 0;
-    animation: anim-fade-to 0.2s ease-in-out forwards;
-  }
-
-  .anim-fade-to-l {
-    --x: 1rem;
-  }
-
-  .anim-fade-to-r {
-    --x: -1rem;
-  }
-
-  .anim-fade-to-t {
-    --y: 1rem;
-  }
-
-  .anim-fade-to-b {
-    --y: -1rem;
   }
 }
 

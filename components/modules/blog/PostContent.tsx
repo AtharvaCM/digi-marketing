@@ -24,14 +24,14 @@ export default function PostContent({ post, ...props }: Readonly<{ post?: Sanity
         </div>
       </header>
 
-      <div className={cn('section grid gap-8', showTOC && 'lg:grid-cols-[1fr,auto]')}>
+      <div className={cn('section grid gap-8', showTOC && 'lg:grid-cols-[1fr_auto]')}>
         {showTOC && (
           <aside className="lg:sticky-below-header mx-auto w-full max-w-lg self-start [--offset:1rem] lg:order-1 lg:w-[250px]">
             <TableOfContents headings={post.headings} />
           </aside>
         )}
 
-        <Content value={post.body} heroImage={post.heroImage} className={cn(css.body, 'grid max-w-screen-md')}>
+        <Content value={post.body} heroImage={post.heroImage} className={cn(css.body, 'grid max-w-(--breakpoint-md)')}>
           <hr />
         </Content>
       </div>

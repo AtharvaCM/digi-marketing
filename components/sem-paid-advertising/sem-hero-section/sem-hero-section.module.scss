@@ -7,8 +7,9 @@
     @include d-container;
     @apply flex;
     @apply flex-col;
-    @apply mb-8;
-    @apply px-6;
+    margin-bottom: 2rem; /* 32px */
+    padding-left: 1.5rem; /* 24px */
+    padding-right: 1.5rem; /* 24px */
     @apply min-h-[70svh];
     @screen lg {
       @apply flex-row;
@@ -27,15 +28,18 @@
   }
   &__content-col {
     @apply w-full;
-    @apply py-6;
+    padding-top: 1.5rem; /* 24px */
+    padding-bottom: 1.5rem; /* 24px */
   }
   &__title {
-    @apply text-3xl;
+    font-size: 1.875rem; /* 30px */
+    line-height: 2.25rem; /* 36px */
     @apply text-[var(--blue-12)];
     @apply text-center;
     @apply mx-auto;
     @screen md {
-      @apply text-5xl;
+      font-size: 3rem; /* 48px */
+      line-height: 1;
     }
   }
   &__text-content {
@@ -50,21 +54,24 @@
   // Services
   &__services-container {
     @include d-container;
-    @apply px-6;
+    padding-left: 1.5rem; /* 24px */
+    padding-right: 1.5rem; /* 24px */
   }
   &__services-title {
-    @apply text-3xl;
+    font-size: 1.875rem; /* 30px */
+    line-height: 2.25rem; /* 36px */
     @apply text-center;
     @apply text-[var(--blue-12)];
     @screen md {
-      @apply text-4xl;
+      font-size: 2.25rem; /* 36px */
+      line-height: 2.5rem; /* 40px */
     }
   }
   &__services {
     @apply flex;
     @apply flex-wrap;
-    @apply gap-x-6;
-    @apply gap-y-10;
+    column-gap: 1.5rem; /* 24px */
+    row-gap: 2.5rem; /* 40px */
     @apply justify-center;
   }
   &__service {

@@ -1,13 +1,14 @@
-import { Box, Heading, Section, Text } from '@radix-ui/themes';
 import cx from 'classnames';
 import { FC } from 'react';
+
+import { Box, Heading, Section, Text } from '@radix-ui/themes';
 
 import styles from './hero-section.module.scss';
 
 interface IHeroSectionProps {}
 
 const HeroSection: FC<IHeroSectionProps> = (_props) => (
-  <Section className={cx(styles['d-section'])}>
+  <Section className="flex justify-center">
     <Box className={cx(styles['d-section__container'])}>
       <Heading as="h1" className={cx(styles['d-section__title'])}>
         About Growth Stats

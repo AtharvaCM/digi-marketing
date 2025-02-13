@@ -23,6 +23,9 @@
     z-index: 0;
     inset-block: -2px;
     inset-inline: -1.6ch -0.5ch;
-    @apply rounded-r border-l-4 border-green-400 bg-green-400/20;
+    border-top-right-radius: var(--radius-sm);
+    border-left-width: 4px;
+    border-color: rgb(74 222 128 / var(--tw-border-opacity, 1));
+    background-color: rgb(74 222 128 / var(0.2, 1));
   }
 }

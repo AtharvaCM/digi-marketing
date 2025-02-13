@@ -30,7 +30,7 @@ export default async function LogoList({
   return (
     <section className="section space-y-8">
       {(pretitle || intro) && (
-        <header className="richtext mx-auto max-w-screen-sm text-balance text-center text-foreground">
+        <header className="richtext mx-auto max-w-(--breakpoint-sm) text-balance text-center text-foreground">
           <Text as="div" weight={'bold'} size={{ initial: '8' }}>
             {stegaClean(pretitle)}
           </Text>

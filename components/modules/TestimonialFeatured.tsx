@@ -16,7 +16,7 @@ export default function TestimonialFeatured({
 
   return (
     <section className="section">
-      <div className="section flex max-w-screen-md items-center gap-x-12 gap-y-6 rounded bg-accent/5 max-sm:flex-col">
+      <div className="section flex max-w-(--breakpoint-md) items-center gap-x-12 gap-y-6 rounded bg-accent/5 max-sm:flex-col">
         <div className="space-y-2">
           <ImQuotesLeft className="inline-block shrink-0 text-4xl text-accent" />
 

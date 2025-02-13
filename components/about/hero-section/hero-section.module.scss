@@ -1,28 +1,30 @@
 @use '/styles/mixin/layout.module.scss' as *;
 
 .d-section {
-  @apply flex;
-  @apply justify-center;
   &__container {
     @apply flex;
     @apply flex-col;
-    @apply gap-4;
+    gap: 1rem; /* 16px */
     @include d-container;
-    @apply px-4;
-    @apply mt-16;
+    padding-left: 1rem; /* 16px */
+    padding-right: 1rem; /* 16px */
+    margin-top: 4rem; /* 64px */
     @apply text-center;
   }
   &__title {
-    @apply text-3xl;
+    font-size: 1.875rem; /* 30px */
+    line-height: 2.25rem; /* 36px */
     @screen md {
-      @apply text-4xl;
+      font-size: 2.25rem; /* 36px */
+      line-height: 2.5rem; /* 40px */
     }
     @screen xl {
-      @apply text-5xl;
+      font-size: 3rem; /* 48px */
+      line-height: 1;
     }
   }
   &__hr {
-    @apply w-16;
+    width: 4rem; /* 64px */
     @apply mx-auto;
     @apply border-b-2;
     @apply border-[var(--blue-10)];
@@ -31,7 +33,7 @@
     @apply text-[var(--gray-12)];
   }
   &__description {
-    @apply max-w-3xl;
+    max-width: 48rem; /* 768px */
     @apply mx-auto;
   }
 }

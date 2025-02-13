@@ -16,7 +16,7 @@ export default async function Footer() {
   return (
     <footer className="bg-secondary-foreground text-center text-secondary">
       <div className="section border-b border-background/20">
-        <div className="mx-auto max-w-screen-xl space-y-8">
+        <div className="mx-auto max-w-(--breakpoint-xl) space-y-8">
           <div className="flex flex-wrap justify-between gap-x-12 gap-y-8">
             <div className="flex flex-col gap-3 self-start max-sm:mx-auto max-sm:items-center">
               <Link className="h3 md:h2 max-w-max" href="/">

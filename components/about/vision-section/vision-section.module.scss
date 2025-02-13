@@ -14,28 +14,33 @@
     @apply relative;
     @apply bg-[var(--gray-4)];
     @apply w-full;
-    @apply px-6;
-    @apply py-14;
+    padding-left: 1.5rem; /* 24px */
+    padding-right: 1.5rem; /* 24px */
+    padding-top: 3.5rem; /* 56px */
+    padding-bottom: 3.5rem; /* 56px */
     @screen md {
-      @apply p-14;
+      padding: 3.5rem; /* 56px */
     }
   }
   &__mission-badge {
     @apply absolute;
-    @apply left-6;
+    left: 1.5rem; /* 24px */
     @apply -mt-[calc(3.5rem+16px)];
-    @apply py-1;
-    @apply px-2;
+    padding-top: 0.25rem; /* 4px */
+    padding-bottom: 0.25rem; /* 4px */
+    padding-left: 0.5rem; /* 8px */
+    padding-right: 0.5rem; /* 8px */
     @apply bg-[var(--blue-11)];
-    @apply text-white;
-    @apply font-bold;
+    color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+    font-weight: 700;
   }
   &__mission-title {
-    @apply mb-6;
+    margin-bottom: 1.5rem; /* 24px */
     @apply text-[var(--blue-11)];
-    @apply text-5xl;
+    font-size: 3rem; /* 48px */
+    line-height: 1;
     @screen md {
-      @apply mb-8;
+      margin-bottom: 2rem; /* 32px */
     }
   }
   // VISION
@@ -43,55 +48,65 @@
     @apply relative;
     @apply bg-[var(--gray-7)];
     @apply w-full;
-    @apply px-6;
-    @apply py-14;
+    padding-left: 1.5rem; /* 24px */
+    padding-right: 1.5rem; /* 24px */
+    padding-top: 3.5rem; /* 56px */
+    padding-bottom: 3.5rem; /* 56px */
     @screen md {
-      @apply p-14;
+      padding: 3.5rem; /* 56px */
     }
   }
   &__vision-badge {
     @apply absolute;
-    @apply left-6;
+    left: 1.5rem; /* 24px */
     @apply -mt-[calc(3.5rem+16px)];
-    @apply py-1;
-    @apply px-2;
-    @apply bg-black;
-    @apply text-white;
-    @apply font-bold;
+    padding-top: 0.25rem; /* 4px */
+    padding-bottom: 0.25rem; /* 4px */
+    padding-left: 0.5rem; /* 8px */
+    padding-right: 0.5rem; /* 8px */
+    background-color: rgb(0 0 0 / var(--tw-bg-opacity, 1));
+    color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+    font-weight: 700;
   }
   &__vision-title {
-    @apply mb-6;
-    @apply text-5xl;
+    margin-bottom: 1.5rem; /* 24px */
+    font-size: 3rem; /* 48px */
+    line-height: 1;
     @screen md {
-      @apply mb-8;
+      margin-bottom: 2rem; /* 32px */
     }
   }
   // VALUES
   &__values-container {
     @apply relative;
     @apply bg-[var(--gray-12)];
-    @apply text-white;
-    @apply px-6;
-    @apply py-14;
+    color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+    padding-left: 1.5rem; /* 24px */
+    padding-right: 1.5rem; /* 24px */
+    padding-top: 3.5rem; /* 56px */
+    padding-bottom: 3.5rem; /* 56px */
     @screen md {
-      @apply p-14;
+      padding: 3.5rem; /* 56px */
     }
   }
   &__values-badge {
     @apply absolute;
-    @apply left-6;
+    left: 1.5rem; /* 24px */
     @apply -mt-[calc(3.5rem+16px)];
-    @apply py-1;
-    @apply px-2;
-    @apply bg-white;
+    padding-top: 0.25rem; /* 4px */
+    padding-bottom: 0.25rem; /* 4px */
+    padding-left: 0.5rem; /* 8px */
+    padding-right: 0.5rem; /* 8px */
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
     @apply text-[var(--blue-11)];
-    @apply font-bold;
+    font-weight: 700;
   }
   &__values-title {
-    @apply mb-6;
-    @apply text-5xl;
+    margin-bottom: 1.5rem; /* 24px */
+    font-size: 3rem; /* 48px */
+    line-height: 1;
     @screen md {
-      @apply mb-8;
+      margin-bottom: 2rem; /* 32px */
     }
   }
 }

@@ -13,7 +13,7 @@ export default function Filter({ label, value = 'All' }: { label: string; value?
 
   return (
     <button
-      className={cn(css.filter, '!py-1', category === value ? 'action' : 'ghost border border-transparent')}
+      className={cn(css.filter, 'py-1!', category === value ? 'action' : 'ghost border border-transparent')}
       onClick={() => {
         setCategory(value);
         setPage(1);

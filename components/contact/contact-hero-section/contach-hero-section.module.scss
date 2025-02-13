@@ -11,10 +11,10 @@
   &:before {
     content: '';
     @apply absolute;
-    @apply top-0;
-    @apply left-0;
-    @apply right-0;
-    @apply bottom-0;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
     background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45));
     z-index: 1;
   }
@@ -25,12 +25,14 @@
     @apply justify-center;
   }
   &__heading {
-    @apply text-white;
-    @apply text-6xl;
+    color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+    font-size: 3.75rem; /* 60px */
+    line-height: 1;
     @apply z-10;
     @apply select-none;
     @screen md {
-      @apply text-8xl;
+      font-size: 6rem; /* 96px */
+      line-height: 1;
     }
   }
   // Slider Styles
@@ -41,8 +43,9 @@
     }
   }
   &__slider-text {
-    @apply text-7xl;
-    @apply tracking-wide;
+    font-size: 4.5rem; /* 72px */
+    line-height: 1;
+    letter-spacing: 0.025em;
     @apply select-none;
     @apply select-none;
     background: radial-gradient(circle, #80ffc1 0%, #ff6161 100%);
@@ -51,16 +54,17 @@
     color: transparent;
     &:before {
       content: '';
-      @apply h-12;
+      height: 3rem; /* 48px */
       @apply block;
     }
     &:after {
       content: '';
-      @apply h-12;
+      height: 3rem; /* 48px */
       @apply block;
     }
     @screen md {
-      @apply text-8xl;
+      font-size: 6rem; /* 96px */
+      line-height: 1;
     }
   }
 }

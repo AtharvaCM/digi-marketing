@@ -30,8 +30,8 @@ export default function HeroSaaS({
       <div className="richtext mx-auto max-w-2xl text-balance">
         <Pretitle>{pretitle}</Pretitle>
         <PortableText value={content} />
-        <Reputation className="!mt-4 justify-center" reputation={reputation} />
-        <CTAList ctas={ctas} className="!mt-8 justify-center" />
+        <Reputation className="mt-4! justify-center" reputation={reputation} />
+        <CTAList ctas={ctas} className="mt-8! justify-center" />
       </div>
 
       <Img

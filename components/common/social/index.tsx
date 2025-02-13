@@ -17,7 +17,7 @@ export default async function Social({ className }: React.HTMLProps<HTMLDivEleme
       {social.items.map((item: any) => {
         if (item._type === 'link') {
           return (
-            <CTALink className="px-2 py-1 hover:!opacity-100 group-has-[a:hover]:opacity-50 hover:text-primary" link={item} key={item._key}>
+            <CTALink className="px-2 py-1 hover:opacity-100! group-has-[a:hover]:opacity-50 hover:text-primary" link={item} key={item._key}>
               <Icon url={item.external} aria-label={item.label} />
             </CTALink>
           );

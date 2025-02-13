@@ -5,17 +5,19 @@
   @apply flex-col;
   @apply justify-start;
   @apply items-center;
-  @apply rounded-2xl;
-  @apply shadow-xl;
-  @apply p-8;
+  border-radius: 1rem; /* 16px */
+  box-shadow:
+    0 20px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1);
+  padding: 2rem; /* 32px */
   transition-property: box-shadow;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 300ms;
-  @apply ease-in-out;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   &:hover {
-    @apply shadow-2xl;
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
     .d-container__separator {
-      @apply w-16;
+      width: 4rem; /* 64px */
     }
   }
   // Color styles
@@ -42,25 +44,26 @@
     @apply max-w-[300px];
   }
   &--horizontal {
-    @apply max-w-screen-lg;
-    @apply gap-8;
+    max-width: 1024px;
+    gap: 2rem; /* 32px */
     &:hover {
       .d-container__image {
         @include vertical-move();
       }
       .d-container__separator {
-        @apply w-24;
+        width: 6rem; /* 96px */
       }
     }
     @screen md {
       @apply flex-row;
-      @apply p-12;
+      padding: 3rem; /* 48px */
     }
     .d-container__image-col {
       @apply w-full;
       @apply h-auto;
       @screen md {
-        @apply my-10;
+        margin-top: 2.5rem; /* 40px */
+        margin-bottom: 2.5rem; /* 40px */
       }
     }
     .d-container__image-wrapper {
@@ -74,12 +77,14 @@
     .d-container__name {
       @screen md {
         @apply text-start;
-        @apply text-3xl;
+        font-size: 1.875rem; /* 30px */
+        line-height: 2.25rem; /* 36px */
       }
     }
     .d-container__separator {
       @screen md {
-        @apply mx-0;
+        margin-left: 0px;
+        margin-right: 0px;
       }
     }
     .d-container__description {
@@ -95,9 +100,9 @@
     }
   }
   &__image-wrapper {
-    @apply w-24;
-    @apply h-24;
-    @apply mb-4;
+    width: 6rem; /* 96px */
+    height: 6rem; /* 96px */
+    margin-bottom: 1rem; /* 16px */
   }
   &__image {
     @apply w-full;
@@ -105,19 +110,20 @@
   }
   &__name {
     @apply text-center;
-    @apply mb-4;
-    @apply text-xl;
+    margin-bottom: 1rem; /* 16px */
+    font-size: 1.25rem; /* 20px */
+    line-height: 1.75rem; /* 28px */
   }
   &__separator {
-    @apply w-10;
+    width: 2.5rem; /* 40px */
     @apply border;
     @apply border-2;
     @apply mx-auto;
-    @apply mb-4;
+    margin-bottom: 1rem; /* 16px */
     transition-property: width;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 400ms;
-    @apply ease-in-out;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
   &__description {
     @apply text-center;

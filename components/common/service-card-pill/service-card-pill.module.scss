@@ -3,20 +3,24 @@
   @apply flex-col-reverse;
   @apply items-center;
   @apply gap-4;
-  @apply py-6;
-  @apply shadow-xl;
+  padding-top: 1.5rem; /* 24px */
+  padding-bottom: 1.5rem; /* 24px */
+  box-shadow:
+    0 20px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1);
   @apply text-center;
   transition-property: box-shadow;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 300ms;
-  @apply ease-in-out;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   &:hover {
-    @apply shadow-2xl;
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
   }
   @screen md {
     @apply flex-row-reverse;
     @apply rounded-full;
-    @apply px-4;
+    padding-left: 1rem; /* 16px */
+    padding-right: 1rem; /* 16px */
     @apply text-left;
   }
   @screen lg {
@@ -54,7 +58,8 @@
     @apply flex;
     @apply justify-center;
     @apply items-center;
-    @apply px-4;
+    padding-left: 1rem; /* 16px */
+    padding-right: 1rem; /* 16px */
     @apply w-40;
     @apply h-36;
     @screen md {
