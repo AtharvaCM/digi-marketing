@@ -1,7 +1,7 @@
 import { VscListOrdered } from 'react-icons/vsc';
 import { defineArrayMember, defineField, defineType } from 'sanity';
 
-import { getBlockText } from '../../utils';
+import { getBlockText } from '@/sanity/utils';
 
 export default defineType({
   name: 'step-list',
@@ -9,6 +9,10 @@ export default defineType({
   icon: VscListOrdered,
   type: 'object',
   fields: [
+    defineField({
+      name: 'pretitle',
+      type: 'string',
+    }),
     defineField({
       name: 'intro',
       type: 'array',

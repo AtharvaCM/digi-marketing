@@ -1,5 +1,5 @@
 import { TfiLayoutCtaCenter } from 'react-icons/tfi';
-import { defineField, defineType } from 'sanity';
+import { defineArrayMember, defineField, defineType } from 'sanity';
 
 import { getBlockText } from '@/sanity/utils';
 
@@ -11,9 +11,8 @@ export default defineType({
   groups: [{ name: 'content', default: true }, { name: 'image' }, { name: 'options' }],
   fields: [
     defineField({
-      name: 'uid',
-      title: 'Unique Identifier',
-      type: 'uid',
+      name: 'options',
+      type: 'module-options',
       group: 'options',
     }),
     defineField({
@@ -24,7 +23,17 @@ export default defineType({
     defineField({
       name: 'content',
       type: 'array',
-      of: [{ type: 'block' }, { type: 'custom-html' }],
+      of: [
+        { type: 'block' },
+        defineArrayMember({
+          title: 'Code block',
+          type: 'code',
+          options: {
+            withFilename: true,
+          },
+        }),
+        { type: 'custom-html' },
+      ],
       group: 'content',
     }),
     defineField({

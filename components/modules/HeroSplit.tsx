@@ -36,8 +36,8 @@ export default function HeroSplit({
       <div className="richtext mx-auto w-full max-w-lg [&_:is(h1,h2)]:text-balance">
         <Pretitle>{pretitle}</Pretitle>
         <PortableText value={content} />
-        <Reputation className="!mt-4" reputation={reputation} />
-        <CTAList ctas={ctas} className="!mt-4" />
+        <Reputation className="mt-4!" reputation={reputation} />
+        <CTAList ctas={ctas} className="mt-4!" />
       </div>
     </section>
   );

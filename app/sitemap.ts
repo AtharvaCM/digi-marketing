@@ -1,68 +1,33 @@
-import { MetadataRoute } from 'next';
+import type { MetadataRoute } from 'next';
+import { groq } from 'next-sanity';
 
-import { PROD_BASE_URL } from '@/utils/constants';
+import { fetchSanityLive } from '@/sanity/lib/fetch';
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    {
-      url: `${PROD_BASE_URL}/`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 1,
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const data = await fetchSanityLive<Record<string, MetadataRoute.Sitemap>>({
+    query: groq`{
+			'pages': *[
+				_type == 'page' &&
+				!(metadata.slug.current in ['404']) &&
+				metadata.noIndex != true
+			]|order(metadata.slug.current){
+				'url': $baseUrl + select(metadata.slug.current == 'index' => '', metadata.slug.current),
+				'lastModified': _updatedAt,
+				'priority': select(
+					metadata.slug.current == 'index' => 1,
+					0.5
+				),
+			},
+			'blog': *[_type == 'blog.post' && metadata.noIndex != true]|order(name){
+				'url': $baseUrl + 'blog/' + metadata.slug.current,
+				'lastModified': _updatedAt,
+				'priority': 0.4
+			}
+		}`,
+    params: {
+      baseUrl: process.env.NEXT_PUBLIC_BASE_URL + '/',
     },
-    {
-      url: `${PROD_BASE_URL}/about`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.8,
-    },
-    {
-      url: `${PROD_BASE_URL}/contact`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.5,
-    },
-    {
-      url: `${PROD_BASE_URL}/services`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.5,
-    },
-    {
-      url: `${PROD_BASE_URL}/search-engine-optimization`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.5,
-    },
-    {
-      url: `${PROD_BASE_URL}/email-marketing-automation`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.5,
-    },
-    {
-      url: `${PROD_BASE_URL}/sem-paid-advertising`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.5,
-    },
-    {
-      url: `${PROD_BASE_URL}/social-media-services`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.5,
-    },
-    {
-      url: `${PROD_BASE_URL}/web-design`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.5,
-    },
-    {
-      url: `${PROD_BASE_URL}/web-development`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.5,
-    },
-  ];
+  });
+
+  return Object.values(data).flat();
 }

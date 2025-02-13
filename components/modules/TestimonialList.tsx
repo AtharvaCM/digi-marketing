@@ -35,7 +35,7 @@ export default function TestimonialList({
         )}
       >
         {testimonials?.map(({ author, ...testimonial }) => (
-          <article className="grid !basis-[min(450px,70vw)] place-content-center rounded border p-4" key={testimonial._key}>
+          <article className="grid basis-[min(450px,70vw)]! place-content-center rounded border p-4" key={testimonial._key}>
             <blockquote className="space-y-6">
               <div className="richtext text-balance">
                 <PortableText value={testimonial.content} />

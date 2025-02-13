@@ -3,16 +3,15 @@ import { groq } from 'next-sanity';
 
 import Modules from '@/components/modules';
 import { client } from '@/sanity/lib/client';
-import { sanityFetch } from '@/sanity/lib/fetch';
-import { modulesQuery } from '@/sanity/lib/queries';
+import { fetchSanity } from '@/sanity/lib/fetch';
+import { MODULES_QUERY } from '@/sanity/lib/queries';
 import processMetadata from '@/utils/functions/process-metadata';
 
 export default async function Page({ params }: Readonly<Props>) {
-  const page = await getPageTemplate();
   const post = await getPost(params);
 
-  if (!page || !post) notFound();
-  return <Modules modules={page?.modules} page={page} post={post} />;
+  if (!post) notFound();
+  return <Modules modules={post?.modules} post={post} />;
 }
 
 export async function generateMetadata({ params }: Props) {
@@ -28,7 +27,19 @@ export async function generateStaticParams() {
 }
 
 async function getPost(params: Props['params']) {
-  return await sanityFetch<Sanity.BlogPost>({
+  const blogTemplateExists = await fetchSanity<boolean>({
+    query: groq`count(*[_type == 'global-module' && path == 'blog/*']) > 0`,
+  });
+
+  if (!blogTemplateExists)
+    throw Error(
+      'Missing blog template: 👻 Oof, your blog posts are ghosting...\n\n' +
+        'Solution: Add a new Global module document in your Sanity Studio with the path "blog/*".\n' +
+        'Also add the Blog post content module to display blog post content.\n\n' +
+        '💁‍♂️ https://sanitypress.dev/docs/errors#missing-blog-template',
+    );
+
+  return await fetchSanity<Sanity.BlogPost & { modules: Sanity.Module[] }>({
     query: groq`*[_type == 'blog.post' && metadata.slug.current == $slug][0]{
 			...,
       body[]{
@@ -48,23 +59,20 @@ async function getPost(params: Props['params']) {
 			metadata {
 				...,
 				'ogimage': image.asset->url + '?w=1200'
-			}
+			},
+      'modules': (
+			// global modules (before)
+			*[_type == 'global-module' && path == '*'].before[]{ ${MODULES_QUERY} }
+			// path modules (before)
+			+ *[_type == 'global-module' && path == 'blog/*'].before[]{ ${MODULES_QUERY} }
+			// path modules (after)
+			+ *[_type == 'global-module' && path == 'blog/*'].after[]{ ${MODULES_QUERY} }
+			// global modules (after)
+			+ *[_type == 'global-module' && path == '*'].after[]{ ${MODULES_QUERY} }
+			)
 		}`,
     params,
     tags: ['blog.post'],
-  });
-}
-
-async function getPageTemplate() {
-  const query = groq`*[_type == 'page' && metadata.slug.current == 'blog/*'][0]{
-    ...,
-    modules[]{ ${modulesQuery} },
-    metadata { slug }
-  }`;
-
-  return await sanityFetch<Sanity.Page>({
-    query,
-    tags: ['blog/*'],
   });
 }
 

@@ -1,4 +1,4 @@
-import { VscMegaphone } from 'react-icons/vsc';
+import { VscCalendar, VscMegaphone } from 'react-icons/vsc';
 import { defineField, defineType } from 'sanity';
 
 import { getBlockText } from '../../utils';
@@ -42,10 +42,13 @@ export default defineType({
     select: {
       content: 'content',
       cta: 'cta.label',
+      start: 'start',
+      end: 'end',
     },
-    prepare: ({ content, cta }) => ({
+    prepare: ({ content, cta, start, end }) => ({
       title: getBlockText(content),
       subtitle: cta,
+      media: (start || end) && VscCalendar,
     }),
   },
 });

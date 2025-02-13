@@ -6,7 +6,7 @@ import { groq } from 'next-sanity';
 
 import Img from '@/components/common/Img';
 import { cn } from '@/lib/utils';
-import { sanityFetch } from '@/sanity/lib/fetch';
+import { fetchSanity } from '@/sanity/lib/fetch';
 
 import css from './logo-list.module.scss';
 
@@ -25,12 +25,12 @@ export default async function LogoList({
     autoScroll?: boolean;
   }>
 >) {
-  const allLogos = logos ?? (await sanityFetch<Sanity.Logo[]>({ query: groq`*[_type == 'logo']` }));
+  const allLogos = logos ?? (await fetchSanity<Sanity.Logo[]>({ query: groq`*[_type == 'logo']` }));
 
   return (
     <section className="section space-y-8">
       {(pretitle || intro) && (
-        <header className="richtext mx-auto max-w-screen-sm text-balance text-center text-foreground">
+        <header className="richtext mx-auto max-w-(--breakpoint-sm) text-balance text-center text-foreground">
           <Text as="div" weight={'bold'} size={{ initial: '8' }}>
             {stegaClean(pretitle)}
           </Text>

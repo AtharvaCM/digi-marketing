@@ -1,31 +1,45 @@
 import { groq } from 'next-sanity';
 
 // @sanity-typegen-ignore
-export const linkQuery = groq`
+export const LINK_QUERY = groq`
 	...,
 	internal->{ _type, title, metadata }
 `;
 
 // @sanity-typegen-ignore
-export const ctaQuery = groq`
-	...,
-	link{ ${linkQuery} }
-`;
-
-export const reputationBlockQuery = groq`
-	_type == 'reputation-block' => { reputation-> }
+export const NAVIGATION_QUERY = groq`
+	title,
+	items[]{
+		${LINK_QUERY},
+		link{ ${LINK_QUERY} },
+		links[]{ ${LINK_QUERY} }
+	}
 `;
 
 // @sanity-typegen-ignore
-export const modulesQuery = groq`
+export const CTA_QUERY = groq`
 	...,
-	ctas[]{ ${ctaQuery} },
-	_type == 'blog-list' => { predefinedFilters[]-> },
-	_type == 'breadcrumbs' => { crumbs[]{ ${linkQuery} } },
+	link{ ${LINK_QUERY} }
+`;
+
+// @sanity-typegen-ignore
+export const MODULES_QUERY = groq`
+	...,
+	ctas[]{
+		...,
+		link{ ${LINK_QUERY} }
+	},
+	_type == 'blog-list' => { filteredCategory-> },
+	_type == 'breadcrumbs' => { crumbs[]{ ${LINK_QUERY} } },
+	_type == 'callout' => {
+		content[]{
+			...
+		}
+	},
 	_type == 'card-list' => {
 		cards[]{
 			...,
-			ctas[]{ ${ctaQuery} }
+			ctas[]{ ${CTA_QUERY} }
 		}
 	},
 	_type == 'creative-module' => {
@@ -33,38 +47,36 @@ export const modulesQuery = groq`
 			...,
 			subModules[]{
 				...,
-				ctas[]{ ${ctaQuery} },
+				ctas[]{ ${CTA_QUERY} }
 			}
 		}
 	},
 	_type == 'hero' => {
 		content[]{
-			...,
-			${reputationBlockQuery}
+			...
 		}
 	},
 	_type == 'hero.saas' => {
 		content[]{
-			...,
-			${reputationBlockQuery}
+			...
 		}
 	},
 	_type == 'hero.split' => {
 		content[]{
-			...,
-			${reputationBlockQuery}
+			...
 		}
 	},
 	_type == 'logo-list' => { logos[]-> },
-	_type == 'placeholder-block' => { 
-		...
-	 },
+	_type == 'person-list' => { people[]-> },
 	_type == 'pricing-list' => {
 		tiers[]->{
 			...,
-			ctas[]{ ${ctaQuery} }
+			ctas[]{ ${CTA_QUERY} }
 		}
 	},
+	_type == 'placeholder-block' => { 
+		...
+	 },
 	_type == 'richtext-module' => {
 		'headings': select(
 			tableOfContents => content[style in ['h2', 'h3', 'h4', 'h5', 'h6']]{
@@ -75,39 +87,53 @@ export const modulesQuery = groq`
 	},
 	_type == 'service-details' => {
 		...,
-		ctas { ${ctaQuery} }
+		ctas { ${CTA_QUERY} }
 	},
 	_type == 'tabbed-content' => {
 		tabs[]{
 			...,
-			ctas[]{ ${ctaQuery} },
-			features[]-> {
-				...
-			}
+			ctas[]{ ${CTA_QUERY} }
 		}
 	},
 	_type == 'testimonial.featured' => { testimonial-> },
 	_type == 'testimonial-list' => { testimonials[]-> },
 `;
 
-// @sanity-typegen-ignore
-const navigationQuery = groq`
-	title,
-	items[]{
-		${linkQuery},
-		link{ ${linkQuery} },
-		links[]{ ${linkQuery} }
+export const GET_SITE = groq`
+	*[_type == 'site'][0]{
+		...,
+		ctas[]{ ${CTA_QUERY} },
+		headerMenu->{ ${NAVIGATION_QUERY} },
+		footerMenu->{ ${NAVIGATION_QUERY} },
+		social->{ ${NAVIGATION_QUERY} },
+		'ogimage': ogimage.asset->url
 	}
 `;
 
-export const GET_SITE = groq`*[_type == 'site'][0]{
-  ...,
-  ctas[]{
-    ...,
-    link{ ${linkQuery} }
-  },
-  headerMenu->{ ${navigationQuery} },
-  footerMenu->{ ${navigationQuery} },
-  social->{ ${navigationQuery} },
-  'ogimage': ogimage.asset->url
-}`;
+export const METADATA_QUERY = groq`
+	metadata {
+    title,
+    description,
+    keywords,
+    applicationName,
+    referrer,
+    canonical,
+    authors[] {
+      name,
+      "url": authorUrl
+    },
+    openGraph {
+      title,
+      description,
+      type,
+      "url": canonical,
+      siteName,
+      images[] {
+        "url": image.asset->url + '?w=1200',
+        width,
+        height,
+        alt
+      }
+    }
+  }
+`;

@@ -1,7 +1,8 @@
 import { GoNumber } from 'react-icons/go';
 import { defineArrayMember, defineField, defineType } from 'sanity';
 
-import { count, getBlockText } from '../../utils';
+import { count, getBlockText } from '@/sanity/utils';
+
 import { textAlign } from '../fragments/fields/alignment';
 
 export default defineType({
@@ -11,6 +12,11 @@ export default defineType({
   type: 'object',
   groups: [{ name: 'content', default: true }, { name: 'options' }],
   fields: [
+    defineField({
+      name: 'pretitle',
+      type: 'string',
+      group: 'content',
+    }),
     defineField({
       name: 'intro',
       type: 'array',
@@ -23,14 +29,22 @@ export default defineType({
       of: [
         defineArrayMember({
           type: 'object',
+          fieldsets: [{ name: 'stat', options: { columns: 3 } }],
           fields: [
+            defineField({
+              name: 'prefix',
+              type: 'string',
+              fieldset: 'stat',
+            }),
             defineField({
               name: 'value',
               type: 'string',
+              fieldset: 'stat',
             }),
             defineField({
-              name: 'subValue',
+              name: 'suffix',
               type: 'string',
+              fieldset: 'stat',
             }),
             defineField({
               name: 'text',
@@ -39,12 +53,13 @@ export default defineType({
           ],
           preview: {
             select: {
+              prefix: 'prefix',
               value: 'value',
-              subValue: 'subValue',
+              suffix: 'suffix',
               subtitle: 'text',
             },
-            prepare: ({ value, subValue, subtitle }) => ({
-              title: [value, subValue].filter(Boolean).join(' '),
+            prepare: ({ prefix, value, suffix, subtitle }) => ({
+              title: [prefix, value, suffix].filter(Boolean).join(' '),
               subtitle,
             }),
           },

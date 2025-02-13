@@ -11,10 +11,14 @@ export default defineType({
   groups: [{ name: 'content', default: true }, { name: 'options' }],
   fields: [
     defineField({
-      name: 'uid',
-      title: 'Unique Identifier',
-      type: 'uid',
+      name: 'options',
+      type: 'module-options',
       group: 'options',
+    }),
+    defineField({
+      name: 'pretitle',
+      type: 'string',
+      group: 'content',
     }),
     defineField({
       name: 'intro',

@@ -24,11 +24,19 @@ export default defineType({
         }),
         defineField({
           name: 'light',
+          description: 'On dark backgrounds',
           type: 'image',
+          options: {
+            hotspot: true,
+          },
         }),
         defineField({
           name: 'dark',
+          description: 'On light backgrounds',
           type: 'image',
+          options: {
+            hotspot: true,
+          },
         }),
       ],
     }),

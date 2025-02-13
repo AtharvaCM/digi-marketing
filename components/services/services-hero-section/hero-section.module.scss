@@ -9,33 +9,36 @@
   background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(16, 178, 218, 1) 100%);
   &__container {
     @apply w-full;
-    @apply max-w-screen-lg;
+    max-width: 1024px;
     @apply py-4;
     @apply mx-auto;
     @apply text-center;
   }
   &__title {
-    @apply text-4xl;
-    @apply text-white;
-    @apply max-w-screen-lg;
+    font-size: 2.25rem; /* 36px */
+    line-height: 2.5rem; /* 40px */
+    color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+    max-width: 1024px;
     @screen md {
-      @apply text-7xl;
+      font-size: 4.5rem; /* 72px */
+      line-height: 1;
     }
   }
   &__sub-title {
     @apply text-gray-12;
     @apply mx-auto;
-    @apply max-w-screen-md;
+    max-width: 768px;
   }
   &__cta {
     @apply cursor-pointer;
-    @apply bg-white;
-    @apply px-6;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+    padding-left: 1.5rem; /* 24px */
+    padding-right: 1.5rem; /* 24px */
     @apply py-4;
     @apply rounded-full;
-    @apply shadow-2xl;
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
     @apply transition-all;
-    @apply ease-in-out;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     &:hover {
       scale: 1.1;
     }

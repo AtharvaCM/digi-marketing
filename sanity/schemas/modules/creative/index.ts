@@ -1,12 +1,13 @@
 import { VscExtensions } from 'react-icons/vsc';
 import { defineArrayMember, defineField, defineType } from 'sanity';
 
-import { count, getBlockText } from '../../../utils';
+import { count, getBlockText } from '@/sanity/utils';
+
 import { alignItems, alignmentFieldset, textAlign } from '../../fragments/fields/alignment';
-import creativeCtas from './creative-ctas';
-import creativeIcon from './creative-icon';
-import creativeImage from './creative-image';
-import creativeRichtext from './creative-richtext';
+import creativeCtas from './ctas.creative';
+import creativeIcon from './icon.creative';
+import creativeImage from './image.creative';
+import creativeRichtext from './richtext.creative';
 
 export default defineType({
   name: 'creative-module',
@@ -16,6 +17,11 @@ export default defineType({
   groups: [{ name: 'content', default: true }, { name: 'options' }],
   fieldsets: [alignmentFieldset],
   fields: [
+    defineField({
+      name: 'options',
+      type: 'module-options',
+      group: 'options',
+    }),
     defineField({
       name: 'intro',
       type: 'array',
@@ -48,10 +54,12 @@ export default defineType({
               colSpan: 'colSpan',
             },
             prepare: ({ subModules, colSpan }) => ({
-              title: subModules
-                .map((subModule: { _type: string }) => subModule._type)
-                .filter(Boolean)
-                .join(' + '),
+              title:
+                subModules
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  ?.map((subModule: any) => subModule?._type)
+                  ?.filter(Boolean)
+                  ?.join(' + ') || 'Empty',
               subtitle: colSpan > 1 ? `${colSpan}-column span` : undefined,
             }),
           },
@@ -67,20 +75,19 @@ export default defineType({
       group: 'options',
     }),
     defineField({
-      name: 'bordered',
+      name: 'visualSeparation',
       type: 'boolean',
       initialValue: false,
       group: 'options',
-      description: 'When enabled, vertical alignment will be set to "stretched"',
-    }),
-    defineField({
-      ...textAlign,
-      fieldset: 'alignment',
     }),
     defineField({
       ...alignItems,
       fieldset: 'alignment',
       hidden: ({ parent }) => parent.bordered,
+    }),
+    defineField({
+      ...textAlign,
+      fieldset: 'alignment',
     }),
   ],
   preview: {

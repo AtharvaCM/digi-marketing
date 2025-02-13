@@ -4,16 +4,19 @@ export default defineType({
   name: 'site',
   title: 'Site',
   type: 'document',
-  groups: [
-    { name: 'general', title: 'General', default: true },
-    { name: 'navigation', title: 'Navigation' },
-  ],
+  groups: [{ name: 'branding', default: true }, { name: 'info' }, { name: 'navigation' }],
   fields: [
     defineField({
       name: 'title',
       type: 'string',
-      group: 'general',
       validation: (Rule) => Rule.required(),
+      group: 'branding',
+    }),
+    defineField({
+      name: 'tagline',
+      type: 'array',
+      of: [{ type: 'block' }],
+      group: 'branding',
     }),
     defineField({
       name: 'logo',
@@ -22,21 +25,14 @@ export default defineType({
         collapsable: true,
         collapsed: true,
       },
-      group: 'general',
+      group: 'branding',
     }),
     defineField({
       name: 'announcements',
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'announcement' }] }],
-      group: 'general',
+      group: 'info',
       description: 'Higher order has higher precedence',
-    }),
-    defineField({
-      name: 'ctas',
-      title: 'Call-to-action',
-      type: 'array',
-      of: [{ type: 'cta' }],
-      group: 'general',
     }),
     defineField({
       name: 'copyright',
@@ -47,7 +43,15 @@ export default defineType({
           styles: [{ title: 'Normal', value: 'normal' }],
         },
       ],
-      group: 'general',
+      group: 'info',
+    }),
+    defineField({
+      name: 'ctas',
+      title: 'Call-to-action (global)',
+      description: 'Typically used in the header and/or footer.',
+      type: 'array',
+      of: [{ type: 'cta' }],
+      group: 'navigation',
     }),
     defineField({
       name: 'headerMenu',
@@ -67,17 +71,10 @@ export default defineType({
       to: [{ type: 'navigation' }],
       group: 'navigation',
     }),
-    defineField({
-      name: 'ogimage',
-      title: 'Open Graph Image (global)',
-      description: 'Used for social sharing previews',
-      type: 'image',
-      group: 'general',
-    }),
   ],
   preview: {
     prepare: () => ({
-      title: 'Site',
+      title: 'Site settings',
     }),
   },
 });

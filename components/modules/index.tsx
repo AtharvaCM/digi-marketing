@@ -1,4 +1,5 @@
 import AccordionList from './AccordionList';
+import BlogFrontpage from './blog/BlogFrontpage';
 import BlogList from './blog/BlogList';
 import PostContent from './blog/PostContent';
 import Breadcrumbs from './Breadcrumbs';
@@ -10,9 +11,11 @@ import Hero from './hero';
 import HeroSaaS from './HeroSaaS';
 import HeroSplit from './HeroSplit';
 import LogoList from './logo-list';
+import PersonList from './PersonList';
 import PlaceholderBlocks from './placeholder-blocks';
 import PricingList from './PricingList';
 import RichtextModule from './RichtextModule';
+import ScheduleModule from './ScheduleModule';
 import ServiceDetailsModule from './service-details';
 import StatList from './StatList';
 import StepList from './StepList';
@@ -27,9 +30,13 @@ export default function Modules({
   return (
     <>
       {modules?.map((module) => {
+        if (!module) return null;
+
         switch (module._type) {
           case 'accordion-list':
             return <AccordionList {...module} key={module._key} />;
+          case 'blog-frontpage':
+            return <BlogFrontpage {...module} key={module._key} />;
           case 'blog-list':
             return <BlogList {...module} key={module._key} />;
           case 'blog-post-content':
@@ -52,12 +59,18 @@ export default function Modules({
             return <HeroSaaS {...module} key={module._key} />;
           case 'logo-list':
             return <LogoList {...module} key={module._key} />;
+          case 'person-list':
+            return <PersonList {...module} key={module._key} />;
           case 'placeholder-block':
             return <PlaceholderBlocks {...module} key={module._key} />;
           case 'pricing-list':
             return <PricingList {...module} key={module._key} />;
           case 'richtext-module':
             return <RichtextModule {...module} key={module._key} />;
+          case 'schedule-module':
+            return <ScheduleModule {...module} key={module._key} />;
+          // case 'search-module': // FIXME: Reoslve the server-only error
+          //   return <SearchModule {...module} key={module._key} />;
           case 'service-details':
             return <ServiceDetailsModule {...module} key={module._key} />;
           case 'stat-list':

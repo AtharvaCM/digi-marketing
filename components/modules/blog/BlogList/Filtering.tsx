@@ -1,13 +1,13 @@
 import { groq } from 'next-sanity';
 
 import { cn } from '@/lib/utils';
-import { sanityFetch } from '@/sanity/lib/fetch';
+import { fetchSanity } from '@/sanity/lib/fetch';
 
 import Filter from './Filter';
 import css from './Filtering.module.css';
 
 export default async function Filtering({ predefinedFilters }: Readonly<{ predefinedFilters?: Sanity.BlogCategory[] }>) {
-  const categories = await sanityFetch<Sanity.BlogCategory[]>({
+  const categories = await fetchSanity<Sanity.BlogCategory[]>({
     query: groq`*[
 			_type == 'blog.category' &&
 			count(*[_type == 'blog.post' && references(^._id)]) > 0

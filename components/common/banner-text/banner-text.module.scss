@@ -1,17 +1,17 @@
 .d-container {
-  @apply -mt-1;
+  margin-top: -0.25rem; /* 4px */
   &__inline-wrapper {
-    @apply bg-blue-11;
-    @apply text-white;
+    background-color: var(--blue-11);
+    color: rgb(255 255 255 / var(--tw-text-opacity, 1));
     @apply inline-block;
     @apply text-nowrap;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
   }
   &__heading {
     @apply uppercase;
-    @apply leading-tight;
-    @apply tracking-tighter;
-    @apply font-bold;
+    line-height: 1.25;
+    letter-spacing: -0.05em;
+    font-weight: 700;
     @apply inline-block;
   }
 }

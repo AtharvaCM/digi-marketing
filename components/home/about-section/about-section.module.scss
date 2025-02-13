@@ -5,7 +5,8 @@
     @apply flex-col;
     @apply items-center;
     @apply justify-center;
-    @apply px-6;
+    padding-left: 1.5rem; /* 24px */
+    padding-right: 1.5rem; /* 24px */
   }
   &__text-content {
     @apply text-center;

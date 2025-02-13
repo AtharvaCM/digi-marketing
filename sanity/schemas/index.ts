@@ -1,16 +1,18 @@
 // documents
-import announcement from './documents/announcement';
 import blogCategory from './documents/blog.category';
 import blogPost from './documents/blog.post';
 import event from './documents/event';
-import logo from './documents/logo';
+import globalModule from './documents/global-module';
 import navigation from './documents/navigation';
 import page from './documents/page';
-import person from './documents/person';
-import pricing from './documents/pricing';
 import redirect from './documents/redirect';
 import site from './documents/site';
-import testimonial from './documents/testimonial';
+// miscellaneous
+import announcement from './misc/announcement';
+import logo from './misc/logo';
+import person from './misc/person';
+import pricing from './misc/pricing';
+import testimonial from './misc/testimonial';
 // modules
 import accordionList from './modules/accordion-list';
 import blogFrontpage from './modules/blog-frontpage';
@@ -42,23 +44,26 @@ import cta from './objects/cta';
 import link from './objects/link';
 import linkList from './objects/link.list';
 import metadata from './objects/metadata';
+import moduleOptions from './objects/module-options';
 import modules from './objects/modules';
-import uid from './objects/uid';
 import youtube from './objects/youtube';
 
 export const schemaTypes = [
   // documents
-  announcement,
   blogCategory,
   blogPost,
   event,
-  logo,
+  globalModule,
   navigation,
   page,
-  person,
-  pricing,
   redirect,
   site,
+
+  //misc
+  announcement,
+  logo,
+  person,
+  pricing,
   testimonial,
 
   // objects
@@ -66,8 +71,8 @@ export const schemaTypes = [
   link,
   linkList,
   metadata,
+  moduleOptions,
   modules,
-  uid,
   youtube,
 
   // modules

@@ -13,6 +13,11 @@ export default defineType({
   fieldsets: [alignmentFieldset, { name: 'media', options: { columns: 2 } }],
   fields: [
     defineField({
+      name: 'options',
+      type: 'module-options',
+      group: 'options',
+    }),
+    defineField({
       name: 'pretitle',
       type: 'string',
       description: 'A small text displayed above the main title.',

@@ -1,32 +1,15 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
-import { useEffect } from 'react';
-
 import PostPreview from '../PostPreview';
-import { categoryStore } from '../store';
+import { useBlogFilters } from '../store';
 
 export default function List({
   posts,
-  predefinedFilters,
   ...props
 }: {
   posts: Sanity.BlogPost[];
-  predefinedFilters?: Sanity.BlogCategory[];
 } & React.ComponentProps<'ul'>) {
-  const { selected, reset } = categoryStore();
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(reset, [usePathname()]);
-
-  const filtered = posts
-    // filter by predefined filters
-    .filter(
-      (post) =>
-        !predefinedFilters?.length || post.categories?.some((category) => predefinedFilters.some((filter) => filter._id === category._id)),
-    )
-    // filter by selected category
-    .filter((post) => selected === 'All' || post.categories?.some((category) => category._id === selected));
+  const filtered = FilterPosts(posts);
 
   if (!filtered.length) {
     return <div>No posts found...</div>;
@@ -41,4 +24,18 @@ export default function List({
       ))}
     </ul>
   );
+}
+
+export function FilterPosts(posts: Sanity.BlogPost[]) {
+  const { category, author } = useBlogFilters();
+
+  return posts.filter((post) => {
+    if (category !== 'All' && author) return post.author && post.categories?.some(({ slug }) => slug?.current === category);
+
+    if (category !== 'All') return post.categories?.some(({ slug }) => slug?.current === category);
+
+    if (author) return post.author;
+
+    return true;
+  });
 }

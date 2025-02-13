@@ -5,35 +5,41 @@
   &__container {
     @include d-container;
     @apply mx-auto;
-    @apply px-6;
+    padding-left: 1.5rem; /* 24px */
+    padding-right: 1.5rem; /* 24px */
     @apply flex;
     @apply flex-col;
-    @apply gap-6;
+    gap: 1.5rem; /* 24px */
     @apply text-center;
-    @apply text-white;
+    color: rgb(255 255 255 / var(--tw-text-opacity, 1));
     @screen lg {
-      @apply gap-8;
+      gap: 2rem; /* 32px */
     }
   }
   &__title {
-    @apply text-4xl;
+    font-size: 2.25rem; /* 36px */
+    line-height: 2.5rem; /* 40px */
     @screen md {
-      @apply text-5xl;
+      font-size: 3rem; /* 48px */
+      line-height: 1;
     }
     @screen lg {
-      @apply text-6xl;
+      font-size: 3.75rem; /* 60px */
+      line-height: 1;
     }
   }
   &__sub-title {
-    @apply max-w-3xl;
+    max-width: 48rem; /* 768px */
     @apply mx-auto;
   }
   &__cta {
-    @apply py-3;
-    @apply px-6;
+    padding-top: 0.75rem; /* 12px */
+    padding-bottom: 0.75rem; /* 12px */
+    padding-left: 1.5rem; /* 24px */
+    padding-right: 1.5rem; /* 24px */
     @apply uppercase;
     @apply bg-[var(--gray-12)];
-    @apply text-white;
+    color: rgb(255 255 255 / var(--tw-text-opacity, 1));
     @apply rounded-full;
     &:hover {
       scale: 1.05;

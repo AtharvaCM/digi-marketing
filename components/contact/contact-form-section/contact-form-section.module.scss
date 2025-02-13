@@ -1,13 +1,13 @@
 @use '/styles/mixin/layout.module.scss' as *;
 
 .d-section {
-  @apply bg-gray-12;
+  background-color: var(--gray-12);
   &__container {
-    @apply max-w-screen-xl;
+    max-width: 1280px;
     @apply mx-auto;
     @apply flex;
     @apply flex-col;
-    @apply gap-10;
+    gap: 2.5rem; /* 40px */
     @screen xl {
       @apply flex-row;
     }
@@ -16,25 +16,36 @@
     @apply w-full;
     @apply mx-auto;
     @apply shrink-0;
-    @apply mb-20;
-    @apply px-4;
-    @apply space-y-8;
+    margin-bottom: 5rem; /* 80px */
+    padding-left: 1rem; /* 16px */
+    padding-right: 1rem; /* 16px */
+    & > :not([hidden]) ~ :not([hidden]) {
+      --tw-space-y-reverse: 0;
+      margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
+      margin-bottom: calc(2rem * var(--tw-space-y-reverse));
+    }
     @screen md {
-      @apply mb-0;
-      @apply max-w-screen-md;
+      margin-bottom: 0;
+      max-width: 768px;
     }
   }
   &__form-heading {
-    @apply text-blue-2;
-    @apply text-5xl;
+    color: var(--blue-2);
+    font-size: 3rem; /* 48px */
+    line-height: 1;
     @apply text-center;
     @screen xl {
       @apply text-left;
-      @apply text-6xl;
+      font-size: 3.75rem; /* 60px */
+      line-height: 1;
     }
   }
   &__contact-form {
-    @apply space-y-6;
+    & > :not([hidden]) ~ :not([hidden]) {
+      --tw-space-y-reverse: 0;
+      margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
+      margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+    }
   }
   &__form-fields-row {
     @apply flex;
@@ -42,11 +53,15 @@
     @screen md {
       @apply flex-row;
     }
-    @apply gap-x-10;
+    column-gap: 2.5rem; /* 40px */
   }
   &__form-fields-col {
     @apply w-full;
-    @apply space-y-8;
+    & > :not([hidden]) ~ :not([hidden]) {
+      --tw-space-y-reverse: 0;
+      margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
+      margin-bottom: calc(2rem * var(--tw-space-y-reverse));
+    }
   }
   &__form-submit-wrapper {
     @apply flex;
@@ -54,10 +69,15 @@
   }
   // Info Styles
   &__info-container {
-    @apply px-8;
+    padding-left: 2rem; /* 32px */
+    padding-right: 2rem; /* 32px */
     @apply flex;
     @apply flex-col;
-    @apply space-y-10;
+    & > :not([hidden]) ~ :not([hidden]) {
+      --tw-space-y-reverse: 0;
+      margin-top: calc(2.5rem * calc(1 - var(--tw-space-y-reverse)));
+      margin-bottom: calc(2.5rem * var(--tw-space-y-reverse));
+    }
     @screen xl {
       @apply justify-start;
     }
@@ -70,49 +90,52 @@
     }
   }
   &__info-title {
-    @apply text-4xl;
-    @apply text-blue-2;
-    @apply mb-6;
+    font-size: 2.25rem; /* 36px */
+    line-height: 2.5rem; /* 40px */
+    color: var(--blue-2);
+    margin-bottom: 1.5rem; /* 24px */
     @screen xl {
-      @apply text-5xl;
+      font-size: 3rem; /* 48px */
+      line-height: 1;
     }
   }
   &__info-links {
     @apply flex;
     @apply flex-col;
-    @apply gap-5;
+    gap: 1.25rem; /* 20px */
     @apply items-center;
     @screen xl {
       @apply items-start;
     }
   }
   &__info-link {
-    @apply text-white;
+    color: rgb(255 255 255 / var(--tw-text-opacity, 1));
     &:hover {
-      @apply text-blue-10;
+      color: var(--blue-10);
     }
   }
   &__social-links {
     @apply flex;
-    @apply gap-6;
-    @apply text-white;
+    gap: 1.5rem; /* 24px */
+    color: rgb(255 255 255 / var(--tw-text-opacity, 1));
     @apply justify-center;
     @screen xl {
       @apply justify-start;
     }
     a {
       &:hover {
-        @apply text-blue-10;
+        color: var(--blue-10);
       }
     }
   }
   &__info-address {
-    @apply text-white;
-    @apply mb-6;
-    @apply max-w-screen-sm;
+    color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+    margin-bottom: 1.5rem; /* 24px */
+    max-width: 640px;
     @apply mx-auto;
     @screen xl {
-      @apply mx-0;
+      margin-left: 0px;
+      margin-right: 0px;
     }
   }
 }

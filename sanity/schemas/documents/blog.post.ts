@@ -78,15 +78,23 @@ export default defineType({
           type: 'youtube',
         }),
         defineArrayMember({
+          title: 'Code block',
           type: 'code',
           options: {
             withFilename: true,
           },
         }),
+        { type: 'custom-html' },
       ],
     }),
     defineField({
       name: 'hideTableOfContents',
+      type: 'boolean',
+      group: 'options',
+      initialValue: false,
+    }),
+    defineField({
+      name: 'featured',
       type: 'boolean',
       group: 'options',
       initialValue: false,
@@ -105,10 +113,16 @@ export default defineType({
   ],
   preview: {
     select: {
+      featured: 'featured',
       title: 'title',
-      subtitle: 'publishDate',
+      publishDate: 'publishDate',
       media: 'heroImage',
     },
+    prepare: ({ title, publishDate, media, featured }) => ({
+      title: [featured && '★', title].filter(Boolean).join(' '),
+      subtitle: publishDate,
+      media,
+    }),
   },
   orderings: [
     {
