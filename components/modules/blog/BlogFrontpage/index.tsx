@@ -35,7 +35,7 @@ export default async function BlogFrontpage({
   const [firstPost, ...otherPosts] = stegaClean(mainPost) === 'featured' ? sortFeaturedPosts(posts) : posts;
 
   return (
-    <section className="section space-y-12">
+    <section className="section max-w-screen-2xl mx-auto space-y-12 px-8">
       <PostPreviewLarge post={firstPost} />
 
       <hr />
