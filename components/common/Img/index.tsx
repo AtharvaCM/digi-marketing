@@ -1,10 +1,11 @@
 import { stegaClean } from '@sanity/client/stega';
 import Image from 'next/image';
-import { useNextSanityImage, type UseNextSanityImageOptions } from 'next-sanity-image';
+import { useNextSanityImage, UseNextSanityImageOptions } from 'next-sanity-image';
 import { preload } from 'react-dom';
 
 import { client } from '@/sanity/lib/client';
 import { urlFor } from '@/sanity/lib/image';
+import { DEFAULT_IMG } from '@/utils/constants';
 
 const SIZES = [120, 160, 200, 240, 320, 400, 480, 520, 560, 600, 640, 800, 960, 1280, 1440, 1600, 1800, 2000];
 
@@ -23,7 +24,7 @@ export default function Img({
 } & React.ImgHTMLAttributes<HTMLImageElement>) {
   const { src, width, height } = useNextSanityImage(
     client,
-    image ?? '',
+    image ?? DEFAULT_IMG,
     imageWidth ? { imageBuilder: (b) => b.width(imageWidth) } : options,
   );
 
