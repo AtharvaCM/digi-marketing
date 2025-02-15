@@ -49,6 +49,7 @@ declare global {
       readTime: number;
       headings?: { style: string; text: string; _key: string }[];
       categories: BlogCategory[];
+      author: Person;
       featured: boolean;
       hideTableOfContents: boolean;
       publishDate: string;

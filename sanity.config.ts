@@ -32,7 +32,7 @@ export default defineConfig({
   plugins: [
     structureTool({
       title: 'Content',
-      structure: (S, context) => deskStructure(S, context),
+      structure: (S) => deskStructure(S),
       defaultDocumentNode: getDefaultDocumentNode,
       icon: LuPencil,
     }),

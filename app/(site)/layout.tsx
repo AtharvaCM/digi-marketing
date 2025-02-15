@@ -7,6 +7,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import cx from 'classnames';
 import { Inter } from 'next/font/google';
 import NextTopLoader from 'nextjs-toploader';
+import { NuqsAdapter } from 'nuqs/adapters/next/app';
 
 import { LenisScroller } from '@/components/common/lennis-scroller';
 import Footer from '@/components/footer';
@@ -22,16 +23,18 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en" className="light">
       <body className={cx('bg-white', inter.variable)}>
         <NextTopLoader />
-        <Theme accentColor="blue" grayColor="slate" appearance="light">
-          <Header />
-          <main role="main" className="mx-auto">
-            {children}
-          </main>
-          <Footer />
-          <Toaster />
-          <LenisScroller />
-          <VisualEditingControls />
-        </Theme>
+        <NuqsAdapter>
+          <Theme accentColor="blue" grayColor="slate" appearance="light">
+            <Header />
+            <main role="main" className="mx-auto">
+              {children}
+            </main>
+            <Footer />
+            <Toaster />
+            <LenisScroller />
+            <VisualEditingControls />
+          </Theme>
+        </NuqsAdapter>
 
         <Analytics />
         <SpeedInsights />
