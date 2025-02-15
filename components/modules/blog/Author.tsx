@@ -6,7 +6,7 @@ export default function Author({
   author,
   ...props
 }: {
-  author: Sanity.Person;
+  author?: Sanity.Person;
   skeleton?: boolean;
 } & React.ComponentProps<'div'>) {
   if (!author) return null;
