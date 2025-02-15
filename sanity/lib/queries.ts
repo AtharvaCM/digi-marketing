@@ -12,16 +12,20 @@ export const ctaQuery = groq`
 	link{ ${linkQuery} }
 `;
 
-export const reputationBlockQuery = groq`
-	_type == 'reputation-block' => { reputation-> }
-`;
-
 // @sanity-typegen-ignore
 export const modulesQuery = groq`
 	...,
-	ctas[]{ ${ctaQuery} },
-	_type == 'blog-list' => { predefinedFilters[]-> },
+	ctas[]{
+		...,
+		link{ ${linkQuery} }
+	},
+	_type == 'blog-list' => { filteredCategory-> },
 	_type == 'breadcrumbs' => { crumbs[]{ ${linkQuery} } },
+	_type == 'callout' => {
+		content[]{
+			...
+		}
+	},
 	_type == 'card-list' => {
 		cards[]{
 			...,
@@ -40,19 +44,16 @@ export const modulesQuery = groq`
 	_type == 'hero' => {
 		content[]{
 			...,
-			${reputationBlockQuery}
 		}
 	},
 	_type == 'hero.saas' => {
 		content[]{
 			...,
-			${reputationBlockQuery}
 		}
 	},
 	_type == 'hero.split' => {
 		content[]{
 			...,
-			${reputationBlockQuery}
 		}
 	},
 	_type == 'logo-list' => { logos[]-> },
@@ -111,3 +112,31 @@ export const GET_SITE = groq`*[_type == 'site'][0]{
   social->{ ${navigationQuery} },
   'ogimage': ogimage.asset->url
 }`;
+
+export const METADATA_QUERY = groq`
+	metadata {
+    title,
+    description,
+    keywords,
+    applicationName,
+    referrer,
+    canonical,
+    authors[] {
+      name,
+      "url": authorUrl
+    },
+    openGraph {
+      title,
+      description,
+      type,
+      "url": canonical,
+      siteName,
+      images[] {
+        "url": image.asset->url + '?w=1200',
+        width,
+        height,
+        alt
+      }
+    }
+  }
+`;
