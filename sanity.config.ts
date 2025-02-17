@@ -2,6 +2,7 @@
  * This configuration is used to for the Sanity Studio that’s mounted on the `/app/studio/[[...index]]/page.tsx` route
  */
 import { codeInput } from '@sanity/code-input';
+import { colorInput } from '@sanity/color-input';
 import { visionTool } from '@sanity/vision';
 import { LuPencil } from 'react-icons/lu';
 import { defineConfig } from 'sanity';
@@ -54,6 +55,7 @@ export default defineConfig({
       },
     }),
     codeInput(),
+    colorInput(),
     media(),
   ],
   document: {

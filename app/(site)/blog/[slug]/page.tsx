@@ -40,10 +40,15 @@ async function getPost(params: Props['params']) {
 				style,
 				'text': pt::text(@)
 			},
-			categories[]-> {
-        title,
-        slug
+			category-> { 
+        title, 
+        slug 
       },
+      subcategory-> { 
+        title, 
+        slug 
+      },
+      backgroundColor,
       author-> {
         ...,
         name,

@@ -48,7 +48,8 @@ declare global {
       body: any;
       readTime: number;
       headings?: { style: string; text: string; _key: string }[];
-      categories: BlogCategory[];
+      category: BlogCategory;
+      subcategory: BlogCategory;
       author: Person;
       featured: boolean;
       hideTableOfContents: boolean;
