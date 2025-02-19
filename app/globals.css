@@ -108,7 +108,6 @@
 
   .h2 {
     @apply scroll-m-20;
-    @apply border-b;
     @apply pb-2;
     @apply text-3xl;
     @apply font-semibold;
