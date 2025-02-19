@@ -20,7 +20,7 @@ export default function PostContent({ post, ...props }: Readonly<{ post?: Sanity
   return (
     // <article id={uid(props)} className="mt-[var(--header-height)]">
     <article id={uid(props)}>
-      <header className="mx-auto pt-16 md:pt-36 max-md:px-4" style={{ backgroundColor: bgColor }}>
+      <header className="mx-auto pt-16 md:pt-36 max-md:px-4 overflow-hidden relative" style={{ backgroundColor: bgColor }}>
         <div className="max-w-[710px] mx-auto space-y-2 mb-2">
           <h1 className="h2 font-bold text-center text-white mb-4">{post.metadata.title}</h1>
 
@@ -43,14 +43,14 @@ export default function PostContent({ post, ...props }: Readonly<{ post?: Sanity
         </figure>
       </header>
 
-      <div className={cn('max-w-screen-xl mx-auto section grid gap-8', showTOC && 'lg:grid-cols-[1fr,auto]')}>
+      <div className={cn('max-w-screen-xl mx-auto section grid gap-8', showTOC && 'xl:grid-cols-[auto,1fr]')}>
         {showTOC && (
-          <aside className="lg:sticky-below-header mx-auto w-full max-w-lg self-start [--offset:1rem] lg:order-1 lg:w-[250px]">
+          <aside className="xl:sticky-below-header mx-auto w-full max-w-lg self-start [--offset:1rem] xl:w-[250px]">
             <TableOfContents headings={post.headings} />
           </aside>
         )}
 
-        <Content value={post.body} className={cn(css.body, 'grid max-w-[800px]')}>
+        <Content value={post.body} className={cn(css.body, 'grid max-w-[710px] mx-auto xl:mx-0')}>
           <hr />
         </Content>
       </div>
