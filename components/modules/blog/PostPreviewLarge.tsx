@@ -2,13 +2,14 @@ import Link from 'next/link';
 
 import DateComp from '@/components/common/date-comp';
 import Img from '@/components/common/Img';
+import { Badge } from '@/components/ui/badge';
 import resolveUrl from '@/lib/resolveUrl';
 
 import Author from './Author';
-import Categories from './Categories';
 
 export default function PostPreviewLarge({ post }: Readonly<{ post: Sanity.BlogPost }>) {
   if (!post) return null;
+  console.log('post: ', post);
 
   return (
     <Link className="group grid items-center gap-x-8 gap-y-4 md:grid-cols-2" href={resolveUrl(post, { base: false })}>
@@ -31,7 +32,9 @@ export default function PostPreviewLarge({ post }: Readonly<{ post: Sanity.BlogP
 
         <div className="flex flex-wrap gap-x-4">
           <DateComp value={post.publishDate} />
-          <Categories className="flex flex-wrap gap-x-2" categories={post.categories} />
+          <Badge>
+            {post.category.title} / {post.subcategory.title}
+          </Badge>
         </div>
 
         {post.author && <Author className="flex flex-wrap items-center gap-4" author={post.author} />}

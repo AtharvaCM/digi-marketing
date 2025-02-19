@@ -25,7 +25,10 @@ export default async function FilterList() {
         <Suspense>
           <Filter label="All" />
 
-          {categories?.map((category) => <Filter label={category.title} value={category.slug?.current} key={category._id} />)}
+          {categories?.map((category) => (
+            // This works if your FilterPosts checks post.category?._id
+            <Filter label={category.title} value={category._id} key={category._id} />
+          ))}
         </Suspense>
       </div>
     </fieldset>

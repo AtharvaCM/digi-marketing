@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-const DateComp: FC<{ value: string }> = ({ value }) => {
+const DateComp: FC<{ value: string; className?: string }> = ({ className, value }) => {
   if (!value) return null;
 
   const formatted = new Date(value + 'T00:00:00').toLocaleDateString('en-US', {
@@ -10,7 +10,7 @@ const DateComp: FC<{ value: string }> = ({ value }) => {
   });
 
   return (
-    <time className="text-white" dateTime={value}>
+    <time className={className} dateTime={value}>
       Published {formatted}
     </time>
   );

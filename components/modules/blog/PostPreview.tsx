@@ -5,7 +5,6 @@ import Img from '@/components/common/Img';
 import resolveUrl from '@/lib/resolveUrl';
 
 import Author from './Author';
-import Categories from './Categories';
 
 export default function PostPreview({ post, skeleton }: Readonly<{ post?: Sanity.BlogPost; skeleton?: boolean }>) {
   if (!post && !skeleton) return null;
@@ -39,7 +38,6 @@ export default function PostPreview({ post, skeleton }: Readonly<{ post?: Sanity
 
       <div className="empty:skeleton flex flex-wrap gap-x-4 text-sm">
         <DateComp value={post?.publishDate ?? ''} />
-        <Categories className="flex flex-wrap gap-x-2" categories={post?.categories} />
       </div>
     </Root>
   );

@@ -29,12 +29,27 @@ export function FilterPosts(posts: Sanity.BlogPost[]) {
   const { category, author } = useBlogFilters();
 
   return posts.filter((post) => {
-    if (category !== 'All' && author) return post.author && post.categories?.some(({ slug }) => slug?.current === category);
+    // 1) Filter by category and author
+    if (category !== 'All' && author) {
+      return (
+        post.author &&
+        // Check if the main or sub category _id matches
+        (post.category?._id === category || post.subcategory?._id === category)
+      );
+    }
 
-    if (category !== 'All') return post.categories?.some(({ slug }) => slug?.current === category);
+    // 2) Filter by category only
+    if (category !== 'All') {
+      return post.category?._id === category || post.subcategory?._id === category;
+    }
 
-    if (author) return post.author;
+    // 3) Filter by author only
+    if (author) {
+      return post.author;
+      // You could do something more specific like post.author?._id === author
+    }
 
+    // 4) No filters -> return all
     return true;
   });
 }

@@ -29,7 +29,7 @@ export default function PostContent({ post, ...props }: Readonly<{ post?: Sanity
           <h1 className="h1 font-bold text-center text-white mb-4">{post.metadata.title ?? post.title}</h1>
 
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-            <DateComp value={post.publishDate} />
+            <DateComp className="text-white" value={post.publishDate} />
             <ReadTime value={post.readTime} />
           </div>
 
