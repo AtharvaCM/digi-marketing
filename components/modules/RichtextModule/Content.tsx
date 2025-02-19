@@ -39,15 +39,9 @@ const components = {
   },
 };
 
-export default function Content({
-  value,
-  heroImage,
-  className,
-  children,
-}: { value: any; heroImage?: Sanity.Image } & React.ComponentProps<'div'>) {
+export default function Content({ value, className, children }: { value: any } & React.ComponentProps<'div'>) {
   return (
     <div className={cn('richtext w-full space-y-[1em] [&>:first-child]:!mt-0', className)}>
-      <CustomImage value={heroImage} />
       <PortableText value={value} components={components} />
       {children}
     </div>

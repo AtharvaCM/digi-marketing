@@ -22,7 +22,7 @@ export default function Author({
           )}
         </div>
 
-        <div className="font-bold">{author?.name}</div>
+        <div className="text-white">{author?.name}</div>
       </div>
     </div>
   );

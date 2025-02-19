@@ -50,6 +50,7 @@ declare global {
       headings?: { style: string; text: string; _key: string }[];
       category: BlogCategory;
       subcategory: BlogCategory;
+      backgroundColor?: string;
       author: Person;
       featured: boolean;
       hideTableOfContents: boolean;

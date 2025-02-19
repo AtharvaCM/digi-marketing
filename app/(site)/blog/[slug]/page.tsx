@@ -48,7 +48,7 @@ async function getPost(params: Props['params']) {
         title, 
         slug 
       },
-      backgroundColor,
+      'backgroundColor': backgroundColor.hex,
       author-> {
         ...,
         name,

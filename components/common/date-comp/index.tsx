@@ -10,7 +10,7 @@ const DateComp: FC<{ value: string }> = ({ value }) => {
   });
 
   return (
-    <time className="font-semibold text-slate-600" dateTime={value}>
+    <time className="text-white" dateTime={value}>
       Published {formatted}
     </time>
   );
