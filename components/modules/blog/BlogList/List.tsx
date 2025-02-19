@@ -1,37 +1,19 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
-import { useEffect } from 'react';
-
 import PostPreview from '../PostPreview';
-import { categoryStore } from '../store';
+import { useBlogFilters } from '../store';
 
 export default function List({
   posts,
-  predefinedFilters,
   ...props
 }: {
   posts: Sanity.BlogPost[];
-  predefinedFilters?: Sanity.BlogCategory[];
 } & React.ComponentProps<'ul'>) {
-  const { selected, reset } = categoryStore();
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(reset, [usePathname()]);
-
-  const filtered = posts
-    // filter by predefined filters
-    .filter(
-      (post) =>
-        !predefinedFilters?.length || post.categories?.some((category) => predefinedFilters.some((filter) => filter._id === category._id)),
-    )
-    // filter by selected category
-    .filter((post) => selected === 'All' || post.categories?.some((category) => category._id === selected));
+  const filtered = FilterPosts(posts);
 
   if (!filtered.length) {
     return <div>No posts found...</div>;
   }
-
   return (
     <ul {...props}>
       {filtered?.map((post) => (
@@ -41,4 +23,33 @@ export default function List({
       ))}
     </ul>
   );
+}
+
+export function FilterPosts(posts: Sanity.BlogPost[]) {
+  const { category, author } = useBlogFilters();
+
+  return posts.filter((post) => {
+    // 1) Filter by category and author
+    if (category !== 'All' && author) {
+      return (
+        post.author &&
+        // Check if the main or sub category _id matches
+        (post.category?._id === category || post.subcategory?._id === category)
+      );
+    }
+
+    // 2) Filter by category only
+    if (category !== 'All') {
+      return post.category?._id === category || post.subcategory?._id === category;
+    }
+
+    // 3) Filter by author only
+    if (author) {
+      return post.author;
+      // You could do something more specific like post.author?._id === author
+    }
+
+    // 4) No filters -> return all
+    return true;
+  });
 }

@@ -25,6 +25,16 @@ export default defineType({
       validation: (Rule) => Rule.required().error('A title is required.'),
     }),
     defineField({
+      name: 'backgroundColor',
+      type: 'color',
+      title: 'Background Color',
+      description: 'Choose a background color for the blog header.',
+      options: {
+        disableAlpha: true, // Set to true if you only want solid colors
+      },
+      group: 'options',
+    }),
+    defineField({
       name: 'heroImage',
       type: 'image',
       title: 'Hero Image',
@@ -46,25 +56,41 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'authors',
-      type: 'array',
-      of: [
-        {
-          type: 'reference',
-          to: [{ type: 'person' }],
-        },
-      ],
+      name: 'author',
+      type: 'reference',
+      to: [{ type: 'person' }],
       group: 'content',
     }),
     defineField({
-      name: 'categories',
-      type: 'array',
-      of: [
-        {
-          type: 'reference',
-          to: [{ type: 'blog.category' }],
+      name: 'category',
+      type: 'reference',
+      to: [{ type: 'blog.category' }],
+      title: 'Category',
+      description: 'Select the main category for this post.',
+      validation: (Rule) => Rule.required().error('A category is required.'),
+      group: 'content',
+    }),
+    defineField({
+      name: 'subcategory',
+      type: 'reference',
+      to: [{ type: 'blog.category' }],
+      title: 'Subcategory',
+      description: 'Select a subcategory from the chosen category.',
+      options: {
+        filter: ({ document }) => {
+          if (!document?.category) {
+            return {
+              filter: 'false', // This prevents selection if no category is chosen
+            };
+          }
+          return {
+            filter: 'parentCategory._ref == $categoryId',
+            // @ts-expect-error unknown err
+            params: { categoryId: document.category._ref },
+          };
         },
-      ],
+      },
+      validation: (Rule) => Rule.required().error('A subcategory is required.'),
       group: 'content',
     }),
     defineField({

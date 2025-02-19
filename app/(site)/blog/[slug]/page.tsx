@@ -40,11 +40,20 @@ async function getPost(params: Props['params']) {
 				style,
 				'text': pt::text(@)
 			},
-			categories[]-> {
-        title,
-        slug
+			category-> { 
+        title, 
+        slug 
       },
-      authors[]->,
+      subcategory-> { 
+        title, 
+        slug 
+      },
+      'backgroundColor': backgroundColor.hex,
+      author-> {
+        ...,
+        name,
+        image
+      },
 			metadata {
 				...,
 				'ogimage': image.asset->url + '?w=1200'

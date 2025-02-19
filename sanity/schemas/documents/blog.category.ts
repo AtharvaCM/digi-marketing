@@ -3,7 +3,7 @@ import { defineField, defineType } from 'sanity';
 
 export default defineType({
   name: 'blog.category',
-  title: 'Blog category',
+  title: 'Blog Category',
   type: 'document',
   icon: VscTag,
   fields: [
@@ -19,6 +19,13 @@ export default defineType({
         source: 'title',
       },
       validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'parentCategory',
+      type: 'reference',
+      to: [{ type: 'blog.category' }], // Allows self-referencing
+      title: 'Parent Category',
+      description: 'Select a parent category to make this a subcategory',
     }),
   ],
 });
