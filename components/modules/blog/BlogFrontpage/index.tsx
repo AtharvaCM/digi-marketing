@@ -26,11 +26,13 @@ export default async function BlogFrontpage({
 			_id,
 			featured,
 			metadata,
-      category-> { 
+      category-> {
+        _id,
         title, 
         slug 
       },
-      subcategory-> { 
+      subcategory-> {
+        _id,
         title, 
         slug 
       },

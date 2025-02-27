@@ -1,6 +1,5 @@
 @supports (anchor-name: --a) {
   .list {
-    gap: 0;
     &::before {
       content: '';
       position: absolute;
