@@ -9,7 +9,6 @@ import Author from './Author';
 
 export default function PostPreviewLarge({ post }: Readonly<{ post: Sanity.BlogPost }>) {
   if (!post) return null;
-  console.log('post: ', post);
 
   return (
     <Link className="group grid items-center gap-x-8 gap-y-4 md:grid-cols-2" href={resolveUrl(post, { base: false })}>
