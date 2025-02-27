@@ -45,7 +45,7 @@ export default function TableOfContents({
   }, [headings]);
 
   return (
-    <details className="accordion max-lg:bg-neutral-100 max-lg:p-3" open>
+    <details className="accordion p-3 max-lg:bg-neutral-100 max-lg:p-3" open>
       <summary className="font-bold">Table of Contents</summary>
       <TableOfContentsList headings={headings} />
     </details>
