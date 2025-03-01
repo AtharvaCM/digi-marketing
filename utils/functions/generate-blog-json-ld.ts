@@ -12,7 +12,7 @@ export function generateBlogJsonLd(post: Sanity.BlogPost): WithContext<BlogPosti
       '@type': 'WebPage',
       '@id': `${BASE_URL}/blog/${post.metadata.slug.current}`,
     },
-    headline: post.metadata.title,
+    headline: post.metadata.title ?? '',
     description: post.metadata.description ?? '',
     datePublished: post.publishDate,
     dateModified: post.publishDate,
