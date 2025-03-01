@@ -8,11 +8,13 @@ import Filter from './Filter';
 import css from './FilterList.module.css';
 
 export default async function FilterList() {
+  // Fetch categories that do not have a parentCategory set
   const categories = await sanityFetch<Sanity.BlogCategory[]>({
     query: groq`*[
-			_type == 'blog.category' &&
-			count(*[_type == 'blog.post' && references(^._id)]) > 0
-		]|order(title)`,
+      _type == 'blog.category' &&
+      !defined(parentCategory) &&
+      count(*[_type == 'blog.post' && references(^._id)]) > 0
+    ] | order(title)`,
   });
 
   if (!categories) return null;

@@ -38,7 +38,7 @@ export function FilterPosts(posts: Sanity.BlogPost[]) {
       );
     }
 
-    // 2) Filter by category only
+    // 2) Filter by category or subcategory only
     if (category !== 'All') {
       return post.category?._id === category || post.subcategory?._id === category;
     }

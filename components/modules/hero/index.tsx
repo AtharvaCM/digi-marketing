@@ -46,17 +46,17 @@ export default async function Hero({
       {bgType === 'image' && bgImage?.asset && (
         <picture className={cn(bgImage.overlay && styles['d-section__picture'])}>
           <Source image={bgImageMobile} imageWidth={1200} />
-          <Img className="size-full max-h-fold object-cover" image={bgImage} imageWidth={1800} draggable={false} />
+          <Img className="size-full object-cover" image={bgImage} imageWidth={1800} draggable={false} />
         </picture>
       )}
 
       {bgType === 'video' && <HeroBgVideo bgVideo={bgVideo} bgVideoThumbnail={bgVideoThumbnail} />}
 
       {content && (
-        <div className="section flex w-full flex-col">
+        <div className="section flex w-full flex-col z-10">
           <div
             className={cn(
-              'richtext relative isolate max-w-xl [&_:is(h1,h2)]:text-balance',
+              'richtext relative isolate max-w-xl [&_:is(h1,h2)]:text-balance [&_*:is(h1)]:[text-shadow:0_0_7px_var(--blue-9)]',
               bgImage?.asset && 'text-shadow',
               {
                 'mb-8': stegaClean(alignItems) === 'start',
@@ -71,9 +71,9 @@ export default async function Hero({
             )}
             style={{ textAlign: stegaClean(textAlign) }}
           >
-            <Pretitle className={cn((hasImage || bgType === 'video') && 'text-background/70')}>{pretitle}</Pretitle>
+            <Pretitle className={cn((hasImage || bgType === 'video') && 'text-background/70')}>{stegaClean(pretitle)}</Pretitle>
 
-            <PortableText value={content} />
+            <PortableText value={stegaClean(content)} />
 
             <CTAList
               ctas={ctas}

@@ -36,16 +36,16 @@ const HeroBgVideo = ({ bgVideo, bgVideoThumbnail }: Props) => {
   const hasVideo = !!videoUrl;
 
   return (
-    <>
+    <div className="h-[100svh]">
       {!videoLoaded && bgVideoThumbnail?.asset && (
         <picture className={cn(bgVideoThumbnail.overlay && styles['d-section__picture'])}>
-          <Img className="size-full max-h-fold object-cover" image={bgVideoThumbnail} imageWidth={1800} draggable={false} />
+          <Img className="size-full object-cover" image={bgVideoThumbnail} imageWidth={1800} draggable={false} loading="eager" />
         </picture>
       )}
       {hasVideo && (
-        <div className={cn(bgVideo?.overlay && styles['d-section__video-wrapper'], 'w-full h-[100svh] max-h-fold relative')}>
+        <div className={cn(bgVideo?.overlay && styles['d-section__video-wrapper'], 'w-full h-[100svh] relative')}>
           <video
-            className={cn('absolute size-full max-h-fold object-cover')}
+            className={cn('absolute size-full object-cover')}
             autoPlay
             loop
             muted
@@ -57,7 +57,7 @@ const HeroBgVideo = ({ bgVideo, bgVideoThumbnail }: Props) => {
           </video>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

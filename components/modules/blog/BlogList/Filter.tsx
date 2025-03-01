@@ -1,5 +1,6 @@
 'use client';
 
+import { Button } from '@/components/ui/button';
 import { usePageState } from '@/lib/usePagination';
 import { cn } from '@/lib/utils';
 
@@ -12,14 +13,15 @@ export default function Filter({ label, value = 'All' }: Readonly<{ label: strin
   const { setPage } = usePageState();
 
   return (
-    <button
-      className={cn(css.filter, 'py-1!', category === value ? 'action' : 'ghost border border-transparent')}
+    <Button
+      className={cn(css.filter, 'py-1!')}
+      variant={category === value ? 'secondary' : 'link'}
       onClick={() => {
         setCategory(value);
         setPage(1);
       }}
     >
       <Category label={label} />
-    </button>
+    </Button>
   );
 }

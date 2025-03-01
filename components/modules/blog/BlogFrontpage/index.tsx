@@ -26,11 +26,13 @@ export default async function BlogFrontpage({
 			_id,
 			featured,
 			metadata,
-      category-> { 
+      category-> {
+        _id,
         title, 
         slug 
       },
-      subcategory-> { 
+      subcategory-> {
+        _id,
         title, 
         slug 
       },
@@ -42,7 +44,7 @@ export default async function BlogFrontpage({
   const [firstPost, ...otherPosts] = stegaClean(mainPost) === 'featured' ? sortFeaturedPosts(posts) : posts;
 
   return (
-    <section className="section max-w-screen-2xl mx-auto space-y-12 px-8">
+    <section className="section max-w-screen-2xl mx-auto space-y-12 px-8 mt-[calc(var(--header-height))]">
       <PostPreviewLarge post={firstPost} />
 
       <hr />

@@ -48,7 +48,7 @@ export default function PostContent({ post, ...props }: Readonly<{ post?: Sanity
 
       <div className={cn('max-w-screen-xl mx-auto section grid gap-8', showTOC && 'xl:grid-cols-[auto,1fr]')}>
         {showTOC && (
-          <aside className="xl:sticky-below-header mx-auto w-full max-w-lg self-start [--offset:1rem] xl:w-[250px]">
+          <aside className="xl:sticky-below-header mx-auto w-full max-w-[710] self-start [--offset:1rem] xl:w-[250px]">
             <TableOfContents headings={post.headings} />
           </aside>
         )}
