@@ -5,14 +5,23 @@ import Modules from '@/components/modules';
 import { client } from '@/sanity/lib/client';
 import { sanityFetch } from '@/sanity/lib/fetch';
 import { modulesQuery } from '@/sanity/lib/queries';
+import { generateBlogJsonLd } from '@/utils/functions/generate-blog-json-ld';
 import processMetadata from '@/utils/functions/process-metadata';
 
 export default async function Page({ params }: Readonly<Props>) {
   const page = await getPageTemplate();
   const post = await getPost(params);
+  const jsonLdSchema = generateBlogJsonLd(post);
 
   if (!page || !post) notFound();
-  return <Modules modules={page?.modules} page={page} post={post} />;
+
+  return (
+    <>
+      <Modules modules={page?.modules} page={page} post={post} />
+      {/* JSON+LD BlogPosting Schema */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdSchema) }} />
+    </>
+  );
 }
 
 export async function generateMetadata({ params }: Props) {
