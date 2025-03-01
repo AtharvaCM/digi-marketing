@@ -1,6 +1,6 @@
 import { BlogPosting, WithContext } from 'schema-dts';
 
-import { urlFor } from '@/sanity/lib/image';
+import { urlForImage } from '@/sanity/lib/image';
 
 import { BASE_URL } from '../constants';
 
@@ -19,7 +19,7 @@ export function generateBlogJsonLd(post: Sanity.BlogPost): WithContext<BlogPosti
     author: {
       '@type': 'Person',
       name: post.author?.name ?? 'Unknown',
-      image: post.author?.image ? urlFor(post.author.image).url() : undefined,
+      image: post.author?.image ? urlForImage(post.author.image) : undefined,
     },
     publisher: {
       '@type': 'Organization',
@@ -29,7 +29,7 @@ export function generateBlogJsonLd(post: Sanity.BlogPost): WithContext<BlogPosti
         url: `${BASE_URL}/logo.png`,
       },
     },
-    image: urlFor(post.heroImage).url() ?? undefined,
+    image: urlForImage(post.heroImage) ?? undefined,
     url: `${BASE_URL}/blog/${post.metadata.slug.current}`,
     isPartOf: {
       '@type': 'Blog',
