@@ -244,9 +244,11 @@
   }
 
   .link {
-    text-decoration: underline;
-
+    @apply text-blue-11;
     &:hover {
+      @apply transition-all;
+      @apply underline;
+      text-underline-offset: 2px;
       text-decoration-thickness: 2px;
     }
   }
