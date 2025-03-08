@@ -101,7 +101,7 @@ function TableOfContentsItem({ text, style }: Readonly<{ text: string; style: st
     <li className="transition-all" data-toc-item={slug(text)}>
       <a
         className={cn(
-          'block py-1 hover:underline',
+          'block py-1 hover:underline pr-1 font-semibold text-slate-600',
           style === 'h2' && 'pl-4',
           style === 'h3' && 'pl-6',
           style === 'h4' && 'pl-8',
@@ -110,7 +110,7 @@ function TableOfContentsItem({ text, style }: Readonly<{ text: string; style: st
         )}
         href={`#${slug(text)}`}
       >
-        {text}
+        {stegaClean(text)}
       </a>
     </li>
   );
