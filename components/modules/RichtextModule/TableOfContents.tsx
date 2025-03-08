@@ -1,5 +1,6 @@
 'use client';
 
+import { stegaClean } from 'next-sanity';
 import { useEffect, useRef } from 'react';
 
 import { cn, slug } from '@/lib/utils';
@@ -30,9 +31,10 @@ export default function TableOfContents({
 
     // Attach observer to each heading
     headings.forEach(({ text }) => {
-      const target = document.getElementById(slug(text));
+      const cleanText = stegaClean(text);
+      const target = document.getElementById(slug(cleanText));
       if (!target) return;
-      target.setAttribute('data-heading-text', text); // For easy lookups later
+      target.setAttribute('data-heading-text', cleanText); // For easy lookups later
       observer.observe(target);
     });
 

@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { PortableText } from '@portabletext/react';
+import { stegaClean } from '@sanity/client/stega';
 
 import { cn } from '@/lib/utils';
 
@@ -42,7 +43,7 @@ const components = {
 export default function Content({ value, className, children }: { value: any } & React.ComponentProps<'div'>) {
   return (
     <div className={cn('richtext w-full space-y-[1em] [&>:first-child]:!mt-0', className)}>
-      <PortableText value={value} components={components} />
+      <PortableText value={stegaClean(value)} components={components} />
       {children}
     </div>
   );
