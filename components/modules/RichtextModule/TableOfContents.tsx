@@ -90,7 +90,7 @@ function handleIntersections(entries: IntersectionObserverEntry[]) {
 ---------------------------------------- */
 function TableOfContentsList({ headings }: Readonly<{ headings?: Heading[] }>) {
   return (
-    <ol className="anim-fade-to-b mt-2 leading-tight">
+    <ol className="anim-fade-to-b mt-2 leading-tight xl:border-r">
       {headings?.map(({ text, style, _key }) => <TableOfContentsItem key={_key} text={text} style={style} />)}
     </ol>
   );
@@ -98,7 +98,7 @@ function TableOfContentsList({ headings }: Readonly<{ headings?: Heading[] }>) {
 
 function TableOfContentsItem({ text, style }: Readonly<{ text: string; style: string }>) {
   return (
-    <li className="border-l transition-all" data-toc-item={slug(text)}>
+    <li className="transition-all" data-toc-item={slug(text)}>
       <a
         className={cn(
           'block py-1 hover:underline',
