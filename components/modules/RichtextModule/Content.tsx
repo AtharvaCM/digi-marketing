@@ -18,7 +18,7 @@ const HeadingComponent = (as: 'h2' | 'h3' | 'h4' | 'h5' | 'h6') => {
 };
 
 const BlockquoteComponent = ({ children }: { children?: React.ReactNode }) => (
-  <blockquote className="border-l-2 pl-4">
+  <blockquote className="rounded-xl px-4 py-6 bg-[--blue-3] h4 text-center">
     <p>{children}</p>
   </blockquote>
 );
