@@ -225,7 +225,7 @@
   }
 
   .text-gradient {
-    @apply bg-gradient-to-br from-accent/5 to-accent bg-clip-text text-transparent;
+    @apply bg-gradient-to-br from-accent/5 to-accent-foreground bg-clip-text text-transparent;
   }
 
   /* ctas, links */
@@ -267,10 +267,6 @@
 
   .richtext {
     @apply space-y-2 leading-relaxed;
-
-    & :is(h1, h2, h3, h4, h5, h6) strong {
-      @apply text-gradient;
-    }
 
     & h1 {
       @apply h1;
