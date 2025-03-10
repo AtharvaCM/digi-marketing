@@ -1,5 +1,6 @@
 'use client';
 
+import { stegaClean } from 'next-sanity';
 import { useEffect, useRef } from 'react';
 
 import { cn, slug } from '@/lib/utils';
@@ -30,9 +31,10 @@ export default function TableOfContents({
 
     // Attach observer to each heading
     headings.forEach(({ text }) => {
-      const target = document.getElementById(slug(text));
+      const cleanText = stegaClean(text);
+      const target = document.getElementById(slug(cleanText));
       if (!target) return;
-      target.setAttribute('data-heading-text', text); // For easy lookups later
+      target.setAttribute('data-heading-text', cleanText); // For easy lookups later
       observer.observe(target);
     });
 
@@ -88,7 +90,7 @@ function handleIntersections(entries: IntersectionObserverEntry[]) {
 ---------------------------------------- */
 function TableOfContentsList({ headings }: Readonly<{ headings?: Heading[] }>) {
   return (
-    <ol className="anim-fade-to-b mt-2 leading-tight">
+    <ol className="anim-fade-to-b mt-2 leading-tight xl:border-r">
       {headings?.map(({ text, style, _key }) => <TableOfContentsItem key={_key} text={text} style={style} />)}
     </ol>
   );
@@ -96,10 +98,10 @@ function TableOfContentsList({ headings }: Readonly<{ headings?: Heading[] }>) {
 
 function TableOfContentsItem({ text, style }: Readonly<{ text: string; style: string }>) {
   return (
-    <li className="border-l transition-all" data-toc-item={slug(text)}>
+    <li className="transition-all" data-toc-item={slug(text)}>
       <a
         className={cn(
-          'block py-1 hover:underline',
+          'block py-1 hover:underline pr-1 font-semibold text-slate-600',
           style === 'h2' && 'pl-4',
           style === 'h3' && 'pl-6',
           style === 'h4' && 'pl-8',
@@ -108,7 +110,7 @@ function TableOfContentsItem({ text, style }: Readonly<{ text: string; style: st
         )}
         href={`#${slug(text)}`}
       >
-        {text}
+        {stegaClean(text)}
       </a>
     </li>
   );

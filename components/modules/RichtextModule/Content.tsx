@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { PortableText } from '@portabletext/react';
+import { stegaClean } from '@sanity/client/stega';
 
 import { cn } from '@/lib/utils';
 
@@ -17,7 +18,7 @@ const HeadingComponent = (as: 'h2' | 'h3' | 'h4' | 'h5' | 'h6') => {
 };
 
 const BlockquoteComponent = ({ children }: { children?: React.ReactNode }) => (
-  <blockquote className="border-l-2 pl-4">
+  <blockquote className="rounded-xl px-4 py-6 bg-[--blue-3] h4 text-center">
     <p>{children}</p>
   </blockquote>
 );
@@ -42,7 +43,7 @@ const components = {
 export default function Content({ value, className, children }: { value: any } & React.ComponentProps<'div'>) {
   return (
     <div className={cn('richtext w-full space-y-[1em] [&>:first-child]:!mt-0', className)}>
-      <PortableText value={value} components={components} />
+      <PortableText value={stegaClean(value)} components={components} />
       {children}
     </div>
   );
