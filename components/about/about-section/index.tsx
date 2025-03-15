@@ -14,11 +14,12 @@ export const AboutSection: FC<IAboutSectionProps> = (_props) => (
     <Box className={cx(styles['d-section__container'])}>
       <Box className={cx(styles['d-section__content'])}>
         <Text size={'5'} as="div" mb={'4'}>
-          <Text weight={'bold'}>Digital Marketing</Text> and <Text weight={'bold'}>3D Animation</Text> companies are popping up like wild
-          mushrooms growing in the monsoon. However, when it comes to delivering results, only a handful of companies are capable enough.
-          Although it looks simple, digital marketing is not everyone’s cup of tea. It is a web of intricately woven tools that keep
-          prospective clients and existing ones engaged with your business to ensure a winning edge over your competitors.
+          <Text weight={'bold'}>Digital Marketing</Text> is not just about ads and social posts It&apos;s a strategic system that fuels
+          growth and sets you apart from the crowd. In an ever-multiplying world of digital marketing agencies, it is results that are the
+          true differentiator. Digital marketing is not a game of guesswork, it&apos;s a well-thought-out web of tools, creativity, and
+          strategy designed to drive success. Partner with experts who deliver, not promises.
         </Text>
+        {/*  */}
         <Text size={'5'} as="div" mb={'4'}>
           We design your company website, do{' '}
           <Text weight={'bold'} color="blue">
@@ -36,12 +37,13 @@ export const AboutSection: FC<IAboutSectionProps> = (_props) => (
           <Text weight={'bold'} color="blue">
             Write & Post Blogs
           </Text>
-          ,{' '}
+          , create{' '}
           <Text weight={'bold'} color="blue">
-            Develop Three-Dimensional Websites
+            Engaging Websites
           </Text>{' '}
           that grabs eyeballs, etc. Through a strategic mix of online mediums, we deliver you the expected results.
         </Text>
+        {/*  */}
         <Text size={'5'} as="div" mb={'4'}>
           Our most <Text weight={'bold'}>Experienced</Text> and <Text weight={'bold'}>Skilled Professionals</Text> ensure that the online
           presence of your business through various tools and promotion of business on the internet will deliver consistent{' '}
@@ -50,7 +52,7 @@ export const AboutSection: FC<IAboutSectionProps> = (_props) => (
           </Text>
         </Text>
         <Text size={'5'} as="div">
-          Since the year 2023, we have been serving the corporate sector by providing all{' '}
+          We have been serving the corporate sector by providing all{' '}
           <Text color="blue" weight={'medium'}>
             Online Marketing Solutions
           </Text>{' '}

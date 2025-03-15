@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { stegaClean } from 'next-sanity';
 
 import { BASE_URL, vercelPreview } from '@/sanity/env';
 import { processUrl } from '@/sanity/lib/url';
@@ -8,7 +9,16 @@ export default async function processMetadata(page: Sanity.Page | Sanity.BlogPos
   const site = await getSiteData();
 
   // Extract metadata fields with defaults/fallbacks
-  const { title, description, keywords = [], canonical, authors = [], openGraph: pageOg = {}, noIndex, ogimage } = page.metadata;
+  const {
+    title,
+    description,
+    keywords = [],
+    canonical,
+    authors = [],
+    openGraph: pageOg = {},
+    noIndex,
+    ogimage,
+  } = stegaClean(page.metadata);
 
   const url = processUrl(page);
   const referrer = (page.metadata.referrer as Metadata['referrer']) ?? 'origin-when-cross-origin';

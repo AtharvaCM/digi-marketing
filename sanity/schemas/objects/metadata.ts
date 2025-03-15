@@ -45,9 +45,10 @@ export default defineType({
     }),
     defineField({
       name: 'image',
+      type: 'image',
       title: 'Image',
       description: 'Used for social sharing previews',
-      type: 'image',
+      validation: (Rule) => Rule.required().error('The Image is required.'),
       options: {
         hotspot: true,
       },
