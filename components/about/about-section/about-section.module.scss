@@ -1,4 +1,5 @@
 .d-section {
+  @apply mt-[--var(--header-height)];
   &__container {
     @apply flex;
     @apply flex-col-reverse;
