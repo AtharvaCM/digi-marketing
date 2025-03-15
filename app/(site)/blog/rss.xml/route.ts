@@ -50,7 +50,7 @@ export async function GET() {
 
   posts.forEach((post) =>
     feed.addItem({
-      title: escapeHTML(post.metadata.title),
+      title: post.metadata?.title ? escapeHTML(post.metadata.title) : escapeHTML(post.title ?? 'Untitled'),
       description: post.metadata.description,
       id: processUrl(post),
       link: processUrl(post),

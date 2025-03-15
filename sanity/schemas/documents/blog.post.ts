@@ -127,6 +127,12 @@ export default defineType({
       name: 'metadata',
       type: 'metadata',
       group: 'seo',
+      // @ts-expect-error no type for self doc
+      initialValue: (document) => ({
+        title: document?.title ?? 'Untitled Post',
+        description: 'No description provided yet!',
+        image: document?.heroImage,
+      }),
     }),
   ],
   preview: {
