@@ -1,28 +1,38 @@
 import { TfiLayoutCtaCenter } from 'react-icons/tfi';
 import { defineField, defineType } from 'sanity';
 
-import { getBlockText } from '../../utils';
+import { getBlockText } from '@/sanity/utils';
 
 export default defineType({
   name: 'hero.saas',
   title: 'Hero (SaaS)',
   icon: TfiLayoutCtaCenter,
   type: 'object',
+  groups: [{ name: 'content', default: true }, { name: 'image' }, { name: 'options' }],
   fields: [
+    defineField({
+      name: 'uid',
+      title: 'Unique Identifier',
+      type: 'uid',
+      group: 'options',
+    }),
     defineField({
       name: 'pretitle',
       type: 'string',
+      group: 'content',
     }),
     defineField({
       name: 'content',
       type: 'array',
-      of: [{ type: 'block' }],
+      of: [{ type: 'block' }, { type: 'custom-html' }],
+      group: 'content',
     }),
     defineField({
       name: 'ctas',
       title: 'Call-to-actions',
       type: 'array',
       of: [{ type: 'cta' }],
+      group: 'content',
     }),
     defineField({
       name: 'image',
@@ -30,6 +40,7 @@ export default defineType({
       options: {
         hotspot: true,
       },
+      group: 'image',
       fields: [
         defineField({
           name: 'alt',
@@ -44,8 +55,8 @@ export default defineType({
           name: 'loading',
           type: 'string',
           options: {
-            layout: 'radio',
             list: ['lazy', 'eager'],
+            layout: 'radio',
           },
           initialValue: 'lazy',
         }),

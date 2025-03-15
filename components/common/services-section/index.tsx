@@ -5,8 +5,8 @@ import cx from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import rawCuratedServices from '@/assets/curated-services.json';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
+import rawCuratedServices from '@/public/assets/curated-services.json';
 import { useScrollTriggerAnimation } from '@/utils/hooks/use-scroll-trigger-animation';
 
 import styles from './services-section.module.scss';

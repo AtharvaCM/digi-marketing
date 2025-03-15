@@ -12,7 +12,7 @@ Always prefix both branch names and PR names with the JIRA issue key.
     - Worked on a feature - `feat/np-1234`
     - Fixed a bug - `fix/np-2345`
 - Use lowercases only on branch names
-- *Do not prefix/suffix the branch name with any other text content*
+- _Do not prefix/suffix the branch name with any other text content_
 
 ### Commit Messages
 
@@ -31,7 +31,7 @@ Always prefix both branch names and PR names with the JIRA issue key.
 ### Pull Requests
 
 - Add the title/summary to the PR name.
-- Pull request names must follow the convention exactly *and including* the square brackets:
+- Pull request names must follow the convention exactly _and including_ the square brackets:
   - Defects: `[JIRA-ISSUEKEY] [SEVERITY] [SUMMARY]`
     - Example: `[MP2-1234] [P1] Fix GraphQL errors in GET_NEWS query`
   - Feature: `[JIRA-ISSUEKEY] [FEAT] [SUMMARY]`
@@ -65,4 +65,4 @@ Always prefix both branch names and PR names with the JIRA issue key.
 - Check with **Atharva Mahamuni**, the variable may require addition to `Vercel`, `Sanity` and/or `GitHub`
 - Update `.env-example` and add your variable with a 1 line comment describing its usage and purpose, for example:
   - `# NEXT_PUBLIC_DEPLOY_ENV` - One of `dev`, `staging` or `prod`, used by the app to infer the current deployment environment
-- ***Never prefix `NEXT_PUBLIC_` to variables that contain sensitive values such as tokens/credentials***
+- **_Never prefix `NEXT_PUBLIC_` to variables that contain sensitive values such as tokens/credentials_**

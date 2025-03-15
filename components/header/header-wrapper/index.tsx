@@ -18,7 +18,9 @@ export default function HeaderWrapper({ className, children }: Readonly<React.HT
 
   const shouldApplyWhiteColor = (pathname: string) => {
     const paths = ['/', '/contact'];
-    return paths.includes(pathname);
+    const regexPatterns = [/^\/blog\/.*/]; // Matches anything starting with "/blog/"
+
+    return paths.includes(pathname) || regexPatterns.some((regex) => regex.test(pathname));
   };
 
   // set --header-height

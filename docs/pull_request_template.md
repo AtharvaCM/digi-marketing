@@ -2,7 +2,7 @@
 
 ## Change Type
 
-*Put an `x` in all the boxes that apply, surround inapplicable with **`~~`** to strikethrough*
+_Put an `x` in all the boxes that apply, surround inapplicable with **`~~`** to strikethrough_
 
 - [ ] Bugfix (non-breaking change which fixes an issue)
 - [ ] Feature (non-breaking change which adds functionality)
@@ -10,7 +10,7 @@
 
 ## Pull Request Checklist
 
-*Put an `x` in all the boxes that apply, surround inapplicable with **`~~`** to strikethrough*
+_Put an `x` in all the boxes that apply, surround inapplicable with **`~~`** to strikethrough_
 
 - [ ] I have read and followed the [Contributing Guidelines](https://github.com/AtharvaCM/digi-marketing/blob/develop/CONTRIBUTING.md).
 - [ ] New page route under `/app` has been added.

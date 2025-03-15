@@ -6,11 +6,11 @@ import { cn } from '@/lib/utils';
 import { processUrl } from '@/sanity/lib/url';
 
 export default function CTALink({ link, style, className, children, ...rest }: Sanity.CTA & React.HTMLAttributes<HTMLAnchorElement>) {
-  const linkContent = children || link?.label || link?.internal?.title || link?.external;
-  const ariaLabel = link?.label ?? link?.internal?.title ?? link?.external ?? 'Link';
+  const linkContent = stegaClean(children || link?.label || link?.internal?.title || link?.external);
+  const ariaLabel = stegaClean(link?.label ?? link?.internal?.title ?? link?.external ?? 'Link');
 
   const props = {
-    className: cn(buttonVariants({ variant: style ?? 'link', size: 'link' }), className) || undefined,
+    className: cn(buttonVariants({ variant: style ?? 'link', size: 'link' }), className),
     children: linkContent,
     'aria-label': ariaLabel,
     ...rest,

@@ -1,4 +1,5 @@
-import { VscSymbolClass } from 'react-icons/vsc';
+import { IoShareSocialOutline } from 'react-icons/io5';
+import { VscLayoutMenubar, VscLayoutPanelLeft, VscSymbolClass } from 'react-icons/vsc';
 import { defineField, defineType } from 'sanity';
 
 import { count } from '../../utils';
@@ -25,9 +26,20 @@ export default defineType({
       title: 'title',
       items: 'items',
     },
-    prepare: ({ title, items }) => ({
-      title,
-      subtitle: count(items),
-    }),
+    prepare: ({ title, items }) => {
+      const t = title.toLowerCase();
+
+      return {
+        title,
+        subtitle: count(items),
+        media: t.includes('social')
+          ? IoShareSocialOutline
+          : t.includes('header')
+            ? VscLayoutMenubar
+            : t.includes('footer')
+              ? VscLayoutPanelLeft
+              : null,
+      };
+    },
   },
 });

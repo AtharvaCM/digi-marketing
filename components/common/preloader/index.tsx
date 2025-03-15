@@ -6,7 +6,7 @@ import { gsap } from 'gsap';
 import Lottie from 'lottie-react';
 import * as React from 'react';
 
-import lottieLoaderLight from '@/assets/lottie-loader-light.json';
+import lottieLoaderLight from '@/public/assets/lottie-loader-light.json';
 import { useImagesLoaded } from '@/utils/hooks/use-images-loaded';
 import { useVideosLoaded } from '@/utils/hooks/use-videos-loaded';
 
