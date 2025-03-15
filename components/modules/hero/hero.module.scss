@@ -1,0 +1,16 @@
+.d-section {
+  &__picture,
+  &__video-wrapper {
+    @apply relative;
+    &:before {
+      content: '';
+      @apply absolute;
+      @apply top-0;
+      @apply left-0;
+      @apply right-0;
+      @apply bottom-0;
+      background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45));
+      z-index: 1;
+    }
+  }
+}

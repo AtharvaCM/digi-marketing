@@ -1,7 +1,8 @@
 import { VscSymbolKeyword } from 'react-icons/vsc';
 import { defineArrayMember, defineField, defineType } from 'sanity';
 
-import { getBlockText } from '../../utils';
+import { getBlockText } from '@/sanity/utils';
+
 import imageBlock from '../fragments/image-block';
 
 export default defineType({
@@ -15,17 +16,25 @@ export default defineType({
   ],
   fields: [
     defineField({
+      name: 'uid',
+      title: 'Unique Identifier',
+      type: 'uid',
+      group: 'options',
+    }),
+    defineField({
       name: 'content',
       type: 'array',
       of: [
         { type: 'block' },
         imageBlock,
         defineArrayMember({
+          title: 'Code block',
           type: 'code',
           options: {
             withFilename: true,
           },
         }),
+        { type: 'custom-html' },
       ],
       group: 'content',
     }),
@@ -44,6 +53,13 @@ export default defineType({
       },
       hidden: ({ parent }) => !parent.tableOfContents,
       initialValue: 'right',
+      group: 'options',
+    }),
+    defineField({
+      name: 'stretch',
+      type: 'boolean',
+      initialValue: false,
+      hidden: ({ parent }) => parent.tableOfContents,
       group: 'options',
     }),
   ],

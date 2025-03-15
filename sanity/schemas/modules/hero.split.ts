@@ -1,7 +1,7 @@
 import { TfiLayoutMediaLeft } from 'react-icons/tfi';
 import { defineField, defineType } from 'sanity';
 
-import { getBlockText } from '../../utils';
+import { getBlockText } from '@/sanity/utils';
 
 export default defineType({
   name: 'hero.split',
@@ -18,7 +18,7 @@ export default defineType({
     defineField({
       name: 'content',
       type: 'array',
-      of: [{ type: 'block' }],
+      of: [{ type: 'block' }, { type: 'custom-html' }],
       group: 'content',
     }),
     defineField({
@@ -42,14 +42,21 @@ export default defineType({
         defineField({
           name: 'onRight',
           type: 'boolean',
+          description: 'Display to the right of the content on desktop',
+          initialValue: false,
+        }),
+        defineField({
+          name: 'onBottom',
+          type: 'boolean',
+          description: 'Display below the content on mobile',
           initialValue: false,
         }),
         defineField({
           name: 'loading',
           type: 'string',
           options: {
-            layout: 'radio',
             list: ['lazy', 'eager'],
+            layout: 'radio',
           },
           initialValue: 'lazy',
         }),

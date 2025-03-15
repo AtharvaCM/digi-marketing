@@ -1,16 +1,16 @@
 import { Box, Heading, Text } from '@radix-ui/themes';
 import cx from 'classnames';
 import kebabCase from 'lodash/kebabCase';
-import Image from 'next/image';
 import { FC } from 'react';
 
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { useScrollTriggerAnimation } from '@/utils/hooks/use-scroll-trigger-animation';
 
+import Img from '../Img';
 import styles from './service-card.module.scss';
 
 interface IServiceCardProps {
-  imgSrc: string;
+  img: Sanity.Image;
   name: string;
   description: string;
   className?: string;
@@ -20,7 +20,7 @@ interface IServiceCardProps {
 }
 
 const ServiceCard: FC<IServiceCardProps> = (props) => {
-  const { imgSrc, name, description, className, variant = 'vertical', layout = 'normal', color = 'blue' } = props;
+  const { img, name, description, className, variant = 'vertical', layout = 'normal', color = 'blue' } = props;
   const cardWrapperId = `service-card--${kebabCase(name)}`;
 
   const { scrollTriggerRef } = useScrollTriggerAnimation({
@@ -54,7 +54,7 @@ const ServiceCard: FC<IServiceCardProps> = (props) => {
     >
       <Box className={cx(styles['d-container__image-col'])}>
         <AspectRatio ratio={4 / 3}>
-          <Image alt={name} src={imgSrc} layout="fill" className={cx(styles['d-container__image'])} />
+          <Img image={img} className={cx(styles['d-container__image'])} />
         </AspectRatio>
       </Box>
       <Box className={cx(styles['d-container__content-wrapper'])}>

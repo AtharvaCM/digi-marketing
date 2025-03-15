@@ -1,7 +1,7 @@
 import { TfiLayoutGrid2Thumb } from 'react-icons/tfi';
 import { defineArrayMember, defineField, defineType } from 'sanity';
 
-import { count, getBlockText } from '../../utils';
+import { count, getBlockText } from '@/sanity/utils';
 
 export default defineType({
   name: 'flag-list',
@@ -13,6 +13,11 @@ export default defineType({
     { name: 'options', title: 'Options' },
   ],
   fields: [
+    defineField({
+      name: 'pretitle',
+      type: 'string',
+      group: 'content',
+    }),
     defineField({
       name: 'intro',
       type: 'array',

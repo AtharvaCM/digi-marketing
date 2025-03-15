@@ -1,0 +1,7 @@
+@screen lg {
+  .inView:not(.inView ~ .inView) {
+    a {
+      @apply text-black;
+    }
+  }
+}

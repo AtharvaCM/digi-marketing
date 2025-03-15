@@ -11,6 +11,6 @@ describe('Footer Test Suite', () => {
     cy.get('.flex.flex-wrap.items-start.gap-x-12.gap-y-6').find('a').should('have.length', 8);
 
     // Verify the copyright logo and company name present and visible
-    cy.get('.flex.flex-wrap.justify-center.gap-x-6.gap-y-2.p-4.text-sm').should('contain.text', '© 2024 Growth Stats');
+    cy.get('.flex.flex-wrap.justify-center.gap-x-6.gap-y-2.p-4.text-sm').should('contain.text', '© 2025 Growth Stats');
   });
 });

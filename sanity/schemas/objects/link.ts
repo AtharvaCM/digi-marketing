@@ -1,6 +1,8 @@
 import { VscLink } from 'react-icons/vsc';
 import { defineField, defineType } from 'sanity';
 
+import processSlug from '@/sanity/lib/processSlug';
+
 export default defineType({
   name: 'link',
   title: 'Link',
@@ -34,6 +36,7 @@ export default defineType({
     defineField({
       name: 'external',
       type: 'url',
+      placeholder: 'https://example.com',
       validation: (Rule) =>
         Rule.uri({
           scheme: ['http', 'https', 'mailto', 'tel'],
@@ -43,8 +46,9 @@ export default defineType({
     }),
     defineField({
       name: 'params',
-      title: 'URL params',
+      title: 'URL parameters',
       type: 'string',
+      placeholder: 'e.g. #jump-link or ?foo=bar',
       hidden: ({ parent }) => parent?.type !== 'internal',
     }),
   ],
@@ -53,15 +57,13 @@ export default defineType({
       label: 'label',
       _type: 'internal._type',
       title: 'internal.title',
-      slug: 'internal.metadata.slug.current',
-      external: 'external',
+      internal: 'internal.metadata.slug.current',
       params: 'params',
+      external: 'external',
     },
-    prepare: ({ label, _type, title, slug, external, params }) => ({
+    prepare: ({ label, title, _type, internal, params, external }) => ({
       title: label || title,
-      subtitle: [_type === 'blog.post' ? '/blog' : null, external || (slug && (slug === 'index' ? '/' : `/${slug}`)), params]
-        .filter(Boolean)
-        .join(''),
+      subtitle: processSlug({ _type, internal, params, external }),
     }),
   },
 });

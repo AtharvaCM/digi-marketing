@@ -1,47 +1,64 @@
-import { Metadata } from 'next';
+import { NextPage } from 'next';
+import { groq } from 'next-sanity';
 
-import HomePageTemplate from '@/components/templates/home';
-import { BASE_URL } from '@/utils/constants';
+import Modules from '@/components/modules';
+import { sanityFetch } from '@/sanity/lib/fetch';
+import { modulesQuery } from '@/sanity/lib/queries';
+import processMetadata from '@/utils/functions/process-metadata';
 
-export const metadata: Metadata = {
-  title: 'Digital Marketing Agency | Website Design & SEO',
-  description:
-    'Growth Stats provides comprehensive digital marketing solutions including SEO, content development, social media campaigns, and 3D animation. We ensure business growth through our strategic mix of online mediums.',
-  generator: 'Next.js',
-  applicationName: 'Growth Stats',
-  referrer: 'origin-when-cross-origin',
-  keywords: [
-    'Digital Marketing',
-    'SEO',
-    'Content Development',
-    'Social Media Campaigns',
-    '3D Animation',
-    'Business Growth',
-    'Corporate Solutions',
-    'Online Marketing',
-  ],
-  alternates: {
-    canonical: 'https://growthstats.io',
-  },
-  authors: [{ name: 'Growth Stats', url: `${BASE_URL}/` }],
-  openGraph: {
-    title: 'Digital Marketing Agency | Website Design & SEO',
-    description:
-      'Growth Stats provides comprehensive digital marketing solutions including SEO, content development, social media campaigns, and 3D animation. We ensure business growth through our strategic mix of online mediums.',
-    siteName: 'Growth Stats',
-    type: 'website',
-    url: `${BASE_URL}/`,
-    images: [
-      {
-        url: `${BASE_URL}/screenshots/homepage-og.png`,
-        width: 1428,
-        height: 728,
-        alt: 'Growth Stats Digital Marketing Solutions',
-      },
-    ],
-  },
+export async function generateMetadata() {
+  const page = await getPage();
+  return processMetadata(page);
+}
+
+const Page: NextPage = async () => {
+  const page = await getPage();
+
+  return <Modules modules={page?.modules} />;
 };
 
-export default async function Page() {
-  return <HomePageTemplate />;
+export default Page;
+
+// =====================================
+// Helper function
+// =====================================
+
+async function getPage() {
+  const page = await sanityFetch<Sanity.Page>({
+    query: groq`*[_type == 'page' && metadata.slug.current == 'index'][0]{
+      ...,
+      modules[]{ ${modulesQuery} },
+      metadata {
+        title,
+        description,
+        keywords,
+        applicationName,
+        referrer,
+        canonical,
+        authors[] {
+          name,
+          "url": authorUrl
+        },
+        openGraph {
+          title,
+          description,
+          type,
+          "url": canonical,
+          siteName,
+          images[] {
+            "url": image.asset->url + '?w=1200',
+            width,
+            height,
+            alt
+          }
+        }
+      }
+    }`,
+    params: {},
+    tags: ['homepage'],
+  });
+
+  if (!page) throw new Error('Missing "page" document with metadata.slug "index" in Sanity Studio');
+
+  return page;
 }

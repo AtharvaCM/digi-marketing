@@ -1,7 +1,7 @@
 import { BsBarChartSteps } from 'react-icons/bs';
 import { defineField, defineType } from 'sanity';
 
-import { count } from '../../utils';
+import { count } from '@/sanity/utils';
 
 export default defineType({
   name: 'breadcrumbs',
@@ -14,6 +14,12 @@ export default defineType({
       type: 'array',
       of: [{ type: 'link', initialValue: { type: 'internal' } }],
       description: 'Current page is automatically included',
+    }),
+    defineField({
+      name: 'hideCurrent',
+      title: 'Hide current page',
+      type: 'boolean',
+      initialValue: false,
     }),
   ],
   preview: {
