@@ -7,7 +7,7 @@ import { getSiteData } from '@/sanity/utils/get-site-data';
 
 import CTALink from '../cta-link';
 
-export default async function Social({ className }: React.HTMLProps<HTMLDivElement>) {
+export default async function Social({ className }: Readonly<React.HTMLProps<HTMLDivElement>>) {
   const { social } = await getSiteData();
 
   if (!social?.items?.length) return null;

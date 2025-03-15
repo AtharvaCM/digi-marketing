@@ -13,6 +13,7 @@ import styles from './services-section.module.scss';
 
 export interface IServicesSectionProps {
   sectionClassName?: string;
+  id: string;
 }
 
 type TCuratedService = {
@@ -24,9 +25,7 @@ type TCuratedService = {
   src: string;
 };
 
-export default function ServicesSection(props: Readonly<IServicesSectionProps>) {
-  const { sectionClassName } = props;
-
+export default function ServicesSection({ sectionClassName, id }: Readonly<IServicesSectionProps>) {
   // Ensure the icon names are correct in the JSON
   const curatedServices: TCuratedService[] = rawCuratedServices as TCuratedService[];
 
@@ -40,7 +39,7 @@ export default function ServicesSection(props: Readonly<IServicesSectionProps>) 
   });
 
   return (
-    <Section className={cx(styles['d-section'], sectionClassName)}>
+    <Section className={cx(styles['d-section'], sectionClassName)} id={id}>
       <Box className={cx(styles['d-section__container'])}>
         <Heading as="h2" mb={'6'} className={cx(styles['d-section__heading'])} ref={headingScrollTrigger}>
           One Place For{' '}

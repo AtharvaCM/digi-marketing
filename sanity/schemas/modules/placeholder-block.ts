@@ -30,6 +30,7 @@ export default defineType({
         list: [
           { title: 'Home About Section', value: 'home-about-section' },
           { title: 'Services Section', value: 'services-section' },
+          { title: 'Services Hero Section', value: 'services-hero-section' },
           { title: 'Benefits Section', value: 'benefits-section' },
           { title: 'Brand Hero Section', value: 'brand-hero-section' },
           { title: 'Brand About Section', value: 'brand-about-section' },

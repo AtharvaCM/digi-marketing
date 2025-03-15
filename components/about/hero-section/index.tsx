@@ -4,10 +4,12 @@ import { FC } from 'react';
 
 import styles from './hero-section.module.scss';
 
-interface IHeroSectionProps {}
+interface IHeroSectionProps {
+  id: string;
+}
 
-const HeroSection: FC<IHeroSectionProps> = (_props) => (
-  <Section className={cx(styles['d-section'])}>
+const HeroSection: FC<IHeroSectionProps> = ({ id }) => (
+  <Section className={cx(styles['d-section'])} id={id}>
     <Box className={cx(styles['d-section__container'])}>
       <Heading as="h1" className={cx(styles['d-section__title'])}>
         About Growth Stats

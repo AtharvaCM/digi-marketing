@@ -7,11 +7,13 @@ import { AspectRatio } from '@/components/ui/aspect-ratio';
 
 import styles from './about-section.module.scss';
 
-interface IAboutSectionProps {}
+interface IAboutSectionProps {
+  id: string;
+}
 
-export const AboutSection: FC<IAboutSectionProps> = (_props) => (
+export const AboutSection: FC<IAboutSectionProps> = ({ id }) => (
   <Section>
-    <Box className={cx(styles['d-section__container'])}>
+    <Box className={cx(styles['d-section__container'])} id={id}>
       <Box className={cx(styles['d-section__content'])}>
         <Text size={'5'} as="div" mb={'4'}>
           <Text weight={'bold'}>Digital Marketing</Text> is not just about ads and social posts It&apos;s a strategic system that fuels

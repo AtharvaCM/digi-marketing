@@ -9,15 +9,17 @@ import { useScrollTriggerAnimation } from '@/utils/hooks/use-scroll-trigger-anim
 
 import styles from './team-section.module.scss';
 
-interface ITeamSectionProps {}
+interface ITeamSectionProps {
+  id: string;
+}
 
-const TeamSection: FC<ITeamSectionProps> = (_props) => {
+const TeamSection: FC<ITeamSectionProps> = ({ id }) => {
   const { scrollTriggerRef: teamTitleScrollTrigger } = useScrollTriggerAnimation({
     target: '.animate-team',
   });
 
   return (
-    <Section className={cx(styles['d-section'])}>
+    <Section className={cx(styles['d-section'])} id={id}>
       {/* TEAM */}
       <Box className={cx(styles['d-section__team-container'])}>
         <Box className={cx(styles['d-section__team-content'])}>

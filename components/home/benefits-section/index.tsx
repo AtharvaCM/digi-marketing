@@ -6,11 +6,13 @@ import { MdLooksOne } from 'react-icons/md';
 
 import styles from './benefits-section.module.scss';
 
-export interface IBenefitsSectionProps {}
+export interface IBenefitsSectionProps {
+  id: string;
+}
 
-export default function BenefitsSection(_props: IBenefitsSectionProps) {
+export default function BenefitsSection({ id }: IBenefitsSectionProps) {
   return (
-    <Section size={'3'} id="benefits-section" className={cx(styles['d-section'])}>
+    <Section size={'3'} className={cx(styles['d-section'])} id={id}>
       <Box className={cx(styles['d-section__container'])}>
         <Heading as="h3" mb={'6'} size={{ initial: '6', md: '8' }} weight={'light'} className={cx(styles['d-section__heading'])}>
           We Can Improve Your Business Performance And Gain More Customers

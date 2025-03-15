@@ -56,7 +56,7 @@ export default function Modules({
           case 'logo-list':
             return <LogoList {...module} key={module._key} />;
           case 'placeholder-block':
-            return <PlaceholderBlocks {...module} key={module._key} />;
+            return <PlaceholderBlocks {...module} slug={page?.metadata?.slug.current ?? 'default'} key={module._key} />;
           case 'pricing-list':
             return <PricingList {...module} key={module._key} />;
           case 'richtext-module':

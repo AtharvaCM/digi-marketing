@@ -354,6 +354,11 @@
       scroll-snap-align: center;
     }
   }
+
+  /* Placeholder blocks */
+  #services-services-section {
+    background: linear-gradient(0deg, rgba(16, 178, 218, 0.2) 0%, rgba(255, 255, 255, 1) 50%);
+  }
 }
 
 @layer utilities {
