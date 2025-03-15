@@ -38,7 +38,7 @@ export async function GET() {
   const url = processUrl(blog);
 
   const feed = new Feed({
-    title: blog?.title || blog.metadata.title,
+    title: blog?.title ?? blog.metadata.title,
     description: blog.metadata.description,
     link: url,
     id: url,
@@ -48,7 +48,7 @@ export async function GET() {
     generator: 'https://github.com/nuotsu/sanitypress',
   });
 
-  posts.map((post) =>
+  posts.forEach((post) =>
     feed.addItem({
       title: escapeHTML(post.metadata.title),
       description: post.metadata.description,
