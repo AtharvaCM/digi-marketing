@@ -2,6 +2,7 @@
 import { Box, Heading, Section, Text } from '@radix-ui/themes';
 import cx from 'classnames';
 import Lottie from 'lottie-react';
+import { stegaClean } from 'next-sanity';
 import { useEffect, useState } from 'react';
 
 import CTALink from '@/components/common/cta-link';
@@ -33,12 +34,13 @@ export default function ServiceDetailsModule({
   heroAnimationSrc,
 }: Readonly<Partial<IServiceDetailsModuleProps>>) {
   const [animationData, setAnimationData] = useState(null);
+  const cleanHeroAnimationSrc = stegaClean(heroAnimationSrc);
 
   useEffect(() => {
     const loadAnimation = async () => {
-      if (!heroAnimationSrc) return null;
+      if (!cleanHeroAnimationSrc) return null;
       try {
-        const response = await fetch(heroAnimationSrc);
+        const response = await fetch(cleanHeroAnimationSrc);
         if (!response.ok) {
           throw new Error(`Failed to fetch animation: ${response.statusText}`);
         }
@@ -50,7 +52,7 @@ export default function ServiceDetailsModule({
     };
 
     loadAnimation();
-  }, [heroAnimationSrc]);
+  }, [cleanHeroAnimationSrc]);
 
   return (
     <Section className={cx(styles['d-section'])}>

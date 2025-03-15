@@ -4,10 +4,12 @@ import { FC } from 'react';
 
 import styles from './hero-section.module.scss';
 
-interface IServicesHeroSectionProps {}
+interface IServicesHeroSectionProps {
+  id: string;
+}
 
-const ServicesHeroSection: FC<IServicesHeroSectionProps> = () => (
-  <Section className={cx(styles['d-section'])}>
+const ServicesHeroSection: FC<IServicesHeroSectionProps> = ({ id }) => (
+  <Section className={cx(styles['d-section'])} id={id}>
     <Box className={cx(styles['d-section__container'])}>
       <Heading as="h1" mb={'5'} className={cx(styles['d-section__title'])}>
         One Place For Best <Text>Online Marketing Services</Text>

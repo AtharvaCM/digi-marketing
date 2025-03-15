@@ -14,6 +14,7 @@ export async function generateMetadata() {
 const Page: NextPage = async () => {
   const page = await getPage();
 
+  console.log('page?.modules: ', page?.modules);
   return <Modules modules={page?.modules} />;
 };
 

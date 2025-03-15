@@ -8,9 +8,11 @@ import { useScrollTriggerAnimation } from '@/utils/hooks/use-scroll-trigger-anim
 
 import styles from './vision-section.module.scss';
 
-interface IVisionSectionProps {}
+interface IVisionSectionProps {
+  id: string;
+}
 
-export const VisionSection: FC<IVisionSectionProps> = (_props) => {
+export const VisionSection: FC<IVisionSectionProps> = ({ id }) => {
   const { scrollTriggerRef: missionScrolltrigger } = useScrollTriggerAnimation({
     target: '.animate-mission',
     scrollTriggerOptions: { end: 'bottom 20%' },
@@ -27,7 +29,7 @@ export const VisionSection: FC<IVisionSectionProps> = (_props) => {
   });
 
   return (
-    <Section className={cx(styles['d-section'])}>
+    <Section className={cx(styles['d-section'])} id={id}>
       <Box className={cx(styles['d-section__mission-vision-wrapper'])}>
         {/* Mission */}
         <Box className={cx(styles['d-section__mission-container'])} ref={missionScrolltrigger}>

@@ -8,15 +8,17 @@ import { useScrollTriggerAnimation } from '@/utils/hooks/use-scroll-trigger-anim
 
 import styles from './about-section.module.scss';
 
-export interface IAboutSectionProps {}
+export interface IAboutSectionProps {
+  id: string;
+}
 
-export default function AboutSection(_props: IAboutSectionProps) {
+export default function AboutSection({ id }: IAboutSectionProps) {
   const { scrollTriggerRef } = useScrollTriggerAnimation({
     target: '.about-section__about-text',
   });
 
   return (
-    <Section size={'3'} className={cx(styles['d-section'])}>
+    <Section size={'3'} className={cx(styles['d-section'])} id={id}>
       <div className={cx(styles['d-section__container'])}>
         <Box mb={'8'} className="text-center">
           <BannerText

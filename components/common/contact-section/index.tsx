@@ -8,9 +8,11 @@ import { useScrollTriggerAnimation } from '@/utils/hooks/use-scroll-trigger-anim
 
 import styles from './contact-section.module.scss';
 
-export interface IContactSectionProps {}
+export interface IContactSectionProps {
+  id: string;
+}
 
-export default function ContactSection(_props: IContactSectionProps) {
+export default function ContactSection({ id }: Readonly<IContactSectionProps>) {
   const { scrollTriggerRef: sectionScrollTrigger } = useScrollTriggerAnimation({
     target: '.contact-section-elem',
     scrollTriggerOptions: {
@@ -19,7 +21,7 @@ export default function ContactSection(_props: IContactSectionProps) {
   });
 
   return (
-    <Section id="contact-section" className={cx(styles['d-section'])} ref={sectionScrollTrigger}>
+    <Section id={id} className={cx(styles['d-section'])} ref={sectionScrollTrigger}>
       <Box className={cx(styles['d-section__container'])}>
         <Heading as="h2" className={cx(styles['d-section__title'], 'contact-section-elem')}>
           Have A Project In Mind?

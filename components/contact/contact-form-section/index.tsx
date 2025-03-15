@@ -20,9 +20,11 @@ import { toast } from '@/components/ui/use-toast';
 import contactFormSchema from './contact-form.schema';
 import styles from './contact-form-section.module.scss';
 
-interface IContactFormSectionProps {}
+interface IContactFormSectionProps {
+  id: string;
+}
 
-const ContactFormSection: FC<IContactFormSectionProps> = () => {
+const ContactFormSection: FC<IContactFormSectionProps> = ({ id }) => {
   const defaultFormValues = {
     cname: '',
     email: '',
@@ -65,7 +67,7 @@ const ContactFormSection: FC<IContactFormSectionProps> = () => {
   }
 
   return (
-    <Section className={cx(styles['d-section'])}>
+    <Section className={cx(styles['d-section'])} id={id}>
       <div className={cx(styles['d-section__container'])}>
         {/* Form */}
         <Box className={cx(styles['d-section__form-container'])}>

@@ -10,35 +10,42 @@ import ContactFormSection from '@/components/contact/contact-form-section';
 import ContactHeroSection from '@/components/contact/contact-hero-section';
 import HomeAboutSection from '@/components/home/about-section';
 import BenefitsSection from '@/components/home/benefits-section';
+import ServicesHeroSection from '@/components/services/services-hero-section';
 
 type Props = Readonly<
   Partial<{
     type: string;
+    slug: string;
   }>
 >;
 
-const PlaceholderBlocks: FC<Props> = ({ type }) => {
+const PlaceholderBlocks: FC<Props> = ({ type, slug }) => {
+  // Generate unique ID: page-slug + placeholder-block name
+  const id = `${slug}-${type}`.replace(/\s+/g, '-').toLowerCase(); // Convert to kebab-case
+
   switch (type) {
     case 'home-about-section':
-      return <HomeAboutSection />;
+      return <HomeAboutSection id={id} />;
     case 'services-section':
-      return <ServicesSection />;
+      return <ServicesSection id={id} />;
+    case 'services-hero-section':
+      return <ServicesHeroSection id={id} />;
     case 'benefits-section':
-      return <BenefitsSection />;
+      return <BenefitsSection id={id} />;
     case 'brand-hero-section':
-      return <BrandHeroSection />;
+      return <BrandHeroSection id={id} />;
     case 'brand-about-section':
-      return <AboutSection />;
+      return <AboutSection id={id} />;
     case 'brand-vision-section':
-      return <VisionSection />;
+      return <VisionSection id={id} />;
     case 'brand-team-section':
-      return <TeamSection />;
+      return <TeamSection id={id} />;
     case 'contact-section':
-      return <ContactSection />;
+      return <ContactSection id={id} />;
     case 'contact-hero-section':
-      return <ContactHeroSection />;
+      return <ContactHeroSection id={id} />;
     case 'contact-form-section':
-      return <ContactFormSection />;
+      return <ContactFormSection id={id} />;
     default:
       return null;
   }
