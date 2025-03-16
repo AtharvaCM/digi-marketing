@@ -2,7 +2,7 @@ describe('Contact Page Test Suite', () => {
   // Test Case: Verify Contact Page Titles
   it('Should verify the main titles on the Contact page', () => {
     // Visit the Contact page URL
-    cy.visit('https://growthstats.io/contact');
+    cy.visit('/contact');
 
     cy.get('h1').should('contain.text', 'Contact');
     cy.get('h3').contains('GET IN TOUCH');
