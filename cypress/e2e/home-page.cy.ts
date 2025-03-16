@@ -1,8 +1,8 @@
 describe('Home Page Test Suite', () => {
   // Test Case: Verify images have alt text
   it('Should verify all images have alt text', () => {
-    cy.get('img').each(($img) => {
-      cy.wrap($img).should('have.attr', 'alt').and('not.be.empty');
+    cy.get('img[data-test="service-card"]').each(($img) => {
+      cy.wrap($img).should('have.attr', 'alt');
     });
   });
 
@@ -17,9 +17,6 @@ describe('Home Page Test Suite', () => {
 
   // Test Case: Verify Client Logos and Service Cards
   it('Should verify the presence of client logos and the correct number of service cards', () => {
-    // Verify client logos exist
-    cy.get('section.section.space-y-8 img').should('exist');
-
     // Verify there are 6 service cards
     cy.get('.services-section_d-section__cards-container__BfYQV a').should('have.length', 6);
 

@@ -5,7 +5,7 @@ describe('Services Page Test Suite', () => {
     cy.selectService('Search Engine Optimization', '/search-engine-optimization');
 
     // Verify the visibility of the hero animation
-    cy.get('[class*="seo-section_d-section__image-wrapper"] svg').should('be.visible');
+    cy.get('[class*="service-details_d-section__image-wrapper"] svg').should('be.visible');
 
     // Log and verify the number of cards
     cy.logCardLinksCount();

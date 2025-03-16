@@ -13,7 +13,8 @@
     "type-check": "tsc --noEmit",
     "generate": "sanity schema extract && sanity typegen generate",
     "cypress:open": "cypress open",
-    "cypress:run": "node_modules/.bin/cypress run --headless --browser chrome --spec \"cypress/e2e/**/*.cy.ts\""
+    "cypress:run": "node_modules/.bin/cypress run --headless --browser chrome --spec \"cypress/e2e/**/*.cy.ts\"",
+    "cypress:e2e": "node_modules/.bin/cypress run --headless --browser chrome --spec"
   },
   "dependencies": {
     "@gsap/react": "^2.1.1",

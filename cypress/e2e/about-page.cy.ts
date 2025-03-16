@@ -2,7 +2,7 @@ describe('About Page Test Suite', () => {
   // Test Case: Verify About Page Elements
   it('Should verify the presence of key elements on the About page', () => {
     // Visit the About page URL
-    cy.visit('https://growthstats.io/about');
+    cy.visit('/about');
     // Verify the heading text
     cy.get('h1').should('contain.text', 'About Growth Stats');
 

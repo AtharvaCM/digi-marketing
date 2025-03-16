@@ -73,6 +73,7 @@ export default function ServicesSection({ sectionClassName, id }: Readonly<IServ
                         width={360}
                         height={203}
                         className={cx(styles['d-section__card__img'])}
+                        data-test={'service-card'}
                       />
                     </AspectRatio>
                   </Box>
