@@ -5,7 +5,7 @@ describe('Services Page Test Suite', () => {
     cy.selectService('SEM / Paid Advertising', '/sem-paid-advertising');
 
     // Verify the visibility of the hero animation
-    cy.get('[class*="sem-hero-section_d-section__image-wrapper"] svg').should('be.visible');
+    cy.get('[class*="service-details_d-section__image-wrapper"] svg').should('be.visible');
 
     // Log and verify the number of cards
     cy.logCardLinksCount();

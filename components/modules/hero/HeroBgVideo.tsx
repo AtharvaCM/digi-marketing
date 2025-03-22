@@ -39,7 +39,14 @@ const HeroBgVideo = ({ bgVideo, bgVideoThumbnail }: Props) => {
     <div className="h-[100svh]">
       {!videoLoaded && bgVideoThumbnail?.asset && (
         <picture className={cn(bgVideoThumbnail.overlay && styles['d-section__picture'])}>
-          <Img className="size-full object-cover" image={bgVideoThumbnail} imageWidth={1800} draggable={false} loading="eager" />
+          <Img
+            className="size-full object-cover"
+            image={bgVideoThumbnail}
+            imageWidth={1800}
+            draggable={false}
+            loading="eager"
+            alt={bgVideo?.alt}
+          />
         </picture>
       )}
       {hasVideo && (

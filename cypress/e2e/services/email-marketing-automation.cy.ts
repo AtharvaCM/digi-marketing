@@ -6,7 +6,7 @@ describe('Services Page Test Suite', () => {
     cy.selectService('Email Marketing & Automation', '/email-marketing-automation');
 
     // Verify the visibility of the hero animation
-    cy.get('[class*="email-marketing-hero-section_d-section"] svg').should('be.visible');
+    cy.get('[class*="service-details_d-section__image-wrapper"] svg').should('be.visible');
 
     // Verify contact section, total contact links verification
     cy.verifyContactSectionAndElementCounts();
