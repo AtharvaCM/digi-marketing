@@ -1,9 +1,6 @@
 'use client';
 import { Box, Heading, Section, Text } from '@radix-ui/themes';
 import cx from 'classnames';
-import Lottie from 'lottie-react';
-import { stegaClean } from 'next-sanity';
-import { useEffect, useState } from 'react';
 
 import CTALink from '@/components/common/cta-link';
 import ServiceCard from '@/components/common/service-card';
@@ -26,41 +23,14 @@ interface IServiceDetailsModuleProps {
   }[];
 }
 
-export default function ServiceDetailsModule({
-  title,
-  description,
-  ctas,
-  features,
-  heroAnimationSrc,
-}: Readonly<Partial<IServiceDetailsModuleProps>>) {
-  const [animationData, setAnimationData] = useState(null);
-  const cleanHeroAnimationSrc = stegaClean(heroAnimationSrc);
-
-  useEffect(() => {
-    const loadAnimation = async () => {
-      if (!cleanHeroAnimationSrc) return null;
-      try {
-        const response = await fetch(cleanHeroAnimationSrc);
-        if (!response.ok) {
-          throw new Error(`Failed to fetch animation: ${response.statusText}`);
-        }
-        const json = await response.json();
-        setAnimationData(json);
-      } catch (error) {
-        console.error('Failed to load animation:', error);
-      }
-    };
-
-    loadAnimation();
-  }, [cleanHeroAnimationSrc]);
-
+export default function ServiceDetailsModule({ title, description, ctas, features }: Readonly<Partial<IServiceDetailsModuleProps>>) {
   return (
     <Section className={cx(styles['d-section'])}>
       <Box className={cx(styles['d-section__container'])}>
         {/* Col 1 */}
-        <Box className={cx(styles['d-section__image-col'])}>
+        {/* <Box className={cx(styles['d-section__image-col'])}>
           <Box className={cx(styles['d-section__image-wrapper'])}>{animationData && <Lottie animationData={animationData} />}</Box>
-        </Box>
+        </Box> */}
         {/* Col 2 */}
         <Box className={cx(styles['d-section__content-col'])}>
           <Heading as="h1" mb={'5'} className={cx(styles['d-section__title'])}>
