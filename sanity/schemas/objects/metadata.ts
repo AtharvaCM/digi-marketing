@@ -2,6 +2,7 @@ import { defineField, defineType } from 'sanity';
 
 import { isUniqueOtherThanLanguage } from '@/sanity/utils/is-unique-other-than-language';
 
+import MetadataInput from '../fragments/input/MetadataInput';
 import StringInput from '../fragments/input/StringInput';
 
 export default defineType({
@@ -9,6 +10,9 @@ export default defineType({
   title: 'Metadata',
   description: 'For search engines',
   type: 'object',
+  components: {
+    input: MetadataInput,
+  },
   fields: [
     defineField({
       name: 'slug',
@@ -16,7 +20,7 @@ export default defineType({
       description: 'URL path / permalink. Use "index" for the homepage.',
       options: {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        source: (doc: any) => doc.title || doc.metadata.title,
+        source: (doc: any) => doc?.title || doc?.metadata?.title,
         isUnique: isUniqueOtherThanLanguage,
       },
       validation: (Rule) => Rule.required().error('The slug is required.'),
